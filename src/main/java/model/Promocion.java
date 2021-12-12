@@ -10,6 +10,8 @@ public abstract class Promocion extends Vendible {
 	protected LinkedList<Atraccion> atracciones;
 	protected double porcentajeDescuento;
 	protected double precio;
+	protected Boolean active;
+	protected String path_img;
 
 	public double calcularDescuento() {
 		return 0;
@@ -124,5 +126,13 @@ public abstract class Promocion extends Vendible {
 			}	
 		}
 		return false;
+	}
+	
+	public String pathImg() {
+		return this.path_img;
+	}
+	
+	public boolean estaActivo() {
+		return active;
 	}
 }

@@ -1,8 +1,7 @@
 package services;
 
 import java.util.LinkedList;
-import java.util.List;
-
+import model.Tipo;
 import model.Usuario;
 import model.Vendible;
 import persistence.commons.DAOFactory;
@@ -10,21 +9,24 @@ import persistence.commons.DAOFactory;
 public class UsuarioService {
 	
 	LinkedList<Vendible> vendibles = Vendible.getVendibles();   //Preguntar al igna a donde ponerlo
+	LinkedList<Vendible> vendiblesComprados = new LinkedList<Vendible>();
 	
-	public List<Usuario> listar() {
+	public LinkedList<Usuario> listar() {
 		return DAOFactory.getUsuarioDAO().buscarTodos(vendibles);
 	}
 
-//	public Usuario crear(String username, String password, Integer coins, Double time) {
-//		User user = new User(-1, username, password, coins, time, false);
-//		user.setPassword(password);
-//
-//		if (user.isValid()) {
-//			DAOFactory.getUserDAO().insert(user);
-//			// XXX: si no devuelve "1", es que hubo más errores
-//		}
-//
-//		return user;
-//	}
+	
+	
+	public Usuario create(String nombre, Double presupuesto, Double tiempoDisponible, Tipo tipoDeAtraccion, Boolean admin, String password, String path_img){
+		Usuario usuario = new Usuario(1, nombre, presupuesto, tiempoDisponible, tipoDeAtraccion, vendiblesComprados, admin, true, password, path_img);
+		usuario.setPassword(password);
+
+	if (usuario.isValid()) {
+		DAOFactory.getUserDAO().insert(user);
+		// XXX: si no devuelve "1", es que hubo más errores
+	}
+
+	return usuario;
+}
 	
 }

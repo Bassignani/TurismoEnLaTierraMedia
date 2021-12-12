@@ -4,12 +4,15 @@ import java.util.LinkedList;
 
 public class PromocionAxB extends Promocion {
 
-	public PromocionAxB(Integer id,Tipo tipo, String tipoPromocion, String nombrePack, LinkedList<Atraccion> atracciones) {
+	public PromocionAxB(Integer id,Tipo tipo, String tipoPromocion, String nombrePack, LinkedList<Atraccion> atracciones,
+			Boolean active, String path_img) {
 		this.id = id;
 		this.tipo = tipo;
 		this.tipoPromocion = tipoPromocion;
 		this.nombrePack = nombrePack;
 		this.atracciones = atracciones;
+		this.active = active;
+		this.path_img = path_img;
 
 	}
 

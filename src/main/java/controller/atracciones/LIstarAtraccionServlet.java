@@ -1,4 +1,4 @@
-package controller.usuarios;
+package controller.atracciones;
 
 import java.io.IOException;
 import java.util.LinkedList;
@@ -8,32 +8,30 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import model.Usuario;
-import services.UsuarioService;
+import model.Atraccion;
+import services.AtraccionService;
 
-@WebServlet("/usuarios/listar")
-public class ListarUsuarioServlet  extends HttpServlet{
 
-	private static final long serialVersionUID = 6991562980581721616L;
-	private UsuarioService usuarioService;
+@WebServlet("/atracciones/listar")
+public class LIstarAtraccionServlet extends HttpServlet {
+
+	private static final long serialVersionUID = -1441671742359480525L;
+	private AtraccionService atraccionService;
 
 	@Override
 	public void init() throws ServletException {
 		super.init();
-		this.usuarioService = new UsuarioService();
+		this.atraccionService = new AtraccionService();
 	}
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
-		LinkedList<Usuario> usuarios = usuarioService.listar();
-//		System.out.println(usuarios);
-		req.setAttribute("usuarios", usuarios);
+		LinkedList<Atraccion> atracciones = atraccionService.listar();
+		req.setAttribute("atracciones", atracciones);
 		RequestDispatcher dispatcher = getServletContext()
-				.getRequestDispatcher("/views/usuarios/usuarios.jsp");
+				.getRequestDispatcher("/views/atracciones/atracciones.jsp");
 		dispatcher.forward(req, resp);
 
 	}
-
-	
 }

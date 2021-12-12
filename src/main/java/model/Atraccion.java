@@ -7,14 +7,18 @@ public class Atraccion extends Vendible {
 	private double duracion;
 	private Tipo tipo;
 	private int cupo;
+	private Boolean active;
+	private String path_img;
 
-	public Atraccion(Integer id, String nombre, double costo, double duracion, Tipo tipoDeAtraccion, int cupo) {
+	public Atraccion(Integer id, String nombre, double costo, double duracion, Tipo tipoDeAtraccion, int cupo, Boolean active, String path_img) {
 		this.id = id;
 		this.nombre = nombre;
 		this.costo = costo;
 		this.duracion = duracion;
 		this.tipo = tipoDeAtraccion;
 		this.cupo = cupo;
+		this.active = active;
+		this.path_img = path_img;
 	}
 	
 	public Integer getId() {
@@ -65,5 +69,13 @@ public class Atraccion extends Vendible {
 	public boolean esOContiene(Vendible v) {
 		return this.equals(v);
 	} 
+	
+	public boolean estaActivo() {
+		return active;
+	}
+	
+	public String pathImg() {
+		return this.path_img;
+	}
 
 }

@@ -14,44 +14,53 @@
 
 			<div class="lista text-center mt-5">
                 <h3 class="col-12 mb-3 fuente">Registrar un Usuario</h3>
-                <form class="row g-3 needs-validation" novalidate>
+                <form class="row g-3 needs-validation" action="/usuario/crear" method="POST" novalidate>
                     <div class="col-md-4">
                       <label for="nombre" class="form-label">Nombre</label>
-                      <input type="text" class="form-control" id="nombre" placeholder="Frodo" required>
+                      <input type="text" class="form-control" id="nombre" name="" placeholder="Frodo" required>
                       <div class="invalid-feedback">
                         Este campo es requerido.
                       </div>
                     </div>
                     <div class="col-md-4">
-                      <label for="apellido" class="form-label">Apellido</label>
-                      <input type="text" class="form-control" id="apellido" value="" placeholder="Bolson" required>
+                      <label for="presupuesto" class="form-label">Dinero</label>
+                      <input type="number" class="form-control" name="presupuesto" id="presupuesto" value="" placeholder="Ingrese cantidad de dinero disponible" required>
                       <div class="invalid-feedback">
                         Este campo es requerido.
                       </div>
-                    </div>
+                    </div>                    
                     <div class="col-md-4">
-                      <label for="username" class="form-label">Username</label>
-                      <div class="input-group has-validation">
-                        <span class="input-group-text" id="inputGroupPrepend">@</span>
-                        <input type="text" class="form-control" id="username" aria-describedby="inputGroupPrepend" required>
+                      <label for="tiempoDispobible" class="form-label">Tiempo</label>                                         
+                       <input type="number" class="form-control" id="tiempoDispobible" name="tiempoDispobible" aria-describedby="inputGroupPrepend" required>
                         <div class="invalid-feedback">
                             Este campo es requerido.
                           </div>
                       </div>
                     </div>
                     <div class="col-md-4">
-                      <label for="validationCustom03" class="form-label">City</label>
-                      <input type="text" class="form-control" id="validationCustom03" required>
+                      <label for="admin" class="form-label">Admin</label>
+                      <input type="text" class="form-control" id="admin" name="admin" required>
                       <div class="invalid-feedback">
-                        Ingrese una ciudad valida.
+                        Este campo es requerido
                       </div>
                     </div>
-                    <div class="col-md-8">
+<!--                     <div class="col-md-8">
                         <label for="email" class="form-label">Email</label>
                         <input type="email" class="form-control" id="email" placeholder="frodo@lacomarca.com" required pattern="^[^@]+@[^@]+.[a-zA-Z]{2,}$">
                         <div class="invalid-feedback">
                           Email no valido.
                         </div>
+                    </div> -->
+                    <div class="col-md-4">
+                      <label for="tipoDeAtraccion" class="form-label">Tipo de Atracciones</label>
+                      <select name="tipoDeAtraccion" class="form-control" id="tipoDeAtraccion">
+                        <option value="aventura">Aventura</option>
+                        <option value="degustacion" selected>Degustación</option>
+                        <option value="paisaje">Paisaje</option>
+                      </select required>
+                      <div class="invalid-feedback">
+                        Este campo es requerido.
+                      </div>
                     </div>
                     <div class="col-md-4">
                         <label for="contraseña" class="form-label">Contraseña</label>
@@ -60,16 +69,16 @@
                           Contraseña invalidad, debe tener entre 8 y 20 caracteres.
                         </div>
                     </div>
-                    <div class="col-md-4">
+<!--                     <div class="col-md-4">
                         <label for="repContraseña" class="form-label">Repetir Contraseña</label>
                         <input type="email" class="form-control" id="repContraseña" required minlength="8" maxlength="20">
                         <div class="invalid-feedback">
                           La contraseña no coincide,
                         </div>
-                    </div>
+                    </div> -->
 					<div class="col-md-4">
-                        <label for="imagen" class="form-label">Imagen</label>
-                        <input type="file" class="form-control" name="imagen" id="imagen">
+                        <label for="path_img" class="form-label">Imagen</label>
+                        <input type="file" class="form-control" name="path_img" id="path_img">
                     </div>
                     <div class="col-12">
                       <button class="btn  btn-miPrincipal" type="submit">Registrarse</button>

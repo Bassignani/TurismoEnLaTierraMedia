@@ -16,7 +16,7 @@ public class Usuario {
 	private Boolean admin;
 	private Boolean active;
 	private String hashPassword;
-	private String path_img;
+	private String path_img = "";
 	private double tiempoTotal;
 	private Tipo tipoDeAtraccion;
 	LinkedList<Vendible> vendiblesComprados = new LinkedList<Vendible>();
@@ -67,7 +67,7 @@ public class Usuario {
 	@Override
 	public String toString() {
 		return "Usuario [nombre=" + nombre + ", presupuesto=" + presupuesto + ", tiempoDisponible=" + tiempoDisponible
-				+ ", tipoDeAtraccion=" + tipoDeAtraccion + "]\n";
+				+ ", tipoDeAtraccion=" + tipoDeAtraccion + ", path="+ path_img +"]\n";
 	}
 
 	public boolean puedeComprar(Vendible v) {
@@ -110,7 +110,7 @@ public class Usuario {
 		return Crypt.match(password, this.hashPassword);
 	}
 	
-	public String pathImg() {
+	public String Img() {
 		return this.path_img;
 	}
 	

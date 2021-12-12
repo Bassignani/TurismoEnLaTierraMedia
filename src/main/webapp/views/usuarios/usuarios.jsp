@@ -18,41 +18,14 @@
             
             
             <c:if test="${flash != null}">
-			<div class="alert alert-danger">
-				<p>
+				<div class="alert alert-danger">
+					<p>
 					<c:out value="${flash}" />
-				</p>
-			</div>
-		</c:if>
+					</p>
+				</div>
+			</c:if>
 
-		<div class="bg-light p-4 mb-3 rounded">
-			<h1>Usuarios</h1>
-		</div>
-
-
-		<table class="table table-stripped table-hover">
-			<thead>
-				<tr>
-					<th>Nombre</th>
-					<th>Monedas</th>
-					<th>Tiempo</th>
-				</tr>
-			</thead>
-			<tbody>
-				<c:forEach items="${users}" var="tmp_user">
-					<tr>
-						<td><strong><c:out value="${tmp_user.nombre}"></c:out></strong></td>
-						<td><c:out value="${tmp_user.monedas}"></c:out></td>
-						<td><c:out value="${tmp_user.tiempo_disponible}"></c:out></td>
-					</tr>
-				</c:forEach>
-			</tbody>
-		</table>
-            
-            
-            
-            
-                <!-- <table class="table">
+				<table class="table">
                     <thead>
                     <tr>
                         <th scope="col">#</th>
@@ -66,49 +39,27 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr>
-                        <th scope="row">1</th>
-                        <td id="foto"><img src="/TurismoEnLaTierraMedia2021WebApp/assets/img/Usuarios/1_Eowyn_profile.png" id="fotodashboard" alt="Foto"></td>
-                        <td>1</td>
-                        <td><a href="usuario_detalle.html">Eowyn</a></td>
-                        <td>Aventura</td>
-                        <td>10</td>
-                        <td>8</td>
-                        <td>
-                            <a href="/TurismoEnLaTierraMedia2021WebApp/views/usuarios/registrar.jsp"><img src="/TurismoEnLaTierraMedia2021WebApp/assets/img/Varios/edit-regular.svg" class="edit" alt="" title="Editar"></a>   
-                            <a href="#" data-bs-toggle="modal" data-bs-target="#eliminar"><img src="/TurismoEnLaTierraMedia2021WebApp/assets/img/Varios/trash-alt-regular.svg" class="delete" alt="" title="Eliminar"></a>
-                            </td>
-                    </tr>
-                    <tr>
-                        <th scope="row">2</th>
-                        <td id="foto"><img src="/TurismoEnLaTierraMedia2021WebApp/assets/img/Usuarios/2_Gandalf_profile.png" id="fotodashboard" alt="Foto"></td>
-                        <td>2</td>
-                        <td>Gandalf</td>
-                        <td>Paisaje</td>
-                        <td>100</td>
-                        <td>5</td>
-                        <td>
-                            <a href="/TurismoEnLaTierraMedia2021WebApp/views/usuarios/registrar.jsp"><img src="/TurismoEnLaTierraMedia2021WebApp/assets/img/Varios/edit-regular.svg" class="edit" alt="" title="Editar"></a>   
-                            <a href="#" data-bs-toggle="modal" data-bs-target="#eliminar"><img src="/TurismoEnLaTierraMedia2021WebApp/assets/img/Varios/trash-alt-regular.svg" class="delete" alt="" title="Eliminar"></a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th scope="row">3</th>
-                        <td id="foto"><img src="/TurismoEnLaTierraMedia2021WebApp/assets/img/Usuarios/3_Sam_profile.png" id="fotodashboard" alt="Foto"></td>
-                        <td>3</td>
-                        <td>Sam</td>
-                        <td>Degustación</td>
-                        <td>36</td>
-                        <td>8</td>
-                        <td>
-                            <a href="/TurismoEnLaTierraMedia2021WebApp/views/usuarios/registrar.jsp"><img src="/TurismoEnLaTierraMedia2021WebApp/assets/img/Varios/edit-regular.svg" class="edit" alt="" title="Editar"></a>   
-                            <a href="#" data-bs-toggle="modal" data-bs-target="#eliminar"><img src="/TurismoEnLaTierraMedia2021WebApp/assets/img/Varios/trash-alt-regular.svg" class="delete" alt="" title="Eliminar"></a>
-                        </td>
-                    </tr>        
-                    </tbody>
+                    <c:forEach items="${usuarios}" var="tmp_user">
+	                    <tr>
+	                    	
+	                        <th scope="row">1</th>
+	                        <td id="foto"><img src="/TurismoEnLaTierraMedia2021WebApp/assets/img/Usuarios/1_Eowyn_profile.png" id="fotodashboard" alt="Foto"></td>
+	                        <td><c:out value="${tmp_user.id}"></c:out></td>
+	                        <td><a href="usuario_detalle.html"><c:out value="${tmp_user.nombre}"></c:out></a></td>
+	                        <td><c:out value="${tmp_user.tipoDeAtraccion}"></c:out></td>
+	                        <td><c:out value="${tmp_user.presupuesto}"></c:out></td>
+	                        <td><c:out value="${tmp_user.tiempoDisponible}"></c:out></td>
+	                        <td>
+	                            <a href="usuario_registrar.html"><img src="Imagenes/Varios/edit-regular.svg" class="edit" alt="" title="Editar"></a>   
+	                            <a href="#" data-bs-toggle="modal" data-bs-target="#eliminar"><img src="Imagenes/Varios/trash-alt-regular.svg" class="delete" alt="" title="Eliminar"></a>
+	                        </td>
+	                         
+	                    </tr>
+                    </c:forEach>
+				</tbody>
                 </table>
             </div>
-            <a class="btn  btn-miPrincipal" href="/TurismoEnLaTierraMedia2021WebApp/views/usuarios/registrar.jsp">Agregar Usuario</a> -->
+            <a class="btn  btn-miPrincipal" href="/TurismoEnLaTierraMedia2021WebApp//usuario/crear">Agregar Usuario</a>             
     </div>
         
       <!-- Modal -->

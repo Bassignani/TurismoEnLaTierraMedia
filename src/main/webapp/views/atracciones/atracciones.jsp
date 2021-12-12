@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -27,44 +28,21 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr>
-                        <th scope="row">1</th>
-                        <td>1</td>
-                        <td>Moria</td>
-                        <td>10</td>
-                        <td>2</td>
-                        <td>6</td>
-                        <td>Aventura</td>
-                        <td>
-                            <a href="/TurismoEnLaTierraMedia2021WebApp/views/atracciones/registrar.jsp"><img src="/TurismoEnLaTierraMedia2021WebApp/assets/img/Varios/edit-regular.svg" class="edit" alt="" title="Editar"></a>   
-                            <a href="#" data-bs-toggle="modal" data-bs-target="#eliminar"><img src="/TurismoEnLaTierraMedia2021WebApp/assets/img/Varios/trash-alt-regular.svg" class="delete" alt="" title="Eliminar"></a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th scope="row">2</th>
-                        <td>2</td>
-                        <td>Minas Tirith</td>
-                        <td>5</td>
-                        <td>2,5</td>
-                        <td>25</td>
-                        <td>Paisaje</td>
-                        <td>
-                            <a href="/TurismoEnLaTierraMedia2021WebApp/views/atracciones/registrar.jsp"><img src="/TurismoEnLaTierraMedia2021WebApp/assets/img/Varios/edit-regular.svg" class="edit" alt="" title="Editar"></a>   
-                            <a href="#" data-bs-toggle="modal" data-bs-target="#eliminar"><img src="/TurismoEnLaTierraMedia2021WebApp/assets/img/Varios/trash-alt-regular.svg" class="delete" alt="" title="Eliminar"></a>
-                    </tr>
-                    <tr>
-                        <th scope="row">3</th>
-                        <td>3</td>
-                        <td>La Comarca</td>
-                        <td>3</td>
-                        <td>6,5</td>
-                        <td>150</td>
-                        <td>Degustación</td>
-                        <td>
-                            <a href="/TurismoEnLaTierraMedia2021WebApp/views/atracciones/registrar.jsp"><img src="/TurismoEnLaTierraMedia2021WebApp/assets/img/Varios/edit-regular.svg" class="edit" alt="" title="Editar"></a>   
-                            <a href="#" data-bs-toggle="modal" data-bs-target="#eliminar"><img src="/TurismoEnLaTierraMedia2021WebApp/assets/img/Varios/trash-alt-regular.svg" class="delete" alt="" title="Eliminar"></a>
-                        </td>
-                    </tr>
+                    <c:forEach items="${atracciones}" var="tmp_atraccion">
+	                    <tr>
+	                        <th scope="row">1</th>
+	                        <td><c:out value="${tmp_atraccion.id}"></c:out></td>
+	                        <td><c:out value="${tmp_atraccion.nombre}"></c:out></td>
+	                        <td><c:out value="${tmp_atraccion.costo}"></c:out></td>
+	                        <td><c:out value="${tmp_atraccion.duracion}"></c:out></td>
+	                        <td><c:out value="${tmp_atraccion.cupo}"></c:out></td>
+	                        <td><c:out value="${tmp_atraccion.tipo}"></c:out></td>
+	                        <td>
+	                            <a href="/TurismoEnLaTierraMedia2021WebApp/views/atracciones/registrar.jsp"><img src="/TurismoEnLaTierraMedia2021WebApp/assets/img/Varios/edit-regular.svg" class="edit" alt="" title="Editar"></a>   
+	                            <a href="#" data-bs-toggle="modal" data-bs-target="#eliminar"><img src="/TurismoEnLaTierraMedia2021WebApp/assets/img/Varios/trash-alt-regular.svg" class="delete" alt="" title="Eliminar"></a>
+	                        </td>
+	                    </tr>
+                    </c:forEach>
                     </tbody>
                 </table>
              </div>

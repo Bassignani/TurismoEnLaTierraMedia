@@ -14,7 +14,7 @@
 			<div class="collapse navbar-collapse justify-content-end align-items-center" id="navbarNavDropdown">
 				<ul class="navbar-nav">					
 					<li>
-						<audio autoplay controls loop id="myaudio"> 
+						<audio  controls loop id="myaudio">  <!-- autoplay -->
 							<source src="/TurismoEnLaTierraMedia2021WebApp/assets/sounds/The Hobbit Main Theme.mp3" type="audio/mp3">  
 						</audio>                                
 					</li>

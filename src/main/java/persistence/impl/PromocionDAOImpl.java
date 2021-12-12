@@ -21,11 +21,12 @@ public class PromocionDAOImpl implements PromocionDAO {
 
 	public LinkedList<Promocion> buscarTodos(LinkedList<Atraccion> atracciones) {
 		try {
-			String sql = "SELECT p.id, tda.tipo, p.tipo_de_promocion, p.nombre_pack, p.referencia_costo, p.cantidad_atracciones, group_concat(a.nombre)\r\n"
-					+ "FROM promociones p \r\n"
-					+ "    INNER JOIN promociones_atracciones pa ON p.id = pa.promocion_id\r\n"
-					+ "    INNER JOIN atracciones a ON pa.atraccion_id = a.id\r\n"
-					+ "    INNER JOIN tipo_de_atracciones tda ON p.tipo_id = tda.id	\r\n" + "	GROUP BY p.id";
+			String sql = "SELECT p.id, tda.tipo, p.tipo_de_promocion, p.nombre_pack, p.referencia_costo, p.cantidad_atracciones, group_concat(a.nombre), p.active, p.path_img\n"
+					+ "FROM promociones p \n"
+					+ "INNER JOIN promociones_atracciones pa ON p.id = pa.promocion_id\n"
+					+ "INNER JOIN atracciones a ON pa.atraccion_id = a.id\n"
+					+ "INNER JOIN tipo_de_atracciones tda ON p.tipo_id = tda.id\n"
+					+ "GROUP BY p.id";
 			Connection conn = ConnectionProvider.getConnection();
 			PreparedStatement statement = conn.prepareStatement(sql);
 			ResultSet resultados = statement.executeQuery();
@@ -48,21 +49,23 @@ public class PromocionDAOImpl implements PromocionDAO {
 		String nombrePack = resultados.getString(4);
 		double valor_referencia = resultados.getDouble(5);
 		String datos[] = resultados.getString(7).split(",");
+		Boolean active = resultados.getBoolean(8);
+		String path_img = resultados.getString(9);
 
 		atraccionesCompradas(atracciones, atraccionesPromocion, datos);
 
 		if (tipoPromocion.equals("Descuento")) {
 			PromocionDescuento pd = new PromocionDescuento(id, tipo, tipoPromocion, nombrePack, atraccionesPromocion,
-					valor_referencia);
+					valor_referencia, active, path_img);
 			return pd;
 
 		} else if (tipoPromocion.equals("Absoluta")) {
 			PromocionAbsoluta pa = new PromocionAbsoluta(id, tipo, tipoPromocion, nombrePack, atraccionesPromocion,
-					valor_referencia);
+					valor_referencia, active, path_img);
 			return pa;
 
 		} else {
-			PromocionAxB pp = new PromocionAxB(id, tipo, tipoPromocion, nombrePack, atraccionesPromocion);
+			PromocionAxB pp = new PromocionAxB(id, tipo, tipoPromocion, nombrePack, atraccionesPromocion, active, path_img);
 			return pp;
 
 		}

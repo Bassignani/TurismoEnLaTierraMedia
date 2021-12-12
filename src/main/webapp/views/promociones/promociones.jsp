@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -28,58 +29,26 @@
                     </tr>
                     </thead>
                     <tbody>
+                    <c:forEach items="${promociones}" var="tmp_promocion">
                     <tr>
                         <th scope="row">1</th>
-                        <td>1</td>
-                        <td>Aventura</td>
-                        <td>Descuento</td>
-                        <td>Pack Aventura</td>
-                        <td>30</td>
-                        <td>5</td>
-                        <td>
-                            Bosque Negro <br>
-                            Mordor
-                        </td>
-                        <td>
-                            <a href="/TurismoEnLaTierraMedia2021WebApp/views/promociones/registrar.jsp"><img src="/TurismoEnLaTierraMedia2021WebApp/assets/img/Varios/edit-regular.svg" class="edit" alt="" title="Editar"></a>   
-                            <a href="#" data-bs-toggle="modal" data-bs-target="#eliminar"><img src="/TurismoEnLaTierraMedia2021WebApp/assets/img/Varios/trash-alt-regular.svg" class="delete" alt="" title="Eliminar"></a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th scope="row">2</th>
-                        <td>2</td>
-                        <td>Degustación</td>
-                        <td>Absoluta</td>
-                        <td>Pack Degustación</td>
-                        <td>36</td>
-                        <td>7</td>
-                        <td>
-                            Lothlorien <br>
-                            La Comarca
-                        </td>
+                        <td><c:out value="${tmp_promocion.id}"></c:out></td>
+                        <td><c:out value="${tmp_promocion.tipo}"></c:out></td>
+                        <td><c:out value="${tmp_promocion.tipoPromocion}"></c:out></td>
+                        <td><c:out value="${tmp_promocion.nombrePack}"></c:out></td>
+                        <td><c:out value="${tmp_promocion.getCosto()}"></c:out></td>
+                        <td><c:out value="${tmp_promocion.getDuracion()}"></c:out></td>
+						<td>
+	                        <c:forEach items="${tmp_promocion.getAtracciones()}" var="tmp_atraccion"> 
+	                            <c:out value="${tmp_atraccion.nombre}"></c:out> <br>
+	                        </c:forEach>
+	                    </td>
                         <td>
                             <a href="/TurismoEnLaTierraMedia2021WebApp/views/promociones/registrar.jsp"><img src="/TurismoEnLaTierraMedia2021WebApp/assets/img/Varios/edit-regular.svg" class="edit" alt="" title="Editar"></a>   
                             <a href="#" data-bs-toggle="modal" data-bs-target="#eliminar"><img src="/TurismoEnLaTierraMedia2021WebApp/assets/img/Varios/trash-alt-regular.svg" class="delete" alt="" title="Eliminar"></a>
                         </td>
                     </tr>
-                    <tr>
-                        <th scope="row">3</th>
-                        <td>3</td>
-                        <td>Paisaje</td>
-                        <td>AxB</td>
-                        <td>Pack Paisajes</td>
-                        <td>44</td>
-                        <td>9</td>
-                        <td>
-                            Minas Tirith <br>
-                            Abismo de Helm <br>
-                            Erebor
-                        </td>
-                        <td>
-                            <a href="/TurismoEnLaTierraMedia2021WebApp/views/promociones/registrar.jsp"><img src="/TurismoEnLaTierraMedia2021WebApp/assets/img/Varios/edit-regular.svg" class="edit" alt="" title="Editar"></a>   
-                            <a href="#" data-bs-toggle="modal" data-bs-target="#eliminar"><img src="/TurismoEnLaTierraMedia2021WebApp/assets/img/Varios/trash-alt-regular.svg" class="delete" alt="" title="Eliminar"></a>
-                        </td>
-                    </tr>        
+                    </c:forEach>
                     </tbody>
                 </table>
             </div>
