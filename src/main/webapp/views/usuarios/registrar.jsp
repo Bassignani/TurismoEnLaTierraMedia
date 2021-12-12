@@ -14,7 +14,7 @@
 
 			<div class="lista text-center mt-5">
                 <h3 class="col-12 mb-3 fuente">Registrar un Usuario</h3>
-                <form class="row g-3 needs-validation" action="/usuario/crear" method="post" novalidate>
+                <form class="row g-3 needs-validation" action="/usuario/crear" method="POST" novalidate>
                     <div class="col-md-4">
                       <label for="nombre" class="form-label">Nombre</label>
                       <input type="text" class="form-control" id="nombre" name="" placeholder="Frodo" required>
@@ -36,7 +36,7 @@
                             Este campo es requerido.
                           </div>
                       </div>
-                    </div>
+                    
                     <div class="col-md-4">
                       <label for="admin" class="form-label">Admin</label>
                       <input type="text" class="form-control" id="admin" name="admin" required>
@@ -44,13 +44,6 @@
                         Este campo es requerido
                       </div>
                     </div>
-<!--                     <div class="col-md-8">
-                        <label for="email" class="form-label">Email</label>
-                        <input type="email" class="form-control" id="email" placeholder="frodo@lacomarca.com" required pattern="^[^@]+@[^@]+.[a-zA-Z]{2,}$">
-                        <div class="invalid-feedback">
-                          Email no valido.
-                        </div>
-                    </div> -->
                     <div class="col-md-4">
                       <label for="tipoDeAtraccion" class="form-label">Tipo de Atracciones</label>
                       <select name="tipoDeAtraccion" class="form-control" id="tipoDeAtraccion">
@@ -63,19 +56,12 @@
                       </div>
                     </div>
                     <div class="col-md-4">
-                        <label for="contraseña" class="form-label">Contraseña</label>
-                        <input type="email" class="form-control" id="contraseña" required minlength="8" maxlength="20">
+                        <label for="password" class="form-label">Contraseña</label>
+                        <input type="password" class="form-control" id="password" name="password" required>
                         <div class="invalid-feedback">
                           Contraseña invalidad, debe tener entre 8 y 20 caracteres.
                         </div>
                     </div>
-<!--                     <div class="col-md-4">
-                        <label for="repContraseña" class="form-label">Repetir Contraseña</label>
-                        <input type="email" class="form-control" id="repContraseña" required minlength="8" maxlength="20">
-                        <div class="invalid-feedback">
-                          La contraseña no coincide,
-                        </div>
-                    </div> -->
 					<div class="col-md-4">
                         <label for="path_img" class="form-label">Imagen</label>
                         <input type="file" class="form-control" name="path_img" id="path_img">

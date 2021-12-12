@@ -59,7 +59,7 @@
 				</tbody>
                 </table>
             </div>
-            <a class="btn  btn-miPrincipal" href="/TurismoEnLaTierraMedia2021WebApp//usuario/crear">Agregar Usuario</a>             
+            <a class="btn  btn-miPrincipal" href="/TurismoEnLaTierraMedia2021WebApp/usuario/crear">Agregar Usuario</a>             
     </div>
         
       <!-- Modal -->

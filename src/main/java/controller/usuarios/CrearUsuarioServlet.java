@@ -28,7 +28,7 @@ public class CrearUsuarioServlet extends HttpServlet{
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
 		RequestDispatcher dispatcher = getServletContext()
-				.getRequestDispatcher("/views/usuario/registrar.jsp");
+				.getRequestDispatcher("/views/usuarios/registrar.jsp");
 		dispatcher.forward(req, resp);
 	}
 
@@ -41,11 +41,12 @@ public class CrearUsuarioServlet extends HttpServlet{
 		String password = req.getParameter("password");
 		Tipo tipoDeAtraccion = Tipo.valueOf(req.getParameter("tipoDeAtraccion"));
 		String path_img = req.getParameter("path_img");
-
+		System.out.println(nombre);
+		
 		Usuario tmp_user = usuarioService.create(nombre, presupuesto, tiempoDisponible, tipoDeAtraccion,admin,password,path_img);
 		
 		if (tmp_user.isValid()) {
-			resp.sendRedirect("/turismo/users/index.do");
+			resp.sendRedirect("/views/usuarios/usuarios.jsp");
 		} else {
 			req.setAttribute("tmp_user", tmp_user);
 
