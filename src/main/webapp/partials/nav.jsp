@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%> 
+
 <nav class="navbar navbar-expand-lg navbar-dark bg-miPrincipal fixed-top">
 		<div class="container-fluid">
 			<a href="/TurismoEnLaTierraMedia2021WebApp/index.jsp"><img class="logo1" src="/TurismoEnLaTierraMedia2021WebApp/assets/img/Varios/Unico_Anello.png" alt="Logo"></a> 

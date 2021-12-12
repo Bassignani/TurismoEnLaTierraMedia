@@ -10,6 +10,23 @@ import java.util.Properties;
 
 public class ConnectionProvider {
 	
+//	private static Connection connection;
+//
+//	public static Connection getConnection() throws SQLException {
+//		try {
+//			Class.forName("org.sqlite.JDBC");
+//		} catch (ClassNotFoundException e) {
+//			throw new SQLException(e);
+//		}
+//		if (connection == null) {
+//			connection = DriverManager.getConnection("jdbc:sqlite:/TurismoEnLaTierraMedia2021WebApp/database/TurismoEnLaTierraMedia.db");
+//		}
+//		return connection;
+//	}
+	
+	
+	
+	
 //	private static String url = "jdbc:sqlite:database//TurismoEnLaTierraMedia.db";
 //	private static Connection connection;
 //	
@@ -19,6 +36,12 @@ public class ConnectionProvider {
 //		}
 //		return connection;
 //	}
+	
+	
+	
+	
+	
+	
 	private static String url;
 	private static Connection connection;
 

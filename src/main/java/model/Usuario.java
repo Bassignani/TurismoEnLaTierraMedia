@@ -4,6 +4,8 @@ import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.LinkedList;
 
+import utils.Crypt;
+
 public class Usuario {
 	
 	private Integer id;
@@ -13,14 +15,14 @@ public class Usuario {
 	private double tiempoDisponible;
 	private Boolean admin;
 	private Boolean active;
-	private String password;
+	private String hashPassword;
 	private String path_img;
 	private double tiempoTotal;
 	private Tipo tipoDeAtraccion;
 	LinkedList<Vendible> vendiblesComprados = new LinkedList<Vendible>();
 
 	public Usuario(Integer id, String nombre, double presupuesto, double tiempoDisponible, Tipo tipoDeAtraccion, 
-				LinkedList<Vendible> vendiblesComprados, Boolean admin, Boolean active, String password, String path_img) {
+				LinkedList<Vendible> vendiblesComprados, Boolean admin, Boolean active, String hashPassword, String path_img) {
 		this.id = id;
 		this.nombre = nombre;
 		this.presupuesto = presupuesto;
@@ -29,7 +31,7 @@ public class Usuario {
 		this.vendiblesComprados = vendiblesComprados;
 		this.admin = admin;
 		this.active = active;
-		this.password = password;
+		this.hashPassword = hashPassword;
 		this.path_img = path_img;
 	}
 
@@ -102,6 +104,18 @@ public class Usuario {
 	
 	public boolean esAdmin() {
 		return admin;
+	}
+	
+	public boolean checkPassword(String password) {
+		return Crypt.match(password, this.hashPassword);
+	}
+	
+	public String pathImg() {
+		return this.path_img;
+	}
+	
+	public boolean esNull() {
+		return false;
 	}
 
 }

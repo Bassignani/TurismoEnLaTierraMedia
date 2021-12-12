@@ -8,5 +8,7 @@ import model.Vendible;
 public interface UsuarioDAO {
 	
 	public LinkedList<Usuario> buscarTodos(LinkedList<Vendible> vendibles);
+	
+	public Usuario buscarPorNombre(String nombre, LinkedList<Vendible> vendibles);
 
 }
