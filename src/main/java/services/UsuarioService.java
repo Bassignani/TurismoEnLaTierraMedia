@@ -22,7 +22,7 @@ public class UsuarioService {
 		usuario.setPassword(password);
 
 	if (usuario.isValid()) {
-		DAOFactory.getUserDAO().insert(user);
+		DAOFactory.getUsuarioDAO().insert(usuario);
 		// XXX: si no devuelve "1", es que hubo más errores
 	}
 

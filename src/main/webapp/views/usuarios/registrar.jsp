@@ -14,7 +14,7 @@
 
 			<div class="lista text-center mt-5">
                 <h3 class="col-12 mb-3 fuente">Registrar un Usuario</h3>
-                <form class="row g-3 needs-validation" action="/usuario/crear" method="POST" novalidate>
+                <form class="row g-3 needs-validation" action="/usuario/crear" method="post" novalidate>
                     <div class="col-md-4">
                       <label for="nombre" class="form-label">Nombre</label>
                       <input type="text" class="form-control" id="nombre" name="" placeholder="Frodo" required>

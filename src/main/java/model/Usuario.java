@@ -2,6 +2,7 @@ package model;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
+import java.util.HashMap;
 import java.util.LinkedList;
 
 import utils.Crypt;
@@ -19,6 +20,7 @@ public class Usuario {
 	private String path_img = "";
 	private double tiempoTotal;
 	private Tipo tipoDeAtraccion;
+	private HashMap<String, String> errors;
 	LinkedList<Vendible> vendiblesComprados = new LinkedList<Vendible>();
 
 	public Usuario(Integer id, String nombre, double presupuesto, double tiempoDisponible, Tipo tipoDeAtraccion, 
@@ -117,5 +119,46 @@ public class Usuario {
 	public boolean esNull() {
 		return false;
 	}
+	
+	public boolean isValid() {
+		validate();
+		return errors.isEmpty();
+	}
 
+	public void validate() {
+		errors = new HashMap<String, String>();
+
+		if (presupuesto < 0) {
+			errors.put("Presupuesto", "No debe ser negativo");
+		}
+		if (tiempoDisponible < 0) {
+			errors.put("Tiempo", "No debe ser negativo");
+		}
+	}
+	
+	public void setPassword(String password) {
+		this.hashPassword = Crypt.hash(password);
+	}
+
+	public int getTipo() {
+		
+		if(this.tipoDeAtraccion.name().equals("PAISAJE")) {
+			return 1;
+		} 
+		if(this.tipoDeAtraccion.name().equals("AVENTURA")) {
+			return 2;
+		}
+		if(this.tipoDeAtraccion.name().equals("DEGUSTACION")) {
+			return 3;
+		}
+		return 0;
+	}
+	
+	public String getPassword() {
+		return hashPassword;
+	}
+	
+	public String getPathImg() {
+		return path_img;
+	}
 }

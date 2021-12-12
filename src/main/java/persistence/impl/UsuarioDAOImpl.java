@@ -61,11 +61,6 @@ public class UsuarioDAOImpl implements UsuarioDAO {
 		}
 	}
 	
-	
-	
-	
-	
-
 	private Usuario toUsuario(ResultSet resultados, LinkedList<Vendible> vendibles) throws SQLException {
 		LinkedList<Vendible> vendiblesComprados = new LinkedList<Vendible>();
 
@@ -96,4 +91,25 @@ public class UsuarioDAOImpl implements UsuarioDAO {
 				resultados.getBoolean(10), resultados.getString(11), resultados.getString(12));
 	}
 
+	public int insert(Usuario usuario) {
+		
+		try {
+			String sql = "INSERT INTO USERS (NOMBRE, TIPO_ID, MONEDAS, TIEMPO_DISPONIBLE, PASSWORD, PATH_IMG) VALUES (?, ?, ?, ?, ?, ?)";
+			Connection conn = ConnectionProvider.getConnection();
+
+			PreparedStatement statement = conn.prepareStatement(sql);
+			statement.setString(1, usuario.getNombre());
+			statement.setInt(2, usuario.getTipo());
+			statement.setDouble(3, usuario.getPresupuesto());
+			statement.setDouble(4, usuario.getTiempoDisponible());
+			statement.setString(5, usuario.getPassword());
+			statement.setString(6, usuario.getPathImg());
+			int rows = statement.executeUpdate();
+
+			return rows;
+		} catch (Exception e) {
+			throw new MissingDataException(e);
+		}
+	}
+	
 }
