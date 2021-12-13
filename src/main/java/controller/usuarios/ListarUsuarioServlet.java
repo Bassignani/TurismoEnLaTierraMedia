@@ -27,7 +27,7 @@ public class ListarUsuarioServlet  extends HttpServlet{
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
 		LinkedList<Usuario> usuarios = usuarioService.listar();
-//		System.out.println(usuarios);
+		//System.out.println(usuarios);
 		req.setAttribute("usuarios", usuarios);
 		RequestDispatcher dispatcher = getServletContext()
 				.getRequestDispatcher("/views/usuarios/usuarios.jsp");

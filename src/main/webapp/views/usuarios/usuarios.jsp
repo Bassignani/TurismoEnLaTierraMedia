@@ -43,7 +43,7 @@
 	                    <tr>
 	                    	
 	                        <th scope="row">1</th>
-	                        <td id="foto"><img src="/TurismoEnLaTierraMedia2021WebApp/assets/img/Usuarios/1_Eowyn_profile.png" id="fotodashboard" alt="Foto"></td>
+	                        <td id="foto"><img src="<c:out value="${tmp_user.getPathImg()}"></c:out>"  id="fotodashboard" alt="Foto"></td>
 	                        <td><c:out value="${tmp_user.id}"></c:out></td>
 	                        <td><a href="usuario_detalle.html"><c:out value="${tmp_user.nombre}"></c:out></a></td>
 	                        <td><c:out value="${tmp_user.tipoDeAtraccion}"></c:out></td>

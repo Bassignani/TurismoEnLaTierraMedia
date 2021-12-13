@@ -17,7 +17,7 @@ public class Usuario {
 	private Boolean admin;
 	private Boolean active;
 	private String hashPassword;
-	private String path_img = "";
+	private String path_img;
 	private double tiempoTotal;
 	private Tipo tipoDeAtraccion;
 	private HashMap<String, String> errors;
