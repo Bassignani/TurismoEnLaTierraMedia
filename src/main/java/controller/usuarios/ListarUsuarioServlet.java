@@ -13,7 +13,7 @@ import model.Vendible;
 import services.UsuarioService;
 import services.VendibleService;
 
-@WebServlet("/usuarios/listar")
+@WebServlet("/usuarios/listar.adm")
 public class ListarUsuarioServlet  extends HttpServlet{
 
 	private static final long serialVersionUID = 6991562980581721616L;

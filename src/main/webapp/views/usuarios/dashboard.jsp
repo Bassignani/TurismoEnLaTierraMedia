@@ -14,9 +14,9 @@
        <section class="lista mt-5 text-center">
             <h3 class="col-12 mb-3 fuente">Panel de Administrador</h3>
             <div class="d-grid gap-2 col-6 mx-auto">
-                <a class="btn  btn-miPrincipal" href="/TurismoEnLaTierraMedia2021WebApp/usuarios/listar">Usuarios</a>
-                <a class="btn  btn-miPrincipal" href="/TurismoEnLaTierraMedia2021WebApp/promociones/listar">Promociones</a>
-                <a class="btn  btn-miPrincipal" href="/TurismoEnLaTierraMedia2021WebApp/atracciones/listar">Atracciones</a>
+                <a class="btn  btn-miPrincipal" href="/TurismoEnLaTierraMedia2021WebApp/usuarios/listar.adm">Usuarios</a>
+                <a class="btn  btn-miPrincipal" href="/TurismoEnLaTierraMedia2021WebApp/promociones/listar.adm">Promociones</a>
+                <a class="btn  btn-miPrincipal" href="/TurismoEnLaTierraMedia2021WebApp/atracciones/listar.adm">Atracciones</a>
             </div>
         </section> 
     </div>

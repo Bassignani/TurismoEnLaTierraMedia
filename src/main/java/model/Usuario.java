@@ -100,7 +100,7 @@ public class Usuario {
 		return vendiblesComprados;
 	}
 	
-	public boolean estaActivo() {
+	public boolean getActive() {
 		return active;
 	}
 	

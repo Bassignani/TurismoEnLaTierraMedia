@@ -50,7 +50,7 @@
 	                        <td><c:out value="${tmp_user.presupuesto}"></c:out></td>
 	                        <td><c:out value="${tmp_user.tiempoDisponible}"></c:out></td>
 	                        <td>
-	                            <a href="/TurismoEnLaTierraMedia2021WebApp/views/atracciones/registrar.jsp"><img src="/TurismoEnLaTierraMedia2021WebApp/assets/img/Varios/edit-regular.svg" class="edit" alt="" title="Editar"></a>   
+	                            <a href="/TurismoEnLaTierraMedia2021WebApp/usuario/editar.adm?id=${tmp_user.id}"><img src="/TurismoEnLaTierraMedia2021WebApp/assets/img/Varios/edit-regular.svg" class="edit" alt="" title="Editar"></a>   
 	                            <a href="#" data-bs-toggle="modal" data-bs-target="#eliminar"><img src="/TurismoEnLaTierraMedia2021WebApp/assets/img/Varios/trash-alt-regular.svg" class="delete" alt="" title="Eliminar"></a>
 	                        </td>
 	                    </tr>
@@ -58,7 +58,7 @@
 				</tbody>
                 </table>
             </div>
-            <a class="btn  btn-miPrincipal" href="/TurismoEnLaTierraMedia2021WebApp/usuario/crear">Agregar Usuario</a>             
+            <a class="btn  btn-miPrincipal" href="/TurismoEnLaTierraMedia2021WebApp/usuario/crear.adm">Agregar Usuario</a>             
     </div>
         
       <!-- Modal -->

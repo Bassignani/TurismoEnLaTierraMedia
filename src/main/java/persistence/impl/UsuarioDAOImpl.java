@@ -61,6 +61,82 @@ public class UsuarioDAOImpl implements UsuarioDAO {
 		}
 	}
 	
+	
+	public int update(Usuario usuario) {
+		try {
+			String sql = "UPDATE usuarios SET NOMBRE = ?, TIPO_ID = ?, MONEDAS = ?, TIEMPO_DISPONIBLE = ?, ADMIN = ?, ACTIVE = ?, PATH_IMG = ? WHERE id = ?";
+			Connection conn = ConnectionProvider.getConnection();
+
+			PreparedStatement statement = conn.prepareStatement(sql);
+			statement.setString(1, usuario.getNombre());
+			statement.setInt(2, usuario.getTipo());
+			statement.setDouble(3, usuario.getPresupuesto());
+			statement.setDouble(4, usuario.getTiempoDisponible());
+			statement.setBoolean(5, usuario.getAdmin());
+			statement.setBoolean(6, true);
+			statement.setString(7, usuario.getPathImg());
+			int rows = statement.executeUpdate();
+			return rows;
+		} catch (Exception e) {
+			throw new MissingDataException(e);
+		}
+	}
+
+	
+	public int insert(Usuario usuario) {
+		
+		try {
+			String sql = "INSERT INTO usuarios (NOMBRE, TIPO_ID, MONEDAS, TIEMPO_DISPONIBLE, ADMIN, ACTIVE, PASSWORD, PATH_IMG) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+			Connection conn = ConnectionProvider.getConnection();
+
+			PreparedStatement statement = conn.prepareStatement(sql);
+			statement.setString(1, usuario.getNombre());
+			statement.setInt(2, usuario.getTipo());
+			statement.setDouble(3, usuario.getPresupuesto());
+			statement.setDouble(4, usuario.getTiempoDisponible());
+			statement.setBoolean(5, usuario.getAdmin());
+			statement.setBoolean(6, true);
+			statement.setString(7, usuario.getPassword());
+			statement.setString(8, usuario.getPathImg());
+			int rows = statement.executeUpdate();
+
+			return rows;
+		} catch (Exception e) {
+			throw new MissingDataException(e);
+		}
+	}
+	
+	
+	public Usuario buscarPorId(Integer id, LinkedList<Vendible> vendibles) {
+		try {
+			String sql = "SELECT u.id, u.nombre, u.tipo_id, u.monedas, u.tiempo_disponible, tda.tipo , group_concat(i.promocion_id),group_concat(i.atraccion_id) , u.admin, u.active, u.password, u.path_img\n"
+					+ "		FROM usuarios u  INNER JOIN tipo_de_atracciones tda ON u.tipo_id = tda.id LEFT JOIN itinerarios i ON u.id = i.usuario_id  WHERE u.id = ?	GROUP BY u.id";
+			Connection conn = ConnectionProvider.getConnection();
+			PreparedStatement statement = conn.prepareStatement(sql);
+			statement.setInt(1, id);
+			ResultSet resultados = statement.executeQuery();
+
+			Usuario usuario = NullUsuario.build();
+
+			if (resultados.next()) {
+				usuario = toUsuario(resultados, vendibles);
+			}
+
+			return usuario;
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new MissingDataException(e);
+		}
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	private Usuario toUsuario(ResultSet resultados, LinkedList<Vendible> vendibles) throws SQLException {
 		LinkedList<Vendible> vendiblesComprados = new LinkedList<Vendible>();
 
@@ -93,27 +169,6 @@ public class UsuarioDAOImpl implements UsuarioDAO {
 
 	
 	
-	public int insert(Usuario usuario) {
-		
-		try {
-			String sql = "INSERT INTO usuarios (NOMBRE, TIPO_ID, MONEDAS, TIEMPO_DISPONIBLE, ADMIN, ACTIVE, PASSWORD, PATH_IMG) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
-			Connection conn = ConnectionProvider.getConnection();
 
-			PreparedStatement statement = conn.prepareStatement(sql);
-			statement.setString(1, usuario.getNombre());
-			statement.setInt(2, usuario.getTipo());
-			statement.setDouble(3, usuario.getPresupuesto());
-			statement.setDouble(4, usuario.getTiempoDisponible());
-			statement.setBoolean(5, usuario.getAdmin());
-			statement.setBoolean(6, true);
-			statement.setString(7, usuario.getPassword());
-			statement.setString(8, usuario.getPathImg());
-			int rows = statement.executeUpdate();
-
-			return rows;
-		} catch (Exception e) {
-			throw new MissingDataException(e);
-		}
-	}
 	
 }

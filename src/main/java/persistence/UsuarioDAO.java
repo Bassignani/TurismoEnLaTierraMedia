@@ -12,5 +12,9 @@ public interface UsuarioDAO {
 	public Usuario buscarPorNombre(String nombre, LinkedList<Vendible> vendibles);
 
 	public int insert(Usuario usuario);
+	
+	public Usuario buscarPorId(Integer id, LinkedList<Vendible> vendibles);
+	
+	public int update(Usuario usuario);
 
 }
