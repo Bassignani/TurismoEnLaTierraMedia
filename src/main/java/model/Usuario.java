@@ -161,4 +161,38 @@ public class Usuario {
 	public String getPathImg() {
 		return path_img;
 	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
+	public void setPresupuesto(double presupuesto) {
+		this.presupuesto = presupuesto;
+	}
+
+	public void setTiempoDisponible(double tiempoDisponible) {
+		this.tiempoDisponible = tiempoDisponible;
+	}
+
+	public void setAdmin(Boolean admin) {
+		this.admin = admin;
+	}
+
+	public void setActive(Boolean active) {
+		this.active = active;
+	}
+
+	public void setPath_img(String path_img) {
+		this.path_img = path_img;
+	}
+
+	public void setTipoDeAtraccion(Tipo tipoDeAtraccion) {
+		this.tipoDeAtraccion = tipoDeAtraccion;
+	}
+
+
 }

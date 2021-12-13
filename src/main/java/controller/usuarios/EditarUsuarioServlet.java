@@ -51,7 +51,7 @@ public class EditarUsuarioServlet extends HttpServlet {
 		String path_img = req.getParameter("path_img");
 //		String password = usuario.getPas;
 		
-		Usuario tmp_user = usuarioService.update(nombre, presupuesto, tiempoDisponible, tipoDeAtraccion,admin, path_img);
+		Usuario tmp_user = usuarioService.update(-1, nombre, presupuesto, tiempoDisponible, tipoDeAtraccion,admin, path_img);
 		
 		if (tmp_user.isValid()) {
 			resp.sendRedirect("/TurismoEnLaTierraMedia2021WebApp/usuarios/listar");

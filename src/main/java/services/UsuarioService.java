@@ -1,9 +1,11 @@
 package services;
 
 import java.util.LinkedList;
+
 import model.Tipo;
 import model.Usuario;
 import model.Vendible;
+import persistence.UsuarioDAO;
 import persistence.commons.DAOFactory;
 
 public class UsuarioService {
@@ -32,10 +34,17 @@ public class UsuarioService {
 	}
 	
 	
-	public Usuario update(String nombre, Double presupuesto, Double tiempoDisponible, Tipo tipoDeAtraccion, Boolean admin,  String path_img){
+	public Usuario update(Integer id, String nombre, Double presupuesto, Double tiempoDisponible, Tipo tipoDeAtraccion, Boolean admin,  String path_img){
 		
-		Usuario usuario = new Usuario(1, nombre, presupuesto, tiempoDisponible, tipoDeAtraccion, vendiblesComprados, admin, true, path_img);
-		usuario.setPassword(password);
+		UsuarioDAO usuarioDAO = DAOFactory.getUsuarioDAO();
+		Usuario usuario = usuarioDAO.buscarPorId(id, vendiblesComprados);
+		
+		usuario.setNombre(nombre);
+		usuario.setPresupuesto(presupuesto);
+		usuario.setTiempoDisponible(tiempoDisponible);
+		usuario.setTipoDeAtraccion(tipoDeAtraccion);
+		usuario.setAdmin(admin);
+		usuario.setPath_img(nombre);
 
 	if (usuario.isValid()) {
 		DAOFactory.getUsuarioDAO().update(usuario);
