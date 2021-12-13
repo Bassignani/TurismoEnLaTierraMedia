@@ -19,7 +19,7 @@ public class AtraccionDAOImpl implements AtraccionDAO {
 
 	public LinkedList<Atraccion> buscarTodos() {
 		try {
-			String sql = "SELECT a.id, a.nombre, a.costo, a.duracion, a.cupo, a.tipo_id, tda.tipo, a.active, a.path_img\n"
+			String sql = "SELECT a.id, a.nombre, a.costo, a.duracion, a.cupo, a.tipo_id, tda.tipo, a.active, a.path_img, a.description\n"
 					+ "FROM atracciones a INNER JOIN tipo_de_atracciones tda ON a.tipo_id = tda.id";
 			Connection conn = ConnectionProvider.getConnection();
 			PreparedStatement statement = conn.prepareStatement(sql);
@@ -38,7 +38,7 @@ public class AtraccionDAOImpl implements AtraccionDAO {
 
 	private Atraccion toAtraccion(ResultSet resultados) throws SQLException {
 		return new Atraccion(resultados.getInt(1),resultados.getString(2), resultados.getDouble(3), resultados.getDouble(4), 
-				Tipo.valueOf(resultados.getString(7)), resultados.getInt(5),resultados.getBoolean(8),resultados.getString(9));
+				Tipo.valueOf(resultados.getString(7)), resultados.getInt(5),resultados.getBoolean(8),resultados.getString(9), resultados.getString(10));
 	}
 	
 }

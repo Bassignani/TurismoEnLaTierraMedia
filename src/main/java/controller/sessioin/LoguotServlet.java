@@ -21,7 +21,7 @@ public class LoguotServlet extends HttpServlet {
 			req.setAttribute("success", "¡Hasta pronto!");
 
 			RequestDispatcher dispatcher = getServletContext()
-					.getRequestDispatcher("/TurismoEnLaTierraMedia2021WebApp/index.jsp");
+					.getRequestDispatcher("/index");
 			dispatcher.forward(req, resp);
 //			resp.sendRedirect("/TurismoEnLaTierraMedia2021WebApp/index.jsp"); 
 		}

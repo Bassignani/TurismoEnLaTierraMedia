@@ -4,8 +4,8 @@
 	
 <nav class="navbar navbar-expand-lg navbar-dark bg-miPrincipal fixed-top">
 		<div class="container-fluid">
-			<a href="/TurismoEnLaTierraMedia2021WebApp/index.jsp"><img class="logo1" src="/TurismoEnLaTierraMedia2021WebApp/assets/img/Varios/Unico_Anello.png" alt="Logo"></a> 
-			<a class="navbar-brand fuente" href="/TurismoEnLaTierraMedia2021WebApp/index.jsp">Turismo en la Tierra Media</a>
+			<a href="/TurismoEnLaTierraMedia2021WebApp/index"><img class="logo1" src="/TurismoEnLaTierraMedia2021WebApp/assets/img/Varios/Unico_Anello.png" alt="Logo"></a> 
+			<a class="navbar-brand fuente" href="/TurismoEnLaTierraMedia2021WebApp/index">Turismo en la Tierra Media</a>
 			<button class="navbar-toggler" type="button"
 				data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
 				aria-controls="navbarNavDropdown" aria-expanded="false"
@@ -50,11 +50,11 @@
 							<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false"> 
 								<c:out value="${usuario.nombre}"></c:out>
 							</a>
-							<ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+							<ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink" style="left: -95%">
 	                            <li><a class="dropdown-item" href="/TurismoEnLaTierraMedia2021WebApp/views/usuarios/ofertar.jsp">Comprar</a></li>   <!--Desp se puede sacar-->
 	                            <li><a class="dropdown-item" href="/TurismoEnLaTierraMedia2021WebApp/views/usuarios/itinerario.jsp">Itinerario</a></li>
-	                            <li><a class="dropdown-item" ><img src="/TurismoEnLaTierraMedia2021WebApp/assets/img/Varios/RelojDeArena.png" style="width: 20px;" alt=""><c:out value="${usuario.getTiempoDisponible()}"></c:out></a></li>
-	                            <li><a class="dropdown-item" ><img src="/TurismoEnLaTierraMedia2021WebApp/assets/img/Varios/GoldCoins.png" style="width: 20px;" alt=""><c:out value="${usuario.getPresupuesto()}"></c:out></a></li>
+	                            <li><a class="dropdown-item" ><img src="/TurismoEnLaTierraMedia2021WebApp/assets/img/Varios/RelojDeArena.png" style="width: 20px; margin-right: 6px; margin-left: 5px" alt=""><c:out value="${usuario.getTiempoDisponible()}"></c:out></a></li>
+	                            <li><a class="dropdown-item" ><img src="/TurismoEnLaTierraMedia2021WebApp/assets/img/Varios/GoldCoins.png" style="width: 30px; margin-right: 0px" alt=""><c:out value="${usuario.getPresupuesto()}"></c:out></a></li>
 	                            <c:if test="${usuario.getAdmin()}">
 	                            	<li><a class="dropdown-item" href="/TurismoEnLaTierraMedia2021WebApp/views/usuarios/dashboard.jsp">Panel de admin</a></li>   <!-- Se ven unicamente si sos admin -->
 	                            </c:if>

@@ -128,8 +128,8 @@ public abstract class Promocion extends Vendible {
 		return false;
 	}
 	
-	public String pathImg() {
-		return this.path_img;
+	public String getPathImg() {
+		return path_img;
 	}
 	
 	public boolean estaActivo() {

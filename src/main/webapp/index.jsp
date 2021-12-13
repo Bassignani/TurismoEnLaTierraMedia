@@ -33,21 +33,18 @@
 					
 					<li>
 						<div class="card">
-							<img src="assets/img/Varios/hotSale.png" class="card-img-top"
+							<img src="<c:out value="${tmp_vendible.getPathImg()}"></c:out>" class="card-img-top"
 								alt="articulo">
 							<div class="card-body">
 								<h5 class="card-title"><c:out value="${tmp_vendible.getNombre()}"></c:out></h5>
-								<p class="card-text">Lorem ipsum dolor sit amet consectetur
-									adipisicing elit. Aliquid, rem asperiores necessitatibus optio
-									harum quidem eveniet. Illo incidunt totam, animi minus eveniet
-									officia neque perspiciatis et. Iste possimus voluptate commodi?</p>
+								<p class="card-text" style="text-align: justify"><c:out value="${tmp_vendible.getDescription()}"></c:out></p>
 								<div class="iconos">
 									<span>
-										<img alt="Precio" src="assets/img/Varios/GoldCoinsIcono.png">
+										<img alt="Precio" src="/TurismoEnLaTierraMedia2021WebApp/assets/img/Varios/GoldCoinsIcono.png">
 										<c:out value="${tmp_vendible.getCosto()}"></c:out>
 									</span> 
 									<span>
-										<img alt="Duracion" src="assets/img/Varios/RelojDeArenaIcono.png">
+										<img alt="Duracion" src="/TurismoEnLaTierraMedia2021WebApp/assets/img/Varios/RelojDeArenaIcono.png">
 										<c:out value="${tmp_vendible.getDuracion()}"></c:out>
 									</span>
 								</div>

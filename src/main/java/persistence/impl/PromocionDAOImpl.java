@@ -21,7 +21,7 @@ public class PromocionDAOImpl implements PromocionDAO {
 
 	public LinkedList<Promocion> buscarTodos(LinkedList<Atraccion> atracciones) {
 		try {
-			String sql = "SELECT p.id, tda.tipo, p.tipo_de_promocion, p.nombre_pack, p.referencia_costo, p.cantidad_atracciones, group_concat(a.nombre), p.active, p.path_img\n"
+			String sql = "SELECT p.id, tda.tipo, p.tipo_de_promocion, p.nombre_pack, p.referencia_costo, p.cantidad_atracciones, group_concat(a.nombre), p.active, p.path_img, p.description\n"
 					+ "FROM promociones p \n"
 					+ "INNER JOIN promociones_atracciones pa ON p.id = pa.promocion_id\n"
 					+ "INNER JOIN atracciones a ON pa.atraccion_id = a.id\n"
@@ -51,21 +51,22 @@ public class PromocionDAOImpl implements PromocionDAO {
 		String datos[] = resultados.getString(7).split(",");
 		Boolean active = resultados.getBoolean(8);
 		String path_img = resultados.getString(9);
+		String description = resultados.getString(10);
 
 		atraccionesCompradas(atracciones, atraccionesPromocion, datos);
 
 		if (tipoPromocion.equals("Descuento")) {
 			PromocionDescuento pd = new PromocionDescuento(id, tipo, tipoPromocion, nombrePack, atraccionesPromocion,
-					valor_referencia, active, path_img);
+					valor_referencia, active, path_img, description);
 			return pd;
 
 		} else if (tipoPromocion.equals("Absoluta")) {
 			PromocionAbsoluta pa = new PromocionAbsoluta(id, tipo, tipoPromocion, nombrePack, atraccionesPromocion,
-					valor_referencia, active, path_img);
+					valor_referencia, active, path_img, description);
 			return pa;
 
 		} else {
-			PromocionAxB pp = new PromocionAxB(id, tipo, tipoPromocion, nombrePack, atraccionesPromocion, active, path_img);
+			PromocionAxB pp = new PromocionAxB(id, tipo, tipoPromocion, nombrePack, atraccionesPromocion, active, path_img, description);
 			return pp;
 
 		}

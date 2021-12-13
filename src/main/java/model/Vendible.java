@@ -9,15 +9,21 @@ import java.util.LinkedList;
 
 public abstract class Vendible {
 	protected String nombre = "";
+	protected String description = "";
 	protected double costo;
 	protected double duracion;
 	protected Tipo tipo;
 	protected int cupo;
 	protected LinkedList<Atraccion> atracciones;
 	protected Integer id;
+	private String path_img;
 
 	public boolean hayCupo() {
 		return false;
+	}
+	
+	public String getPathImg() {
+		return path_img;
 	}
 
 	public void comprar() {
@@ -33,6 +39,11 @@ public abstract class Vendible {
 
 	public String getNombre() {
 		return nombre;
+	}
+	
+	public String getDescription() {
+		
+		return description;
 	}
 
 	public Tipo getTipo() {

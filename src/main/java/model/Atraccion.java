@@ -10,7 +10,7 @@ public class Atraccion extends Vendible {
 	private Boolean active;
 	private String path_img;
 
-	public Atraccion(Integer id, String nombre, double costo, double duracion, Tipo tipoDeAtraccion, int cupo, Boolean active, String path_img) {
+	public Atraccion(Integer id, String nombre, double costo, double duracion, Tipo tipoDeAtraccion, int cupo, Boolean active, String path_img, String description) {
 		this.id = id;
 		this.nombre = nombre;
 		this.costo = costo;
@@ -19,6 +19,7 @@ public class Atraccion extends Vendible {
 		this.cupo = cupo;
 		this.active = active;
 		this.path_img = path_img;
+		this.description = description;
 	}
 	
 	public Integer getId() {
@@ -74,8 +75,7 @@ public class Atraccion extends Vendible {
 		return active;
 	}
 	
-	public String pathImg() {
-		return this.path_img;
+	public String getPathImg() {
+		return path_img;
 	}
-
 }

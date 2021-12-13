@@ -7,7 +7,7 @@ import java.util.LinkedList;
 public class PromocionDescuento extends Promocion {
 
 	public PromocionDescuento(Integer id,Tipo tipo, String tipoPromocion, String nombrePack, LinkedList<Atraccion> atracciones,
-			double porcentajeDescuento, Boolean active, String path_img) {
+			double porcentajeDescuento, Boolean active, String path_img, String description) {
 		this.id = id;
 		this.tipo = tipo;
 		this.tipoPromocion = tipoPromocion;
@@ -16,6 +16,7 @@ public class PromocionDescuento extends Promocion {
 		this.porcentajeDescuento = porcentajeDescuento;
 		this.active = active;
 		this.path_img = path_img;
+		this.description = description;
 	}
 
 	@Override

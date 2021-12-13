@@ -425,12 +425,9 @@ html {
 	background-color: var(--fondoCard) !important;
 }
 
-
-/* .dropdown-menu.show {
+.dropdown-menu[data-bs-popper] {
     top: 100%;
-    left: -90% !important;
+    left: -95%;
     margin-top: 0.125rem;
-} */
-
-
+}
 
