@@ -8,10 +8,10 @@ import persistence.commons.DAOFactory;
 
 public class UsuarioService {
 	
-	LinkedList<Vendible> vendibles = Vendible.getVendibles();   //Preguntar al igna a donde ponerlo
+//	LinkedList<Vendible> vendibles = VendibleService.listar();   
 	LinkedList<Vendible> vendiblesComprados = new LinkedList<Vendible>();
 	
-	public LinkedList<Usuario> listar() {
+	public LinkedList<Usuario> listar(LinkedList<Vendible> vendibles) {
 		return DAOFactory.getUsuarioDAO().buscarTodos(vendibles);
 	}
 

@@ -50,10 +50,9 @@
 	                        <td><c:out value="${tmp_user.presupuesto}"></c:out></td>
 	                        <td><c:out value="${tmp_user.tiempoDisponible}"></c:out></td>
 	                        <td>
-	                            <a href="usuario_registrar.html"><img src="Imagenes/Varios/edit-regular.svg" class="edit" alt="" title="Editar"></a>   
-	                            <a href="#" data-bs-toggle="modal" data-bs-target="#eliminar"><img src="Imagenes/Varios/trash-alt-regular.svg" class="delete" alt="" title="Eliminar"></a>
+	                            <a href="/TurismoEnLaTierraMedia2021WebApp/views/atracciones/registrar.jsp"><img src="/TurismoEnLaTierraMedia2021WebApp/assets/img/Varios/edit-regular.svg" class="edit" alt="" title="Editar"></a>   
+	                            <a href="#" data-bs-toggle="modal" data-bs-target="#eliminar"><img src="/TurismoEnLaTierraMedia2021WebApp/assets/img/Varios/trash-alt-regular.svg" class="delete" alt="" title="Eliminar"></a>
 	                        </td>
-	                         
 	                    </tr>
                     </c:forEach>
 				</tbody>

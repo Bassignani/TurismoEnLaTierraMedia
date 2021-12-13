@@ -68,7 +68,7 @@ public abstract class Promocion extends Vendible {
 
 	@Override
 	public String getNombre() {
-		return nombre;
+		return nombrePack;
 	}
 
 	@Override

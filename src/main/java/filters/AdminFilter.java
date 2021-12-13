@@ -20,7 +20,7 @@ public class AdminFilter implements Filter {
 			throws IOException, ServletException {
 
 		Usuario usuario = (Usuario) ((HttpServletRequest) request).getSession().getAttribute("usuario");
-		if (usuario != null && usuario.esAdmin()) {
+		if (usuario != null && usuario.getAdmin()) {
 			chain.doFilter(request, response);
 		} else {
 			request.setAttribute("flash", "No tienes los permisos necesarios para acceder");

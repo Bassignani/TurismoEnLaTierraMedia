@@ -21,7 +21,7 @@
 				</article>
 
 			<div class="lista text-center mt-5">
-				<form action="login" method="post">
+				<form action="/TurismoEnLaTierraMedia2021WebApp/usuario/login" method="post">
 					<div class="mb-3">
 					  <label for="nombre" class="form-label">Nombre</label>
 					  <input type="text" class="form-control" name="nombre" id="nombre" aria-describedby="emailHelp">

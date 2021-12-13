@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -27,27 +28,38 @@
 
 			<section class="mt-5">
 				<ul id="productos" class="lista text-center">
+					
+					<c:forEach items="${vendibles}" var="tmp_vendible">		
+					
 					<li>
 						<div class="card">
 							<img src="assets/img/Varios/hotSale.png" class="card-img-top"
 								alt="articulo">
 							<div class="card-body">
-								<h5 class="card-title">Pack Aventura</h5>
+								<h5 class="card-title"><c:out value="${tmp_vendible.getNombre()}"></c:out></h5>
 								<p class="card-text">Lorem ipsum dolor sit amet consectetur
 									adipisicing elit. Aliquid, rem asperiores necessitatibus optio
 									harum quidem eveniet. Illo incidunt totam, animi minus eveniet
 									officia neque perspiciatis et. Iste possimus voluptate commodi?</p>
 								<div class="iconos">
-									<span><img alt="Precio"
-										src="assets/img/Varios/GoldCoinsIcono.png"> 50 monedas</span> <span><img
-										alt="Duracion" src="assets/img/Varios/RelojDeArenaIcono.png">
-										6 horas</span>
+									<span>
+										<img alt="Precio" src="assets/img/Varios/GoldCoinsIcono.png">
+										<c:out value="${tmp_vendible.getCosto()}"></c:out>
+									</span> 
+									<span>
+										<img alt="Duracion" src="assets/img/Varios/RelojDeArenaIcono.png">
+										<c:out value="${tmp_vendible.getDuracion()}"></c:out>
+									</span>
 								</div>
 								<a href="ofertar.html" class="btn btn-miPrincipal mt-1">Comprar</a>
 							</div>
 						</div>
 					</li>
-					<li>
+					
+					</c:forEach>
+					
+					
+					<!-- <li>
 						<div class="card">
 							<img src="assets/img/Varios/hotSale.png" class="card-img-top"
 								alt="articulo">
@@ -327,7 +339,7 @@
 								<a href="ofertar.html" class="btn btn-miPrincipal">Comprar</a>
 							</div>
 						</div>
-					</li>
+					</li> -->
 				</ul>
 			</section>
 		</main>

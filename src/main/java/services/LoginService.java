@@ -8,11 +8,9 @@ import model.nullobjects.NullUsuario;
 import persistence.UsuarioDAO;
 import persistence.commons.DAOFactory;
 
-public class LoginService {
+public class LoginService { 
 	
-	LinkedList<Vendible> vendibles = Vendible.getVendibles();   //Preguntar al igna a donde ponerlo
-	
-	public Usuario login(String nombre, String password) {
+	public Usuario login(String nombre, String password,LinkedList<Vendible> vendibles) {
 		UsuarioDAO usuarioDao = DAOFactory.getUsuarioDAO();
 		Usuario usuario = usuarioDao.buscarPorNombre(nombre,vendibles);
     	

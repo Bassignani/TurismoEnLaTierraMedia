@@ -53,9 +53,9 @@
 	--miLetra2: #f4f2f2;
 	--miColorBoton: #f4f2f2;
 	--ballColor: var(--miPrincipal);
-	--iconos:invert(100%) sepia(3%) saturate(766%) hue-rotate(253deg) brightness(115%) contrast(90%);
+	--iconos:red;
 } 
-
+/*invert(100%) sepia(3%) saturate(766%) hue-rotate(253deg) brightness(115%) contrast(90%)  */
 *{
 	transition: background-color 0.3s ease, color 0.03s ease;
 }
@@ -425,6 +425,12 @@ html {
 	background-color: var(--fondoCard) !important;
 }
 
+
+/* .dropdown-menu.show {
+    top: 100%;
+    left: -90% !important;
+    margin-top: 0.125rem;
+} */
 
 
 

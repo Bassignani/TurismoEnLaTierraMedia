@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%> 
-
+	<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+	
 <nav class="navbar navbar-expand-lg navbar-dark bg-miPrincipal fixed-top">
 		<div class="container-fluid">
 			<a href="/TurismoEnLaTierraMedia2021WebApp/index.jsp"><img class="logo1" src="/TurismoEnLaTierraMedia2021WebApp/assets/img/Varios/Unico_Anello.png" alt="Logo"></a> 
@@ -40,20 +41,29 @@
 							</div>
 						</li>
 					</div>
-					<li class="nav-item"><a class="nav-link" aria-current="page" href="/TurismoEnLaTierraMedia2021WebApp/views/usuarios/login.jsp">Iniciar Sesión</a></li>
-					<li class="nav-item dropdown">
-						<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false"> 
-							Nombre de Usuario 
-						</a>
-						<ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            <li><a class="dropdown-item" href="/TurismoEnLaTierraMedia2021WebApp/views/usuarios/ofertar.jsp">Comprar</a></li>   <!--Desp se puede sacar-->
-                            <li><a class="dropdown-item" href="/TurismoEnLaTierraMedia2021WebApp/views/usuarios/itinerario.jsp">Itinerario</a></li>
-                            <li><a class="dropdown-item" >Tiempo disponible<img src="Imagenes/Varios/RelojDeArena.png" style="width: 20px;" alt=""></a></li>
-                            <li><a class="dropdown-item" >Monedas disponible<img src="Imagenes/Varios/GoldCoins.png" style="width: 20px;" alt=""></a></li>
-                            <li><a class="dropdown-item" href="/TurismoEnLaTierraMedia2021WebApp/views/usuarios/dashboard.jsp">Panel de admin</a></li>   <!-- Se ven unicamente si sos admin -->
-                            <li><a class="dropdown-item" href="/TurismoEnLaTierraMedia2021WebApp/index.jsp">Cerrar sesion</a></li>
-						</ul>
-					</li>
+					<c:if test="${usuario == null}">
+						<li class="nav-item"><a class="nav-link" aria-current="page" href="/TurismoEnLaTierraMedia2021WebApp/views/usuarios/login.jsp">Iniciar Sesión</a></li>
+					</c:if>
+					
+					<c:if test="${usuario != null}">
+						<li class="nav-item dropdown">
+							<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false"> 
+								<c:out value="${usuario.nombre}"></c:out>
+							</a>
+							<ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+	                            <li><a class="dropdown-item" href="/TurismoEnLaTierraMedia2021WebApp/views/usuarios/ofertar.jsp">Comprar</a></li>   <!--Desp se puede sacar-->
+	                            <li><a class="dropdown-item" href="/TurismoEnLaTierraMedia2021WebApp/views/usuarios/itinerario.jsp">Itinerario</a></li>
+	                            <li><a class="dropdown-item" ><img src="/TurismoEnLaTierraMedia2021WebApp/assets/img/Varios/RelojDeArena.png" style="width: 20px;" alt=""><c:out value="${usuario.getTiempoDisponible()}"></c:out></a></li>
+	                            <li><a class="dropdown-item" ><img src="/TurismoEnLaTierraMedia2021WebApp/assets/img/Varios/GoldCoins.png" style="width: 20px;" alt=""><c:out value="${usuario.getPresupuesto()}"></c:out></a></li>
+	                            <c:if test="${usuario.getAdmin()}">
+	                            	<li><a class="dropdown-item" href="/TurismoEnLaTierraMedia2021WebApp/views/usuarios/dashboard.jsp">Panel de admin</a></li>   <!-- Se ven unicamente si sos admin -->
+	                            </c:if>
+	                            <li><a class="dropdown-item" href="/TurismoEnLaTierraMedia2021WebApp/usuario/logout">Cerrar sesion</a></li>
+							</ul>
+						</li>				
+					</c:if>
+					
+					
 				</ul>
 			</div>
 		</div>

@@ -39,19 +39,19 @@ public class CrearUsuarioServlet extends HttpServlet{
 		Double tiempoDisponible = Double.parseDouble(req.getParameter("tiempoDisponible"));
 		Boolean admin = Boolean.parseBoolean(req.getParameter("admin"));
 		String password = req.getParameter("password");
-		Tipo tipoDeAtraccion = Tipo.valueOf(req.getParameter("tipoDeAtraccion"));
+		Tipo tipoDeAtraccion = Tipo.valueOf(req.getParameter("tipoDeAtraccion").toUpperCase());
 		String path_img = req.getParameter("path_img");
-		System.out.println(nombre);
+		
 		
 		Usuario tmp_user = usuarioService.create(nombre, presupuesto, tiempoDisponible, tipoDeAtraccion,admin,password,path_img);
 		
 		if (tmp_user.isValid()) {
-			resp.sendRedirect("/views/usuarios/usuarios.jsp");
+			resp.sendRedirect("/TurismoEnLaTierraMedia2021WebApp/usuarios/listar");
 		} else {
 			req.setAttribute("tmp_user", tmp_user);
 
 			RequestDispatcher dispatcher = getServletContext()
-					.getRequestDispatcher("/views/usuarios/usuarios.jsp");
+					.getRequestDispatcher("/TurismoEnLaTierraMedia2021WebApp/usuarios/crear");
 			dispatcher.forward(req, resp);
 		}
 

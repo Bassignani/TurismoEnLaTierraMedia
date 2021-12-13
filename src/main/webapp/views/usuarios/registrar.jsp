@@ -14,10 +14,11 @@
 
 			<div class="lista text-center mt-5">
                 <h3 class="col-12 mb-3 fuente">Registrar un Usuario</h3>
-                <form class="row g-3 needs-validation" action="/usuario/crear" method="POST" novalidate>
+                
+                <form class="row g-3 needs-validation" action="/TurismoEnLaTierraMedia2021WebApp/usuario/crear" method="post" novalidate>
                     <div class="col-md-4">
                       <label for="nombre" class="form-label">Nombre</label>
-                      <input type="text" class="form-control" id="nombre" name="" placeholder="Frodo" required>
+                      <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Frodo" required>
                       <div class="invalid-feedback">
                         Este campo es requerido.
                       </div>
@@ -30,8 +31,8 @@
                       </div>
                     </div>                    
                     <div class="col-md-4">
-                      <label for="tiempoDispobible" class="form-label">Tiempo</label>                                         
-                       <input type="number" class="form-control" id="tiempoDispobible" name="tiempoDispobible" aria-describedby="inputGroupPrepend" required>
+                      <label for="tiempoDisponible" class="form-label">Tiempo</label>                                         
+                       <input type="number" class="form-control" id="tiempoDisponible" name="tiempoDisponible" aria-describedby="inputGroupPrepend" required>
                         <div class="invalid-feedback">
                             Este campo es requerido.
                           </div>
@@ -47,9 +48,9 @@
                     <div class="col-md-4">
                       <label for="tipoDeAtraccion" class="form-label">Tipo de Atracciones</label>
                       <select name="tipoDeAtraccion" class="form-control" id="tipoDeAtraccion">
-                        <option value="aventura">Aventura</option>
-                        <option value="degustacion" selected>Degustación</option>
-                        <option value="paisaje">Paisaje</option>
+                        <option value="AVENTURA">Aventura</option>
+                        <option value="DEGUSTACION" selected>Degustación</option>
+                        <option value="PAISAJE">Paisaje</option>
                       </select required>
                       <div class="invalid-feedback">
                         Este campo es requerido.
@@ -64,7 +65,7 @@
                     </div>
 					<div class="col-md-4">
                         <label for="path_img" class="form-label">Imagen</label>
-                        <input type="file" class="form-control" name="path_img" id="path_img">
+                        <input type="text" class="form-control" name="path_img" id="path_img">
                     </div>
                     <div class="col-12">
                       <button class="btn  btn-miPrincipal" type="submit">Registrarse</button>

@@ -91,10 +91,12 @@ public class UsuarioDAOImpl implements UsuarioDAO {
 				resultados.getBoolean(10), resultados.getString(11), resultados.getString(12));
 	}
 
+	
+	
 	public int insert(Usuario usuario) {
 		
 		try {
-			String sql = "INSERT INTO USERS (NOMBRE, TIPO_ID, MONEDAS, TIEMPO_DISPONIBLE, PASSWORD, PATH_IMG) VALUES (?, ?, ?, ?, ?, ?)";
+			String sql = "INSERT INTO usuarios (NOMBRE, TIPO_ID, MONEDAS, TIEMPO_DISPONIBLE, ADMIN, ACTIVE, PASSWORD, PATH_IMG) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
 			Connection conn = ConnectionProvider.getConnection();
 
 			PreparedStatement statement = conn.prepareStatement(sql);
@@ -102,8 +104,10 @@ public class UsuarioDAOImpl implements UsuarioDAO {
 			statement.setInt(2, usuario.getTipo());
 			statement.setDouble(3, usuario.getPresupuesto());
 			statement.setDouble(4, usuario.getTiempoDisponible());
-			statement.setString(5, usuario.getPassword());
-			statement.setString(6, usuario.getPathImg());
+			statement.setBoolean(5, usuario.getAdmin());
+			statement.setBoolean(6, true);
+			statement.setString(7, usuario.getPassword());
+			statement.setString(8, usuario.getPathImg());
 			int rows = statement.executeUpdate();
 
 			return rows;

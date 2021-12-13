@@ -104,7 +104,7 @@ public class Usuario {
 		return active;
 	}
 	
-	public boolean esAdmin() {
+	public boolean getAdmin() {
 		return admin;
 	}
 	
