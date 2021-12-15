@@ -82,6 +82,38 @@ public class UsuarioDAOImpl implements UsuarioDAO {
 			throw new MissingDataException(e);
 		}
 	}
+	
+	
+	public int deactivate(Usuario usuario) {
+		try {
+			String sql = "UPDATE usuarios SET ACTIVE = ? WHERE id = ?";
+			Connection conn = ConnectionProvider.getConnection();
+
+			PreparedStatement statement = conn.prepareStatement(sql);
+			statement.setBoolean(1, false);
+			statement.setInt(2, usuario.getId());
+			int rows = statement.executeUpdate();
+			return rows;
+		} catch (Exception e) {
+			throw new MissingDataException(e);
+		}
+	}
+	
+	
+	public int activate(Usuario usuario) {
+		try {
+			String sql = "UPDATE usuarios SET ACTIVE = ? WHERE id = ?";
+			Connection conn = ConnectionProvider.getConnection();
+
+			PreparedStatement statement = conn.prepareStatement(sql);
+			statement.setBoolean(1, true);
+			statement.setInt(2, usuario.getId());
+			int rows = statement.executeUpdate();
+			return rows;
+		} catch (Exception e) {
+			throw new MissingDataException(e);
+		}
+	}
 
 	
 	public int insert(Usuario usuario) {

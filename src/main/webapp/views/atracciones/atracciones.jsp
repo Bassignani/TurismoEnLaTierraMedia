@@ -17,7 +17,6 @@
                <table class="table">
                     <thead>
                     <tr>
-                        <th scope="col">#</th>
                         <th scope="col">Id</th>
                         <th scope="col">Nombre</th>
                         <th scope="col">Costo</th>
@@ -30,7 +29,6 @@
                     <tbody>
                     <c:forEach items="${atracciones}" var="tmp_atraccion">
 	                    <tr>
-	                        <th scope="row">1</th>
 	                        <td><c:out value="${tmp_atraccion.id}"></c:out></td>
 	                        <td><c:out value="${tmp_atraccion.nombre}"></c:out></td>
 	                        <td><c:out value="${tmp_atraccion.costo}"></c:out></td>

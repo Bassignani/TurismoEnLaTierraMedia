@@ -35,6 +35,7 @@ public class UsuarioService {
 	}
 	
 	
+	
 	public Usuario update(Integer id, String nombre, Double presupuesto, Double tiempoDisponible, Tipo tipoDeAtraccion, Boolean admin,  String path_img){
 		
 		UsuarioDAO usuarioDAO = DAOFactory.getUsuarioDAO();
@@ -49,6 +50,51 @@ public class UsuarioService {
 
 	if (usuario.isValid()) {
 		DAOFactory.getUsuarioDAO().update(usuario);
+		// XXX: si no devuelve "1", es que hubo más errores
+	}
+
+	return usuario;
+	}
+	
+	
+	
+	
+	public Usuario deactivate(Integer id, String nombre, Double presupuesto, Double tiempoDisponible, Tipo tipoDeAtraccion, Boolean admin,  String path_img){
+		
+		UsuarioDAO usuarioDAO = DAOFactory.getUsuarioDAO();
+		Usuario usuario = usuarioDAO.buscarPorId(id, vendiblesComprados, tipos);
+		
+		usuario.setNombre(nombre);
+		usuario.setPresupuesto(presupuesto);
+		usuario.setTiempoDisponible(tiempoDisponible);
+		usuario.setTipoDeAtraccion(tipoDeAtraccion);
+		usuario.setAdmin(admin);
+		usuario.setPath_img(path_img);
+
+	if (usuario.isValid()) {
+		DAOFactory.getUsuarioDAO().deactivate(usuario);
+		// XXX: si no devuelve "1", es que hubo más errores
+	}
+
+	return usuario;
+	}
+	
+	
+	
+public Usuario activate(Integer id, String nombre, Double presupuesto, Double tiempoDisponible, Tipo tipoDeAtraccion, Boolean admin,  String path_img){
+		
+		UsuarioDAO usuarioDAO = DAOFactory.getUsuarioDAO();
+		Usuario usuario = usuarioDAO.buscarPorId(id, vendiblesComprados, tipos);
+		
+		usuario.setNombre(nombre);
+		usuario.setPresupuesto(presupuesto);
+		usuario.setTiempoDisponible(tiempoDisponible);
+		usuario.setTipoDeAtraccion(tipoDeAtraccion);
+		usuario.setAdmin(admin);
+		usuario.setPath_img(path_img);
+
+	if (usuario.isValid()) {
+		DAOFactory.getUsuarioDAO().activate(usuario);
 		// XXX: si no devuelve "1", es que hubo más errores
 	}
 

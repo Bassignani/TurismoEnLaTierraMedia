@@ -28,7 +28,6 @@
 				<table class="table">
                     <thead>
                     <tr>
-                        <th scope="col">#</th>
                         <th scope="col">Foto</th>
                         <th scope="col">Id</th>
                         <th scope="col">Nombre</th>
@@ -40,10 +39,9 @@
                     </thead>
                     <tbody>
                     <c:forEach items="${usuarios}" var="tmp_user">
-	                    <c:if test="${tmp_user.getActive()}">
-		                    <tr>
-		                    	
-		                        <th scope="row">1</th>
+                    	<c:choose>
+	                      <c:when test="${tmp_user.getActive()}">             
+	                        <tr>
 		                        <td id="foto"><img src="<c:out value="${tmp_user.getPathImg()}"></c:out>"  id="fotodashboard" alt="Foto"></td>
 		                        <td><c:out value="${tmp_user.id}"></c:out></td>
 		                        <td><a href="usuario_detalle.html"><c:out value="${tmp_user.nombre}"></c:out></a></td>
@@ -56,7 +54,22 @@
 		                        	<!-- data-bs-toggle="modal" data-bs-target="#eliminar" -->
 		                        </td>
 		                    </tr>
-	                    </c:if>
+	                      </c:when>   
+	                      <c:otherwise>
+	                      	<tr style="opacity: 0.5; background-color: grey">
+		                        <td id="foto"><img src="<c:out value="${tmp_user.getPathImg()}"></c:out>"  id="fotodashboard" alt="Foto"></td>
+		                        <td><c:out value="${tmp_user.id}"></c:out></td>
+		                        <td><a href="usuario_detalle.html"><c:out value="${tmp_user.nombre}"></c:out></a></td>
+		                        <td><c:out value="${tmp_user.getTipo().getNombre()}"></c:out></td>
+		                        <td><c:out value="${tmp_user.presupuesto}"></c:out></td>
+		                        <td><c:out value="${tmp_user.tiempoDisponible}"></c:out></td>
+		                        <td>
+		                            <a href="/TurismoEnLaTierraMedia2021WebApp/usuario/activar.adm?id=${tmp_user.id}"><img src="/TurismoEnLaTierraMedia2021WebApp/assets/img/Varios/user-check-solid.svg" class="edit" alt="" title="Activar"></a>   
+		                           
+		                        </td>
+		                    </tr>
+	                      </c:otherwise>
+                      	</c:choose>          
 	                    
 	                    <!-- Modal -->
     <div class="modal fade" id="eliminar" tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="true">

@@ -37,11 +37,17 @@ public class BorrarUsuarioServlet extends HttpServlet{
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		id = Integer.parseInt(req.getParameter("id"));
 		Usuario usuario = usuarioService.busacarPorId(id, vendibles, tipos);
-		System.out.println(id);
-		req.setAttribute("tmp_user", usuario);
-		RequestDispatcher dispatcher = getServletContext()
-				.getRequestDispatcher("/index");
-		dispatcher.forward(req, resp);
+		Usuario tmp_user = usuarioService.deactivate(id , usuario.getNombre() , usuario.getPresupuesto(), usuario.getTiempoDisponible(), usuario.getTipo(), usuario.getAdmin(), usuario.getPathImg());
+		
+		if (tmp_user.isValid()) {
+			resp.sendRedirect("/TurismoEnLaTierraMedia2021WebApp/usuarios/listar.adm");
+		} else {
+			req.setAttribute("tmp_user", tmp_user);
+
+			RequestDispatcher dispatcher = getServletContext()
+					.getRequestDispatcher("/TurismoEnLaTierraMedia2021WebApp/usuarios/editar.jsp");
+			dispatcher.forward(req, resp);
+		}
 	}
 	
 }

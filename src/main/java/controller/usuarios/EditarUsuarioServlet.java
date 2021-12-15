@@ -59,6 +59,7 @@ public class EditarUsuarioServlet extends HttpServlet {
 		Tipo tipoDeAtraccion = toTipo(Integer.parseInt(req.getParameter("tipoDeAtraccion")), tipos);
 		String path_img = req.getParameter("path_img");
 		
+		System.out.println(path_img);
 		Usuario tmp_user = usuarioService.update(id , nombre, presupuesto, tiempoDisponible, tipoDeAtraccion,admin, path_img);
 		
 		if (tmp_user.isValid()) {

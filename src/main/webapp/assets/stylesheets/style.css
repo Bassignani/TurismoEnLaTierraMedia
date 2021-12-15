@@ -148,6 +148,12 @@ body{
 	justify-content: space-evenly;
 }
 
+table tr.desactivado{
+	 opacity: 0.5;
+	 color:red;
+	 
+}
+
 .card:hover {
 	transform: scale(1.04);
 	box-shadow: .3em .3em .3em var(--sadowCard), -.2em -.2em 4em var(--sadowCard);

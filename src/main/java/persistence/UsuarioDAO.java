@@ -17,6 +17,10 @@ public interface UsuarioDAO {
 	public Usuario buscarPorId(Integer id, LinkedList<Vendible> vendibles, LinkedList<Tipo> tipos);
 	
 	public int update(Usuario usuario);
+	
+	public int deactivate(Usuario usuario);
+	
+	public int activate(Usuario usuario);
 
 
 }

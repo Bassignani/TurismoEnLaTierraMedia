@@ -17,7 +17,6 @@
                <table class="table">
                     <thead>
                     <tr>
-                        <th scope="col">#</th>
                         <th scope="col">Id</th>
                         <th scope="col">Tipo</th>
                         <th scope="col">Tipo de promoción</th>
@@ -31,7 +30,6 @@
                     <tbody>
                     <c:forEach items="${promociones}" var="tmp_promocion">
                     <tr>
-                        <th scope="row">1</th>
                         <td><c:out value="${tmp_promocion.id}"></c:out></td>
                         <td><c:out value="${tmp_promocion.getTipo().getNombre()}"></c:out></td>
                         <td><c:out value="${tmp_promocion.tipoPromocion}"></c:out></td>
