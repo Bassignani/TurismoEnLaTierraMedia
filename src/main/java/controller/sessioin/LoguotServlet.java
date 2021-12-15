@@ -19,10 +19,9 @@ public class LoguotServlet extends HttpServlet {
 		protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 			req.getSession().removeAttribute("usuario");
 			req.setAttribute("success", "¡Hasta pronto!");
-
 			RequestDispatcher dispatcher = getServletContext()
 					.getRequestDispatcher("/index");
 			dispatcher.forward(req, resp);
-//			resp.sendRedirect("/TurismoEnLaTierraMedia2021WebApp/index.jsp"); 
+//			resp.sendRedirect("/index"); 
 		}
 }

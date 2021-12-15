@@ -18,17 +18,18 @@ import model.Tipo;
 public class UsuarioDAOImpl implements UsuarioDAO {
 	
 
-	public LinkedList<Usuario> buscarTodos(LinkedList<Vendible> vendibles) {
+	public LinkedList<Usuario> buscarTodos(LinkedList<Vendible> vendibles, LinkedList<Tipo> tipos) {
 		try {
-			String sql = "SELECT u.id, u.nombre, u.tipo_id, u.monedas, u.tiempo_disponible, tda.tipo , group_concat(i.promocion_id),group_concat(i.atraccion_id) , u.admin, u.active, u.password, u.path_img\n"
+			String sql = "SELECT u.id, u.nombre, u.tipo_id, u.monedas, u.tiempo_disponible, tda.id , group_concat(i.promocion_id),group_concat(i.atraccion_id) , u.admin, u.active, u.password, u.path_img\n"
 					+ "		FROM usuarios u  INNER JOIN tipo_de_atracciones tda ON u.tipo_id = tda.id LEFT JOIN itinerarios i ON u.id = i.usuario_id	GROUP BY u.id";
 			Connection conn = ConnectionProvider.getConnection();
 			PreparedStatement statement = conn.prepareStatement(sql);
 			ResultSet resultados = statement.executeQuery();
 
 			LinkedList<Usuario> usuarios = new LinkedList<Usuario>();
+			
 			while (resultados.next()) {
-				usuarios.add(toUsuario(resultados, vendibles));
+				usuarios.add(toUsuario(resultados, vendibles, tipos));
 			}
 
 			return usuarios;
@@ -38,10 +39,9 @@ public class UsuarioDAOImpl implements UsuarioDAO {
 	}
 	
 	
-	public Usuario buscarPorNombre(String nombre, LinkedList<Vendible> vendibles) {
+	public Usuario buscarPorNombre(String nombre, LinkedList<Vendible> vendibles, LinkedList<Tipo> tipos) {
 		try {
-//			String sql = "SELECT * FROM usuario WHERE nombre = ?";
-			String sql = "SELECT u.id, u.nombre, u.tipo_id, u.monedas, u.tiempo_disponible, tda.tipo , group_concat(i.promocion_id),group_concat(i.atraccion_id) , u.admin, u.active, u.password, u.path_img\n"
+			String sql = "SELECT u.id, u.nombre, u.tipo_id, u.monedas, u.tiempo_disponible, tda.id , group_concat(i.promocion_id),group_concat(i.atraccion_id) , u.admin, u.active, u.password, u.path_img\n"
 					+ "		FROM usuarios u  INNER JOIN tipo_de_atracciones tda ON u.tipo_id = tda.id LEFT JOIN itinerarios i ON u.id = i.usuario_id  WHERE u.nombre = ?	GROUP BY u.id";
 			Connection conn = ConnectionProvider.getConnection();
 			PreparedStatement statement = conn.prepareStatement(sql);
@@ -51,7 +51,7 @@ public class UsuarioDAOImpl implements UsuarioDAO {
 			Usuario usuario = NullUsuario.build();
 
 			if (resultados.next()) {
-				usuario = toUsuario(resultados, vendibles);
+				usuario = toUsuario(resultados, vendibles, tipos);
 			}
 
 			return usuario;
@@ -69,7 +69,7 @@ public class UsuarioDAOImpl implements UsuarioDAO {
 
 			PreparedStatement statement = conn.prepareStatement(sql);
 			statement.setString(1, usuario.getNombre());
-			statement.setInt(2, usuario.getTipo());
+			statement.setInt(2, usuario.getTipo().getId());
 			statement.setDouble(3, usuario.getPresupuesto());
 			statement.setDouble(4, usuario.getTiempoDisponible());
 			statement.setBoolean(5, usuario.getAdmin());
@@ -92,7 +92,7 @@ public class UsuarioDAOImpl implements UsuarioDAO {
 
 			PreparedStatement statement = conn.prepareStatement(sql);
 			statement.setString(1, usuario.getNombre());
-			statement.setInt(2, usuario.getTipo());
+			statement.setInt(2, usuario.getTipo().getId());
 			statement.setDouble(3, usuario.getPresupuesto());
 			statement.setDouble(4, usuario.getTiempoDisponible());
 			statement.setBoolean(5, usuario.getAdmin());
@@ -108,9 +108,9 @@ public class UsuarioDAOImpl implements UsuarioDAO {
 	}
 	
 	
-	public Usuario buscarPorId(Integer id, LinkedList<Vendible> vendibles) {
+	public Usuario buscarPorId(Integer id, LinkedList<Vendible> vendibles, LinkedList<Tipo> tipos) {
 		try {
-			String sql = "SELECT u.id, u.nombre, u.tipo_id, u.monedas, u.tiempo_disponible, tda.tipo , group_concat(i.promocion_id),group_concat(i.atraccion_id) , u.admin, u.active, u.password, u.path_img\n"
+			String sql = "SELECT u.id, u.nombre, u.tipo_id, u.monedas, u.tiempo_disponible, tda.id , group_concat(i.promocion_id),group_concat(i.atraccion_id) , u.admin, u.active, u.password, u.path_img\n"
 					+ "		FROM usuarios u  INNER JOIN tipo_de_atracciones tda ON u.tipo_id = tda.id LEFT JOIN itinerarios i ON u.id = i.usuario_id  WHERE u.id = ?	GROUP BY u.id";
 			Connection conn = ConnectionProvider.getConnection();
 			PreparedStatement statement = conn.prepareStatement(sql);
@@ -120,7 +120,7 @@ public class UsuarioDAOImpl implements UsuarioDAO {
 			Usuario usuario = NullUsuario.build();
 
 			if (resultados.next()) {
-				usuario = toUsuario(resultados, vendibles);
+				usuario = toUsuario(resultados, vendibles, tipos);
 			}
 
 			return usuario;
@@ -138,7 +138,7 @@ public class UsuarioDAOImpl implements UsuarioDAO {
 	
 	
 	
-	private Usuario toUsuario(ResultSet resultados, LinkedList<Vendible> vendibles) throws SQLException {
+	private Usuario toUsuario(ResultSet resultados, LinkedList<Vendible> vendibles, LinkedList<Tipo> tipos) throws SQLException {
 		LinkedList<Vendible> vendiblesComprados = new LinkedList<Vendible>();
 
 		for (Vendible v : vendibles) {
@@ -164,11 +164,22 @@ public class UsuarioDAOImpl implements UsuarioDAO {
 
 		}
 		return new Usuario(resultados.getInt(1), resultados.getString(2), resultados.getDouble(4),
-				resultados.getDouble(5), Tipo.valueOf(resultados.getString(6)), vendiblesComprados, resultados.getBoolean(9), 
+				resultados.getDouble(5), toTipo(resultados.getInt(6), tipos), vendiblesComprados, resultados.getBoolean(9), 
 				resultados.getBoolean(10), resultados.getString(11), resultados.getString(12));
 	}
 
 	
+	
+	private Tipo toTipo(int resultado, LinkedList<Tipo> tipos) throws SQLException{
+		int id = resultado;
+		Tipo tmp_tipo = null;
+		for (Tipo tipo : tipos) {
+			if (tipo.getId() == id) {
+				tmp_tipo = tipo;
+			}
+		}
+		return tmp_tipo;
+	}
 	
 
 	

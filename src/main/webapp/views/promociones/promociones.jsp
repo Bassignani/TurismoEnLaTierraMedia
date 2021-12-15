@@ -33,7 +33,7 @@
                     <tr>
                         <th scope="row">1</th>
                         <td><c:out value="${tmp_promocion.id}"></c:out></td>
-                        <td><c:out value="${tmp_promocion.tipo}"></c:out></td>
+                        <td><c:out value="${tmp_promocion.getTipo().getNombre()}"></c:out></td>
                         <td><c:out value="${tmp_promocion.tipoPromocion}"></c:out></td>
                         <td><c:out value="${tmp_promocion.nombrePack}"></c:out></td>
                         <td><c:out value="${tmp_promocion.getCosto()}"></c:out></td>

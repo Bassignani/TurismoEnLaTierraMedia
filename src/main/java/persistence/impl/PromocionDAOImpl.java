@@ -19,9 +19,9 @@ import persistence.commons.MissingDataException;
 
 public class PromocionDAOImpl implements PromocionDAO {
 
-	public LinkedList<Promocion> buscarTodos(LinkedList<Atraccion> atracciones) {
+	public LinkedList<Promocion> buscarTodos(LinkedList<Atraccion> atracciones, LinkedList<Tipo> tipos) {
 		try {
-			String sql = "SELECT p.id, tda.tipo, p.tipo_de_promocion, p.nombre_pack, p.referencia_costo, p.cantidad_atracciones, group_concat(a.nombre), p.active, p.path_img, p.description\n"
+			String sql = "SELECT p.id, tda.id, p.tipo_de_promocion, p.nombre_pack, p.referencia_costo, p.cantidad_atracciones, group_concat(a.nombre), p.active, p.path_img, p.description\n"
 					+ "FROM promociones p \n"
 					+ "INNER JOIN promociones_atracciones pa ON p.id = pa.promocion_id\n"
 					+ "INNER JOIN atracciones a ON pa.atraccion_id = a.id\n"
@@ -33,19 +33,21 @@ public class PromocionDAOImpl implements PromocionDAO {
 
 			LinkedList<Promocion> promociones = new LinkedList<Promocion>();
 			while (resultados.next()) {
-				promociones.add(toPromocion(resultados, atracciones));
+				promociones.add(toPromocion(resultados, atracciones, tipos));
 			}
 			return promociones;
 		} catch (Exception e) {
 			throw new MissingDataException(e);
 		}
 	}
+	
+	
 
-	private Promocion toPromocion(ResultSet resultados, LinkedList<Atraccion> atracciones) throws SQLException {
+	private Promocion toPromocion(ResultSet resultados, LinkedList<Atraccion> atracciones, LinkedList<Tipo> tipos) throws SQLException {
 		LinkedList<Atraccion> atraccionesPromocion = new LinkedList<Atraccion>();
 		String tipoPromocion = resultados.getString(3);
 		Integer id = resultados.getInt(1);
-		Tipo tipo = Tipo.valueOf(resultados.getString(2));
+		Tipo tipo = toTipo(resultados.getInt(2), tipos);
 		String nombrePack = resultados.getString(4);
 		double valor_referencia = resultados.getDouble(5);
 		String datos[] = resultados.getString(7).split(",");
@@ -81,6 +83,19 @@ public class PromocionDAOImpl implements PromocionDAO {
 				}
 			}
 		}
+	}
+	
+	
+	
+	private Tipo toTipo(int resultado, LinkedList<Tipo> tipos) throws SQLException{
+		int id = resultado;
+		Tipo tmp_tipo = null;
+		for (Tipo tipo : tipos) {
+			if (tipo.getId() == id) {
+				tmp_tipo = tipo;
+			}
+		}
+		return tmp_tipo;
 	}
 	
 	

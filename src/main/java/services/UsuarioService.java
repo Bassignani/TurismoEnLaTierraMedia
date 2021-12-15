@@ -12,12 +12,12 @@ public class UsuarioService {
 	 
 	LinkedList<Vendible> vendiblesComprados = new LinkedList<Vendible>();
 	
-	public LinkedList<Usuario> listar(LinkedList<Vendible> vendibles) {
-		return DAOFactory.getUsuarioDAO().buscarTodos(vendibles);
+	public LinkedList<Usuario> listar(LinkedList<Vendible> vendibles, LinkedList<Tipo> tipos) {
+		return DAOFactory.getUsuarioDAO().buscarTodos(vendibles, tipos);
 	}
 
-	public Usuario busacarPorId(Integer id, LinkedList<Vendible> vendibles) {
-		return DAOFactory.getUsuarioDAO().buscarPorId(id,vendibles);
+	public Usuario busacarPorId(Integer id, LinkedList<Vendible> vendibles, LinkedList<Tipo> tipos) {
+		return DAOFactory.getUsuarioDAO().buscarPorId(id, vendibles, tipos);
 	}
 	
 	
@@ -37,7 +37,7 @@ public class UsuarioService {
 	public Usuario update(Integer id, String nombre, Double presupuesto, Double tiempoDisponible, Tipo tipoDeAtraccion, Boolean admin,  String path_img){
 		
 		UsuarioDAO usuarioDAO = DAOFactory.getUsuarioDAO();
-		Usuario usuario = usuarioDAO.buscarPorId(id, vendiblesComprados);
+		Usuario usuario = usuarioDAO.buscarPorId(id, vendiblesComprados, null);
 		
 		usuario.setNombre(nombre);
 		usuario.setPresupuesto(presupuesto);

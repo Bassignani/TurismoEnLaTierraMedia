@@ -11,7 +11,10 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import model.Usuario;
 import model.Vendible;
+import persistence.commons.DAOFactory;
 import services.LoginService;
+import model.Tipo;
+import services.TipoService;
 import services.VendibleService;
 
 @WebServlet("/usuario/login")
@@ -20,12 +23,14 @@ public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 6355127484303939305L;
 	private LoginService loginService;
 	private VendibleService vendibleService;
+	private TipoService tipoService;
 
 	@Override
 	public void init() throws ServletException {
 		super.init();
 		loginService = new LoginService();
 		this.vendibleService = new VendibleService();
+		this.tipoService = new TipoService();
 	}
 	
 	
@@ -42,8 +47,9 @@ public class LoginServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
     	String nombre = req.getParameter("nombre");
     	String password = req.getParameter("password");
+    	LinkedList<Tipo> tipos = tipoService.listar();
     	LinkedList<Vendible> vendibles = vendibleService.listar();
-    	Usuario usuario = loginService.login(nombre, password,vendibles);
+    	Usuario usuario = loginService.login(nombre, password,vendibles, tipos);
     	
     	if (!usuario.esNull()) {
     		req.getSession().setAttribute("usuario", usuario);

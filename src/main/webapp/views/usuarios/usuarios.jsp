@@ -47,7 +47,7 @@
 		                        <td id="foto"><img src="<c:out value="${tmp_user.getPathImg()}"></c:out>"  id="fotodashboard" alt="Foto"></td>
 		                        <td><c:out value="${tmp_user.id}"></c:out></td>
 		                        <td><a href="usuario_detalle.html"><c:out value="${tmp_user.nombre}"></c:out></a></td>
-		                        <td><c:out value="${tmp_user.tipoDeAtraccion}"></c:out></td>
+		                        <td><c:out value="${tmp_user.getTipo().getNombre()}"></c:out></td>
 		                        <td><c:out value="${tmp_user.presupuesto}"></c:out></td>
 		                        <td><c:out value="${tmp_user.tiempoDisponible}"></c:out></td>
 		                        <td>

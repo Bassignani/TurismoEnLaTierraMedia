@@ -4,10 +4,10 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Iterator;
 import java.util.LinkedList;
 
-
-
+import javax.management.loading.PrivateClassLoader;
 
 import model.Atraccion;
 import model.Tipo;
@@ -17,7 +17,7 @@ import persistence.commons.MissingDataException;
 
 public class AtraccionDAOImpl implements AtraccionDAO {
 
-	public LinkedList<Atraccion> buscarTodos() {
+	public LinkedList<Atraccion> buscarTodos(LinkedList<Tipo> tipos) {
 		try {
 			String sql = "SELECT a.id, a.nombre, a.costo, a.duracion, a.cupo, a.tipo_id, tda.tipo, a.active, a.path_img, a.description\n"
 					+ "FROM atracciones a INNER JOIN tipo_de_atracciones tda ON a.tipo_id = tda.id";
@@ -27,7 +27,8 @@ public class AtraccionDAOImpl implements AtraccionDAO {
 			
 			LinkedList<Atraccion> atracciones = new LinkedList<Atraccion>();
 			while (resultados.next()) {
-				atracciones.add(toAtraccion(resultados));
+				
+				atracciones.add(toAtraccion(resultados, tipos));
 			}
 
 			return atracciones;
@@ -36,10 +37,11 @@ public class AtraccionDAOImpl implements AtraccionDAO {
 		}
 	}
 
-	private Atraccion toAtraccion(ResultSet resultados) throws SQLException {
+	private Atraccion toAtraccion(ResultSet resultados,LinkedList<Tipo> tipos) throws SQLException {
 		return new Atraccion(resultados.getInt(1),resultados.getString(2), resultados.getDouble(3), resultados.getDouble(4), 
-				Tipo.valueOf(resultados.getString(7)), resultados.getInt(5),resultados.getBoolean(8),resultados.getString(9), resultados.getString(10));
+				(toTipo(resultados.getInt(6),tipos)), resultados.getInt(5),resultados.getBoolean(8),resultados.getString(9), resultados.getString(10));
 	}
+	
 	
 	
 	
@@ -54,7 +56,7 @@ public class AtraccionDAOImpl implements AtraccionDAO {
 			statement.setDouble(2, atraccion.getCosto());
 			statement.setDouble(3, atraccion.getDuracion());
 			statement.setInt(4, atraccion.getCupo());
-			statement.setInt(5, atraccion.getTipoId());
+			statement.setInt(5, atraccion.getTipo().getId());
 			statement.setBoolean(6, true);
 			statement.setString(7, atraccion.getPathImg());
 			statement.setString(8, atraccion.getDescription());
@@ -64,6 +66,18 @@ public class AtraccionDAOImpl implements AtraccionDAO {
 		} catch (Exception e) {
 			throw new MissingDataException(e);
 		}
+	}
+	
+	
+	private Tipo toTipo(int resultado, LinkedList<Tipo> tipos) throws SQLException{
+		int id = resultado;
+		Tipo tmp_tipo = null;
+		for (Tipo tipo : tipos) {
+			if (tipo.getId() == id) {
+				tmp_tipo = tipo;
+			}
+		}
+		return tmp_tipo;
 	}
 	
 }

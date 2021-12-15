@@ -62,9 +62,9 @@ public class Usuario {
 		return tiempoTotal;
 	}
 
-	public Tipo getTipoDeAtraccion() {
-		return tipoDeAtraccion;
-	}
+//	public Tipo getTipoDeAtraccion() {
+//		return tipoDeAtraccion;
+//	}
 
 	@Override
 	public String toString() {
@@ -140,18 +140,8 @@ public class Usuario {
 		this.hashPassword = Crypt.hash(password);
 	}
 
-	public int getTipo() {
-		
-		if(this.tipoDeAtraccion.name().equals("PAISAJE")) {
-			return 1;
-		} 
-		if(this.tipoDeAtraccion.name().equals("AVENTURA")) {
-			return 2;
-		}
-		if(this.tipoDeAtraccion.name().equals("DEGUSTACION")) {
-			return 3;
-		}
-		return 0;
+	public Tipo getTipo() {
+		return tipoDeAtraccion;
 	}
 	
 	public String getPassword() {

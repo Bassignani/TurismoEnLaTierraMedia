@@ -8,8 +8,8 @@ import persistence.commons.DAOFactory;
 
 public class AtraccionService {
 	
-	public LinkedList<Atraccion> listar() {
-		return DAOFactory.getAtraccionDAO().buscarTodos();
+	public LinkedList<Atraccion> listar(LinkedList<Tipo> tipos) {
+		return DAOFactory.getAtraccionDAO().buscarTodos(tipos);
 	}
 	
 	public Atraccion crear(String nombre,Double costo,Double duracion,Integer cupo,String description,Tipo tipo,String path_img) {
