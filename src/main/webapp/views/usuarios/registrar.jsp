@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+     <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -53,9 +54,9 @@
                     <div class="col-md-4">
                       <label for="tipoDeAtraccion" class="form-label">Tipo de Atracciones</label>
                       <select name="tipoDeAtraccion" class="form-control" id="tipoDeAtraccion">
-                        <option value="AVENTURA">Aventura</option>
-                        <option value="DEGUSTACION" selected>Degustación</option>
-                        <option value="PAISAJE">Paisaje</option>
+                     	<c:forEach items="${tipos}" var="tmp_tipo">
+                        <option value="${tmp_tipo.getId()}"><c:out value="${tmp_tipo.getNombre()}"></c:out></option>
+                        </c:forEach>
                       </select required>
                       <div class="invalid-feedback">
                         Este campo es requerido.

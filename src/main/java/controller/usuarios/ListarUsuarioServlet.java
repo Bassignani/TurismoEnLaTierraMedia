@@ -25,6 +25,7 @@ public class ListarUsuarioServlet  extends HttpServlet{
 	private UsuarioService usuarioService;
 	private VendibleService vendibleService;
 	private TipoService tipoService;
+	LinkedList<Tipo> tipos;
 
 	@Override
 	public void init() throws ServletException {
@@ -32,12 +33,13 @@ public class ListarUsuarioServlet  extends HttpServlet{
 		this.usuarioService = new UsuarioService();
 		this.vendibleService = new VendibleService();
 		this.tipoService = new TipoService();
+		tipos = tipoService.listar();
 	}
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
-		LinkedList<Tipo> tipos = tipoService.listar();
+	
 		LinkedList<Vendible> vendibles = vendibleService.listar();
 		LinkedList<Usuario> usuarios = usuarioService.listar(vendibles, tipos);
 		req.setAttribute("usuarios", usuarios);

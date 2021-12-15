@@ -11,6 +11,7 @@ import persistence.commons.DAOFactory;
 public class UsuarioService {
 	 
 	LinkedList<Vendible> vendiblesComprados = new LinkedList<Vendible>();
+	LinkedList<Tipo> tipos = new LinkedList<Tipo>();
 	
 	public LinkedList<Usuario> listar(LinkedList<Vendible> vendibles, LinkedList<Tipo> tipos) {
 		return DAOFactory.getUsuarioDAO().buscarTodos(vendibles, tipos);
@@ -37,7 +38,7 @@ public class UsuarioService {
 	public Usuario update(Integer id, String nombre, Double presupuesto, Double tiempoDisponible, Tipo tipoDeAtraccion, Boolean admin,  String path_img){
 		
 		UsuarioDAO usuarioDAO = DAOFactory.getUsuarioDAO();
-		Usuario usuario = usuarioDAO.buscarPorId(id, vendiblesComprados, null);
+		Usuario usuario = usuarioDAO.buscarPorId(id, vendiblesComprados, tipos);
 		
 		usuario.setNombre(nombre);
 		usuario.setPresupuesto(presupuesto);

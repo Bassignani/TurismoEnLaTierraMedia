@@ -9,6 +9,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import model.Tipo;
 import model.Usuario;
 import model.Vendible;
 import services.UsuarioService;
@@ -21,6 +22,7 @@ public class BorrarUsuarioServlet extends HttpServlet{
 	private UsuarioService usuarioService;
 	private VendibleService vendibleService;
 	LinkedList<Vendible> vendibles;
+	LinkedList<Tipo> tipos = new LinkedList<Tipo>();
 	Integer id;
 	
 	@Override
@@ -28,13 +30,13 @@ public class BorrarUsuarioServlet extends HttpServlet{
 		super.init();
 		this.usuarioService = new UsuarioService();
 		this.vendibleService = new VendibleService();
-		vendibles = vendibleService.listar();
+		vendibles = vendibleService.listar();	
 		}
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		id = Integer.parseInt(req.getParameter("id"));
-		Usuario usuario = usuarioService.busacarPorId(id, vendibles);
+		Usuario usuario = usuarioService.busacarPorId(id, vendibles, tipos);
 		System.out.println(id);
 		req.setAttribute("tmp_user", usuario);
 		RequestDispatcher dispatcher = getServletContext()
