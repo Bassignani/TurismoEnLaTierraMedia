@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-  
+  <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,10 +15,16 @@
 		<main class="home">
 			<section class="mt-5">
 				<article class="container mt-4 text-center">
-					<h1 class="display-4 fuente" >Inicio de Sesión</h1>
-					
-					
+					<h1 class="display-4 fuente" >Inicio de Sesión</h1>	
 				</article>
+				
+				<c:if test="${flash != null}">
+				<div class="alert alert-danger">
+					<p>
+						<c:out value="${flash}" />
+					</p>
+				</div>
+			</c:if>
 
 			<div class="lista text-center mt-5">
 				<form action="/TurismoEnLaTierraMedia2021WebApp/usuario/login" method="post">

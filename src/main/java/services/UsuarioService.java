@@ -44,7 +44,7 @@ public class UsuarioService {
 		usuario.setTiempoDisponible(tiempoDisponible);
 		usuario.setTipoDeAtraccion(tipoDeAtraccion);
 		usuario.setAdmin(admin);
-		usuario.setPath_img(nombre);
+		usuario.setPath_img(path_img);
 
 	if (usuario.isValid()) {
 		DAOFactory.getUsuarioDAO().update(usuario);

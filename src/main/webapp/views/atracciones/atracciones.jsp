@@ -46,7 +46,7 @@
                     </tbody>
                 </table>
              </div>
-            <a class="btn  btn-miPrincipal" href="/TurismoEnLaTierraMedia2021WebApp/views/atracciones/registrar.jsp">Agregar Atracción</a>
+            <a class="btn  btn-miPrincipal" href="/TurismoEnLaTierraMedia2021WebApp/atraccion/crear.adm">Agregar Atracción</a>
     </div>
         
       <!-- Modal -->

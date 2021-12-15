@@ -12,6 +12,7 @@ public abstract class Promocion extends Vendible {
 	protected double precio;
 	protected Boolean active;
 	protected String path_img;
+	protected String description;
 
 	public double calcularDescuento() {
 		return 0;
@@ -132,7 +133,13 @@ public abstract class Promocion extends Vendible {
 		return path_img;
 	}
 	
-	public boolean estaActivo() {
+	public boolean getActive() {
 		return active;
 	}
+	
+	public String getDescription() {
+		return description;
+	}
+	
+	
 }

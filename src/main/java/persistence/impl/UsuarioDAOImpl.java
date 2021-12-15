@@ -75,6 +75,7 @@ public class UsuarioDAOImpl implements UsuarioDAO {
 			statement.setBoolean(5, usuario.getAdmin());
 			statement.setBoolean(6, true);
 			statement.setString(7, usuario.getPathImg());
+			statement.setInt(8, usuario.getId());
 			int rows = statement.executeUpdate();
 			return rows;
 		} catch (Exception e) {

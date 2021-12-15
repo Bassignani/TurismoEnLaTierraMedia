@@ -41,4 +41,29 @@ public class AtraccionDAOImpl implements AtraccionDAO {
 				Tipo.valueOf(resultados.getString(7)), resultados.getInt(5),resultados.getBoolean(8),resultados.getString(9), resultados.getString(10));
 	}
 	
+	
+	
+	public int insert(Atraccion atraccion) {
+		
+		try {
+			String sql = "INSERT INTO atracciones (NOMBRE, COSTO, DURACION, CUPO, TIPO_ID, ACTIVE, PATH_IMG, DESCRIPTION) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+			Connection conn = ConnectionProvider.getConnection();
+
+			PreparedStatement statement = conn.prepareStatement(sql);
+			statement.setString(1, atraccion.getNombre());
+			statement.setDouble(2, atraccion.getCosto());
+			statement.setDouble(3, atraccion.getDuracion());
+			statement.setInt(4, atraccion.getCupo());
+			statement.setInt(5, atraccion.getTipoId());
+			statement.setBoolean(6, true);
+			statement.setString(7, atraccion.getPathImg());
+			statement.setString(8, atraccion.getDescription());
+			int rows = statement.executeUpdate();
+
+			return rows;
+		} catch (Exception e) {
+			throw new MissingDataException(e);
+		}
+	}
+	
 }

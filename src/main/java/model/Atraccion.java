@@ -1,5 +1,7 @@
 package model;
 
+import java.util.HashMap;
+
 public class Atraccion extends Vendible {
 	private Integer id;
 	private String nombre = "";
@@ -9,7 +11,8 @@ public class Atraccion extends Vendible {
 	private int cupo;
 	private Boolean active;
 	private String path_img;
-
+	private HashMap<String, String> errors;
+	
 	public Atraccion(Integer id, String nombre, double costo, double duracion, Tipo tipoDeAtraccion, int cupo, Boolean active, String path_img, String description) {
 		this.id = id;
 		this.nombre = nombre;
@@ -71,11 +74,45 @@ public class Atraccion extends Vendible {
 		return this.equals(v);
 	} 
 	
-	public boolean estaActivo() {
+	public boolean getActive() {
 		return active;
 	}
 	
 	public String getPathImg() {
 		return path_img;
+	}
+	
+	
+	public int getTipoId() {
+		
+		if(this.tipo.name().equals("PAISAJE")) {
+			return 1;
+		} 
+		if(this.tipo.name().equals("AVENTURA")) {
+			return 2;
+		}
+		if(this.tipo.name().equals("DEGUSTACION")) {
+			return 3;
+		}
+		return 0;
+	}
+	
+	
+	public boolean isValid() {
+		validate();
+		return errors.isEmpty();
+	}
+
+	public void validate() {
+		errors = new HashMap<String, String>();
+		if (costo < 0) {
+			errors.put("Costo", "No debe ser negativo");
+		}
+		if (cupo < 0) {
+			errors.put("Cupo", "No debe ser negativo");
+		}
+		if (duracion < 0) {
+			errors.put("Duracion", "No debe ser negativo");
+		}
 	}
 }

@@ -39,12 +39,17 @@
                       </div>
                     
                     <div class="col-md-4">
-                      <label for="admin" class="form-label">Admin</label>
-                      <input type="text" class="form-control" id="admin" name="admin" required>
+                      <label for="admin" class="form-label">Permisos</label>
+                      <%-- <input type="text" class="form-control" id="admin" name="admin" value="<c:out value="${usuario.getAdmin()}"></c:out>" required> --%>
+                      <select class="form-control" id="admin" name="admin">              
+                        <option value="true">Administrador</option>
+                        <option value="false" selected>Usuario</option>
+                      </select required>
                       <div class="invalid-feedback">
                         Este campo es requerido
                       </div>
-                    </div>
+                    </div> 
+                    
                     <div class="col-md-4">
                       <label for="tipoDeAtraccion" class="form-label">Tipo de Atracciones</label>
                       <select name="tipoDeAtraccion" class="form-control" id="tipoDeAtraccion">

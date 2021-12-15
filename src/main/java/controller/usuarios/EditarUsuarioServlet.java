@@ -22,6 +22,7 @@ public class EditarUsuarioServlet extends HttpServlet {
 	private UsuarioService usuarioService;
 	private VendibleService vendibleService;
 	LinkedList<Vendible> vendibles;
+	Integer id;
 	
 	@Override
 	public void init() throws ServletException {
@@ -29,13 +30,13 @@ public class EditarUsuarioServlet extends HttpServlet {
 		this.usuarioService = new UsuarioService();
 		this.vendibleService = new VendibleService();
 		vendibles = vendibleService.listar();
-	}
+		}
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		Integer id = Integer.parseInt(req.getParameter("id"));
+		id = Integer.parseInt(req.getParameter("id"));
 		Usuario usuario = usuarioService.busacarPorId(id, vendibles);
-		req.setAttribute("usuario", usuario);
+		req.setAttribute("tmp_user", usuario);	
 		RequestDispatcher dispatcher = getServletContext()
 				.getRequestDispatcher("/views/usuarios/editar.jsp");
 		dispatcher.forward(req, resp);
@@ -51,15 +52,15 @@ public class EditarUsuarioServlet extends HttpServlet {
 		String path_img = req.getParameter("path_img");
 //		String password = usuario.getPas;
 		
-		Usuario tmp_user = usuarioService.update(-1, nombre, presupuesto, tiempoDisponible, tipoDeAtraccion,admin, path_img);
+		Usuario tmp_user = usuarioService.update(id , nombre, presupuesto, tiempoDisponible, tipoDeAtraccion,admin, path_img);
 		
 		if (tmp_user.isValid()) {
-			resp.sendRedirect("/TurismoEnLaTierraMedia2021WebApp/usuarios/listar");
+			resp.sendRedirect("/TurismoEnLaTierraMedia2021WebApp/usuarios/listar.adm");
 		} else {
 			req.setAttribute("tmp_user", tmp_user);
 
 			RequestDispatcher dispatcher = getServletContext()
-					.getRequestDispatcher("/TurismoEnLaTierraMedia2021WebApp/usuarios/crear");
+					.getRequestDispatcher("/TurismoEnLaTierraMedia2021WebApp/usuarios/editar.jsp");
 			dispatcher.forward(req, resp);
 		}
 

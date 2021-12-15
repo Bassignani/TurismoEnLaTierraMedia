@@ -14,11 +14,12 @@
 
 			<div class="lista text-center mt-5">
                 <h3 class="col-12 mb-3 fuente">Crear una Atracción</h3>
-                <form class="row g-3 needs-validation" novalidate>
+                
+                <form class="row g-3 needs-validation" action="/TurismoEnLaTierraMedia2021WebApp/atraccion/crear.adm" method="post"  novalidate>
                     
                     <div class="col-md-4">
                       <label for="nombre" class="form-label">Nombre</label>
-                      <input type="text" class="form-control" id="nombre" placeholder="" required>
+                      <input type="text" class="form-control" id="nombre" name="nombre" placeholder="" required>
                       <div class="invalid-feedback">
                         Este campo es requerido.
                       </div>
@@ -59,12 +60,17 @@
                           Este campo es requerido.
                         </div>
                     </div>
-
 					<div class="col-md-4">
-                        <label for="imagen" class="form-label">Imagen</label>
-                        <input type="file" class="form-control" name="imagen" id="imagen">
+                        <label for="path_img" class="form-label">Imagen</label>
+                        <input type="text" class="form-control" name="path_img" id="imagen">
                     </div>
-
+					<div class="col-md-12">
+                        <label for="description" class="form-label">Descripción</label>
+						<textarea name="description" id="description" cols="30" rows="5" class="form-control" required></textarea>
+                        <div class="invalid-feedback">
+                          Este campo es requerido.
+                        </div>
+                    </div>
                     <div class="col-12">
                       <button class="btn  btn-miPrincipal" type="submit">Guardar</button>
                     </div>

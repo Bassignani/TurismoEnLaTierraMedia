@@ -17,6 +17,7 @@ public abstract class Vendible {
 	protected LinkedList<Atraccion> atracciones;
 	protected Integer id;
 	private String path_img;
+	
 
 	public boolean hayCupo() {
 		return false;
@@ -42,7 +43,6 @@ public abstract class Vendible {
 	}
 	
 	public String getDescription() {
-		
 		return description;
 	}
 
@@ -73,6 +73,8 @@ public abstract class Vendible {
 	public boolean esOContiene(Vendible v) {
 		return false;
 	}
+	
+
 
 //	public static LinkedList<Vendible> getVendibles() {
 //		AtraccionDAO atraccionDAO = DAOFactory.getAtraccionDAO();

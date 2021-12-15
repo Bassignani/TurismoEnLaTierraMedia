@@ -28,6 +28,16 @@ public class LoginServlet extends HttpServlet {
 		this.vendibleService = new VendibleService();
 	}
 	
+	
+	
+	@Override
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		req.setAttribute("flash", "Para comprar debes iniciar sesión");
+		RequestDispatcher dispatcher = getServletContext()
+  		      .getRequestDispatcher("/TurismoEnLaTierraMedia2021WebApp/views/usuarios/login.jsp");
+  		    dispatcher.forward(req, resp);
+	}
+	
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
     	String nombre = req.getParameter("nombre");

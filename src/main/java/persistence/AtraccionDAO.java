@@ -7,5 +7,7 @@ import model.Atraccion;
 public interface AtraccionDAO {
 	
 	public LinkedList<Atraccion> buscarTodos();
+	
+	public int insert(Atraccion atraccion);
 
 }

@@ -40,28 +40,25 @@
                     </thead>
                     <tbody>
                     <c:forEach items="${usuarios}" var="tmp_user">
-	                    <tr>
-	                    	
-	                        <th scope="row">1</th>
-	                        <td id="foto"><img src="<c:out value="${tmp_user.getPathImg()}"></c:out>"  id="fotodashboard" alt="Foto"></td>
-	                        <td><c:out value="${tmp_user.id}"></c:out></td>
-	                        <td><a href="usuario_detalle.html"><c:out value="${tmp_user.nombre}"></c:out></a></td>
-	                        <td><c:out value="${tmp_user.tipoDeAtraccion}"></c:out></td>
-	                        <td><c:out value="${tmp_user.presupuesto}"></c:out></td>
-	                        <td><c:out value="${tmp_user.tiempoDisponible}"></c:out></td>
-	                        <td>
-	                            <a href="/TurismoEnLaTierraMedia2021WebApp/usuario/editar.adm?id=${tmp_user.id}"><img src="/TurismoEnLaTierraMedia2021WebApp/assets/img/Varios/edit-regular.svg" class="edit" alt="" title="Editar"></a>   
-	                            <a href="#" data-bs-toggle="modal" data-bs-target="#eliminar"><img src="/TurismoEnLaTierraMedia2021WebApp/assets/img/Varios/trash-alt-regular.svg" class="delete" alt="" title="Eliminar"></a>
-	                        </td>
-	                    </tr>
-                    </c:forEach>
-				</tbody>
-                </table>
-            </div>
-            <a class="btn  btn-miPrincipal" href="/TurismoEnLaTierraMedia2021WebApp/usuario/crear.adm">Agregar Usuario</a>             
-    </div>
-        
-      <!-- Modal -->
+	                    <c:if test="${tmp_user.getActive()}">
+		                    <tr>
+		                    	
+		                        <th scope="row">1</th>
+		                        <td id="foto"><img src="<c:out value="${tmp_user.getPathImg()}"></c:out>"  id="fotodashboard" alt="Foto"></td>
+		                        <td><c:out value="${tmp_user.id}"></c:out></td>
+		                        <td><a href="usuario_detalle.html"><c:out value="${tmp_user.nombre}"></c:out></a></td>
+		                        <td><c:out value="${tmp_user.tipoDeAtraccion}"></c:out></td>
+		                        <td><c:out value="${tmp_user.presupuesto}"></c:out></td>
+		                        <td><c:out value="${tmp_user.tiempoDisponible}"></c:out></td>
+		                        <td>
+		                            <a href="/TurismoEnLaTierraMedia2021WebApp/usuario/editar.adm?id=${tmp_user.id}"><img src="/TurismoEnLaTierraMedia2021WebApp/assets/img/Varios/edit-regular.svg" class="edit" alt="" title="Editar"></a>   
+		                            <a href="/TurismoEnLaTierraMedia2021WebApp/usuario/borrar.adm?id=${tmp_user.id}" ><img src="/TurismoEnLaTierraMedia2021WebApp/assets/img/Varios/trash-alt-regular.svg" class="delete" alt="" title="Eliminar"></a>
+		                        	<!-- data-bs-toggle="modal" data-bs-target="#eliminar" -->
+		                        </td>
+		                    </tr>
+	                    </c:if>
+	                    
+	                    <!-- Modal -->
     <div class="modal fade" id="eliminar" tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="true">
         <div class="modal-dialog">
         <div class="modal-content">
@@ -75,11 +72,21 @@
             </div>
             <div class="modal-footer">
             <button type="button" class="btn  btn-miPrincipal" data-bs-dismiss="modal">Cerrar</button>
-            <button type="button" class="btn btn-danger">Eliminar</button>
+            <button type="button" class="btn btn-danger">Eliminar</button>   
             </div>
         </div>
         </div>
     </div>
+	                    
+	                    
+                    </c:forEach>
+				</tbody>
+                </table>
+            </div>
+            <a class="btn  btn-miPrincipal" href="/TurismoEnLaTierraMedia2021WebApp/usuario/crear.adm">Agregar Usuario</a>             
+    </div>
+        
+      
 	
 	
 	<jsp:include page="/partials/footer.jsp"></jsp:include>
