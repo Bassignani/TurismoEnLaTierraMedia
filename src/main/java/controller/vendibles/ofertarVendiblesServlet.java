@@ -1,8 +1,6 @@
 package controller.vendibles;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.util.LinkedList;
 
 import jakarta.servlet.RequestDispatcher;
@@ -47,19 +45,54 @@ public class ofertarVendiblesServlet extends HttpServlet {
 		id = Integer.parseInt(req.getParameter("id"));
 		Usuario usuario = usuarioService.busacarPorId(id, vendibles, tipos);
 		LinkedList<Vendible> vendibles = vendibleService.listar();
-		vendibles.sort(new Comparador(usuario.getTipo()) );
-		
-		for (Vendible v : vendibles) {
-			if (usuario.puedeComprar(v)) {
-				vendiblesAOfertar.add(v);
-			}
+		vendibles.sort(new Comparador(usuario.getTipo()) );		
+		for (Vendible v : vendibles) {	   
+			if (usuario.puedeComprar(v) ) { //&& yaLoOferto(v)==false
+				vendiblesAOfertar.add(v);  
+			}	
 		}
-		System.out.println(vendiblesAOfertar);
+
 		req.setAttribute("vendibles", vendiblesAOfertar);
 		RequestDispatcher dispatcher = getServletContext()
 				.getRequestDispatcher("/views/usuarios/ofertar.jsp");
 		dispatcher.forward(req, resp);
 	}
+	
+	
+	
+//	private boolean yaLoOferto(Vendible v) {
+//	boolean oferto = false;
+//    if (v.esPromo()) {
+//        for (Vendible vendible : v.getAtracciones() ) {
+//            if (vendiblesAOfertar.contains(vendible)) {
+//            	oferto = true;
+//                break;
+//            }
+//            for(Vendible vendibleComp : vendiblesAOfertar) {
+//                if(vendibleComp.esPromo()) {
+//                    if (vendibleComp.getAtracciones().contains(vendible)) {
+//                    	oferto = true;
+//                        break;
+//                    }
+//                }
+//            }
+//        }
+//    }else {
+//        for (Vendible vendible : vendiblesAOfertar) {
+//            if (vendible.esPromo()) {
+//                if (vendible.getAtracciones().contains(v)) {
+//                	oferto = true;
+//                    break;
+//                }
+//            }else if (vendible == v ) {
+//            	oferto = true;
+//            }
+//        }
+//    } 
+//    return oferto;
+//	}
+	
+
 	
 
 }

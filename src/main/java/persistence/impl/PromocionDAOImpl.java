@@ -42,6 +42,36 @@ public class PromocionDAOImpl implements PromocionDAO {
 	}
 	
 	
+	
+	
+	public Promocion buscarPorId(Integer id, LinkedList<Atraccion> atracciones, LinkedList<Tipo> tipos) {
+		try {
+			String sql = "SELECT p.id, tda.id, p.tipo_de_promocion, p.nombre_pack, p.referencia_costo, p.cantidad_atracciones, group_concat(a.nombre), p.active, p.path_img, p.description\n"
+					+ "FROM promociones p \n"
+					+ "INNER JOIN promociones_atracciones pa ON p.id = pa.promocion_id\n"
+					+ "INNER JOIN atracciones a ON pa.atraccion_id = a.id\n"
+					+ "INNER JOIN tipo_de_atracciones tda ON p.tipo_id = tda.id WHERE p.id=?\n"
+					+ "GROUP BY p.id";
+			Connection conn = ConnectionProvider.getConnection();
+			PreparedStatement statement = conn.prepareStatement(sql);
+			statement.setInt(1, id);
+			ResultSet resultados = statement.executeQuery();
+			Promocion promocion = null;
+			if (resultados.next()) {
+				promocion = toPromocion(resultados, atracciones,tipos);
+			}
+			return promocion;
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new MissingDataException(e);
+		}
+	}
+	
+	
+	
+	
+	
+	
 
 	private Promocion toPromocion(ResultSet resultados, LinkedList<Atraccion> atracciones, LinkedList<Tipo> tipos) throws SQLException {
 		LinkedList<Atraccion> atraccionesPromocion = new LinkedList<Atraccion>();
@@ -74,6 +104,12 @@ public class PromocionDAOImpl implements PromocionDAO {
 		}
 
 	}
+	
+	
+	
+	
+	
+	
 
 	private void atraccionesCompradas(LinkedList<Atraccion> atracciones, LinkedList<Atraccion> atraccionesPromocion, String[] datos) {
 		for (int i = 0; i < datos.length; i++) {

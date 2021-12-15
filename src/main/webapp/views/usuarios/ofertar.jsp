@@ -18,19 +18,19 @@
 					<h1 class="display-4 fuente" >Comprar</h1>
 				</article>
 
-				<section id="slider" class="pt-5 lista">
+				<section id="slider" class="pt-5 lista" style="height: auto;">
 					<div class="container">
 						<!-- <h1 class="text-center"><b>Responsive Owl Carousel</b></h1> -->
-						<div class="slider">
+						<div class="slider" >
 							<div class="owl-carousel">
 								
 								<c:forEach items="${vendibles}" var="tmp_vendible">	
-										<div class="slider-card text-center">
+										<div class="slider-card text-center" style="height: auto; margin-top:5rem"  >
 											<div class="d-flex justify-content-center align-items-center mb-4">
 												<img src="<c:out value="${tmp_vendible.getPathImg()}"></c:out>" alt="">
 											</div>
 											<h5 class="mb-0 text-center"><b><c:out value="${tmp_vendible.getNombre()}"></c:out></b></h5>
-											<p class="text-center p-4" style="text-align: justify"><c:out value="${tmp_vendible.getDescription()}"></c:out></p>
+											<p class=" p-4" style="text-align: justify"><c:out value="${tmp_vendible.getDescription()}"></c:out></p>
 											<div class="iconos">
 												<span>
 													<img alt="Precio" src="/TurismoEnLaTierraMedia2021WebApp/assets/img/Varios/GoldCoinsIcono.png"> 
@@ -41,55 +41,9 @@
 													<c:out value="${tmp_vendible.getDuracion()}"></c:out>
 												</span>
 											</div>
-											<a href="#" class="btn btn-miPrincipal m-2">Comprar</a>	
-												
+											<a href="/TurismoEnLaTierraMedia2021WebApp/usuario/comprar.do?id=${tmp_vendible.getId()}&promo=${tmp_vendible.esPromo()}" class="btn btn-miPrincipal m-2">Comprar</a>								
 										</div>
-								</c:forEach>>
-								<!-- <div class="slider-card text-center">
-									<div class="d-flex justify-content-center align-items-center mb-4">
-										<img src="/TurismoEnLaTierraMedia2021WebApp/assets/img/Atracciones/1_Moria1.jpg" alt="">
-									</div>
-									<h5 class="mb-0 text-center"><b>Moria</b></h5>
-									<p class="text-center p-4">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsam
-										temporibus quidem magni qui doloribus quasi natus inventore nisi velit minima.</p>
-									<a href="#" class="btn btn-miPrincipal m-2">Comprar</a>
-								</div>
-				
-								<div class="slider-card text-center">
-									<div class="d-flex justify-content-center align-items-center mb-4">
-										<img src="/TurismoEnLaTierraMedia2021WebApp/assets/img/Atracciones/2_MinasTirith1.jpg" alt="">
-									</div>
-									<h5 class="mb-0 text-center"><b>Minas Tirith</b></h5>
-									<p class="text-center p-4">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsam
-										temporibus quidem magni qui doloribus quasi natus inventore nisi velit minima.</p>
-									<a href="#" class="btn btn-miPrincipal m-2">Comprar</a>
-								</div>
-				
-								<div class="slider-card text-center">
-									<div class="d-flex justify-content-center align-items-center mb-4">
-										<img src=/TurismoEnLaTierraMedia2021WebApp/assets/img/Atracciones/3_LaComarca2.jpg" alt="">
-									</div>
-									<h5 class="mb-0 text-center"><b>La Comarca</b></h5>
-									<p class="text-center p-4">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsam
-										temporibus quidem magni qui doloribus quasi natus inventore nisi velit minima.</p>
-									<a href="#" class="btn btn-miPrincipal m-2">Comprar</a>
-								</div>
-				
-								<div class="slider-card text-center">
-									<div class="d-flex justify-content-center align-items-center mb-4">
-										<img  src="/TurismoEnLaTierraMedia2021WebApp/assets/img/Atracciones/4_Mordor3.jpg" alt="">
-									</div>
-									<h5 class="mb-0 text-center"><b>Modor</b></h5>
-									<p class="text-center p-4">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsam
-										temporibus quidem magni qui doloribus quasi natus inventore nisi velit minima.</p>
-									<div class="iconos">
-										<span><img alt="Precio" src="/TurismoEnLaTierraMedia2021WebApp/assets/img/Varios/GoldCoinsIcono.png"> 50
-												monedas</span> <span><img alt="Duracion"
-													src="/TurismoEnLaTierraMedia2021WebApp/assets/img/Varios/RelojDeArenaIcono.png">
-												6 horas</span>
-									</div>	
-									<a href="#" class="btn btn-miPrincipal m-2">Comprar</a>
-								</div> -->
+								</c:forEach>
 							</div>
 						</div>
 					</div>

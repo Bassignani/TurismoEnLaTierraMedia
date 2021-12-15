@@ -1,11 +1,11 @@
 // Owlcarousel
 $(document).ready(function(){
     $(".owl-carousel").owlCarousel({
-        loop:true,
+      loop:true,
       margin:10,
       responsiveClass:true,
       nav:true,
-      autoplay:true,
+      autoplay:false,
       autoplayTimeout:3000,
       autoplayHoverPause:true,
       center: true,

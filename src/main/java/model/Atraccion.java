@@ -83,20 +83,6 @@ public class Atraccion extends Vendible {
 	}
 	
 	
-//	public int getTipoId() {
-//		
-//		if(this.tipo.name().equals("PAISAJE")) {
-//			return 1;
-//		} 
-//		if(this.tipo.name().equals("AVENTURA")) {
-//			return 2;
-//		}
-//		if(this.tipo.name().equals("DEGUSTACION")) {
-//			return 3;
-//		}
-//		return 0;
-//	}
-	
 	
 	public boolean isValid() {
 		validate();

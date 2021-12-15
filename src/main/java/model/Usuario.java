@@ -69,7 +69,7 @@ public class Usuario {
 	@Override
 	public String toString() {
 		return "Usuario [nombre=" + nombre + ", presupuesto=" + presupuesto + ", tiempoDisponible=" + tiempoDisponible
-				+ ", tipoDeAtraccion=" + tipoDeAtraccion.getNombre() + ", path="+ path_img +"]\n";
+				+ ", tipoDeAtraccion=" + this.getTipo().getNombre() + ", path="+ path_img +"]\n";
 	}
 
 	public boolean puedeComprar(Vendible v) {

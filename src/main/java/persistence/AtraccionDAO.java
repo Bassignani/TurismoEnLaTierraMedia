@@ -10,5 +10,9 @@ public interface AtraccionDAO {
 	public LinkedList<Atraccion> buscarTodos(LinkedList<Tipo> tipos);
 	
 	public int insert(Atraccion atraccion);
+	
+	public Atraccion buscarPorId(Integer id,LinkedList<Tipo> tipos);
+	
+	public int update(Atraccion atraccion);
 
 }

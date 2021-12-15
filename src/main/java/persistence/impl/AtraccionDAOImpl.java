@@ -4,11 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.Iterator;
 import java.util.LinkedList;
-
-import javax.management.loading.PrivateClassLoader;
-
 import model.Atraccion;
 import model.Tipo;
 import persistence.AtraccionDAO;
@@ -67,6 +63,52 @@ public class AtraccionDAOImpl implements AtraccionDAO {
 			throw new MissingDataException(e);
 		}
 	}
+	
+	
+	
+	public Atraccion buscarPorId(Integer id,LinkedList<Tipo> tipos) {
+		try {
+			String sql = "SELECT a.id, a.nombre, a.costo, a.duracion, a.cupo, a.tipo_id, tda.tipo, a.active, a.path_img, a.description\n"
+					+ "FROM atracciones a INNER JOIN tipo_de_atracciones tda ON a.tipo_id = tda.id WHERE a.id=?";
+			Connection conn = ConnectionProvider.getConnection();
+			PreparedStatement statement = conn.prepareStatement(sql);
+			statement.setInt(1, id);
+			ResultSet resultados = statement.executeQuery();
+			Atraccion atraccion = null;
+			if (resultados.next()) {
+				atraccion = toAtraccion(resultados, tipos);
+			}
+			return atraccion;
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new MissingDataException(e);
+		}
+	}
+	
+	
+	
+	public int update(Atraccion atraccion) {
+		try {
+			String sql = "UPDATE atracciones SET NOMBRE = ?, COSTO = ?, DURACION = ?, CUPO = ?, TIPO_ID = ?, ACTIVE = ?, PATH_IMG = ?, DESCRIPTION = ? WHERE id = ?";
+			Connection conn = ConnectionProvider.getConnection();
+			PreparedStatement statement = conn.prepareStatement(sql);
+			statement.setString(1, atraccion.getNombre());
+			statement.setDouble(2, atraccion.getCosto());
+			statement.setDouble(3, atraccion.getDuracion());
+			statement.setInt(4, atraccion.getCupo());
+			statement.setInt(5, atraccion.getTipo().getId());
+			statement.setBoolean(6, true);
+			statement.setString(7, atraccion.getPathImg());
+			statement.setString(8, atraccion.getDescription());
+			statement.setInt(9, atraccion.getId());
+			int rows = statement.executeUpdate();
+			return rows;
+		} catch (Exception e) {
+			throw new MissingDataException(e);
+		}
+	}
+	
+	
 	
 	
 	private Tipo toTipo(int resultado, LinkedList<Tipo> tipos) throws SQLException{
