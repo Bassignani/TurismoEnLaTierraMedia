@@ -51,7 +51,7 @@
 								<c:out value="${usuario.nombre}"></c:out>
 							</a>
 							<ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink" style="left: -95%">
-	                            <li><a class="dropdown-item" href="/TurismoEnLaTierraMedia2021WebApp/usuarios/ofertar.do?id=${usuario.getId()}">Comprar</a></li>   <!--Desp se puede sacar-->
+	                            <li><a class="dropdown-item" href="/TurismoEnLaTierraMedia2021WebApp/vendibles/ofertar.do?id=${usuario.getId()}">Comprar</a></li>   <!--Desp se puede sacar-->
 	                            <li><a class="dropdown-item" href="/TurismoEnLaTierraMedia2021WebApp/views/usuarios/itinerario.jsp">Itinerario</a></li>
 	                            <li><a class="dropdown-item" ><img src="/TurismoEnLaTierraMedia2021WebApp/assets/img/Varios/RelojDeArena.png" style="width: 20px; margin-right: 6px; margin-left: 5px" alt=""><c:out value="${usuario.getTiempoDisponible()}"></c:out></a></li>
 	                            <li><a class="dropdown-item" ><img src="/TurismoEnLaTierraMedia2021WebApp/assets/img/Varios/GoldCoins.png" style="width: 30px; margin-right: 0px" alt=""><c:out value="${usuario.getPresupuesto()}"></c:out></a></li>

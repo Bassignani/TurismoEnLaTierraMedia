@@ -50,7 +50,7 @@
 								</div>
 									<c:choose>
 					                      <c:when test="${usuario != null}">             
-					                        <a href="/TurismoEnLaTierraMedia2021WebApp/views/usuarios/ofertar.jsp" class="btn btn-miPrincipal mt-1">Comprar</a>
+					                        <a href="/TurismoEnLaTierraMedia2021WebApp/vendibles/ofertar.do?id=${usuario.getId()}" class="btn btn-miPrincipal mt-1">Comprar</a>
 					                      </c:when>   
 					                      <c:otherwise>
 					                      	<a href="/TurismoEnLaTierraMedia2021WebApp/views/usuarios/login.jsp" class="btn btn-miPrincipal mt-1">Comprar</a>

@@ -66,7 +66,7 @@ public class Atraccion extends Vendible {
 	@Override
 	public String toString() {
 		return "Atraccion [nombre=" + nombre + ", costo=" + costo + ", duracion=" + duracion + ", tipoDeAtraccion="
-				+ tipo + ", cupo=" + cupo + "]\n";
+				+ tipo.getNombre() + ", cupo=" + cupo + "]\n";
 	}
 	
 	@Override

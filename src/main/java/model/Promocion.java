@@ -114,7 +114,7 @@ public abstract class Promocion extends Vendible {
 
 	@Override
 	public String toString() {
-		return "Promocion " + tipo + " [Valor: " + this.getCosto() + ", Tiempo necesario: " + this.getDuracion()
+		return "Promocion " + tipo.getNombre() + " [Valor: " + this.getCosto() + ", Tiempo necesario: " + this.getDuracion()
 				+ ", Tipo de promocion:" + tipoPromocion + ", Nombre del pack: " + nombrePack + ",\n\t Atracciones:"
 				+ this.atraccionesAString() + "]\n";
 	}

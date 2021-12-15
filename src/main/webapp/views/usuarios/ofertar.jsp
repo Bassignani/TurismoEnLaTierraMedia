@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -22,17 +23,29 @@
 						<!-- <h1 class="text-center"><b>Responsive Owl Carousel</b></h1> -->
 						<div class="slider">
 							<div class="owl-carousel">
-								<div class="slider-card text-center">
-									<div class="d-flex justify-content-center align-items-center mb-4">
-										<img src="/TurismoEnLaTierraMedia2021WebApp/assets/img/Varios/hotSale.png" alt="">
-									</div>
-									<h5 class="mb-0 text-center"><b>Pack hotSale</b></h5>
-									<p class="text-center p-4">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsam
-										temporibus quidem magni qui doloribus quasi natus inventore nisi velit minima.</p>
-									<a href="#" class="btn btn-miPrincipal m-2">Comprar</a>	
-								</div>
-				
-								<div class="slider-card text-center">
+								
+								<c:forEach items="${vendibles}" var="tmp_vendible">	
+										<div class="slider-card text-center">
+											<div class="d-flex justify-content-center align-items-center mb-4">
+												<img src="<c:out value="${tmp_vendible.getPathImg()}"></c:out>" alt="">
+											</div>
+											<h5 class="mb-0 text-center"><b><c:out value="${tmp_vendible.getNombre()}"></c:out></b></h5>
+											<p class="text-center p-4" style="text-align: justify"><c:out value="${tmp_vendible.getDescription()}"></c:out></p>
+											<div class="iconos">
+												<span>
+													<img alt="Precio" src="/TurismoEnLaTierraMedia2021WebApp/assets/img/Varios/GoldCoinsIcono.png"> 
+													<c:out value="${tmp_vendible.getCosto()}"></c:out>
+												</span> 
+												<span>
+													<img alt="Duracion"src="/TurismoEnLaTierraMedia2021WebApp/assets/img/Varios/RelojDeArenaIcono.png">
+													<c:out value="${tmp_vendible.getDuracion()}"></c:out>
+												</span>
+											</div>
+											<a href="#" class="btn btn-miPrincipal m-2">Comprar</a>	
+												
+										</div>
+								</c:forEach>>
+								<!-- <div class="slider-card text-center">
 									<div class="d-flex justify-content-center align-items-center mb-4">
 										<img src="/TurismoEnLaTierraMedia2021WebApp/assets/img/Atracciones/1_Moria1.jpg" alt="">
 									</div>
@@ -76,7 +89,7 @@
 												6 horas</span>
 									</div>	
 									<a href="#" class="btn btn-miPrincipal m-2">Comprar</a>
-								</div>
+								</div> -->
 							</div>
 						</div>
 					</div>

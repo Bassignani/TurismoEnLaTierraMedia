@@ -12,10 +12,10 @@ public class Comparador implements Comparator<Vendible> {
 	@Override
 	public int compare(Vendible o1, Vendible o2) {
 
-		if (this.preferenciaUsuario == o1.getTipo() && this.preferenciaUsuario != o2.getTipo()) {
+		if (this.preferenciaUsuario.getNombre().equals(o1.getTipo().getNombre())  && !this.preferenciaUsuario.getNombre().equals(o2.getTipo().getNombre()) ) {
 			return -1;
 		}
-		if (this.preferenciaUsuario != o1.getTipo() && this.preferenciaUsuario == o2.getTipo()) {
+		if (!this.preferenciaUsuario.getNombre().equals(o1.getTipo().getNombre()) && this.preferenciaUsuario.getNombre().equals(o2.getTipo().getNombre()) ) {
 			return 1;
 		}
 		if (o1.esPromo() && !o2.esPromo()) {
