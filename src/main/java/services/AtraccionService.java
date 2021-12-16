@@ -20,4 +20,8 @@ public class AtraccionService {
 		}
 		return atraccion;
 	}
+	
+	public Atraccion buscarPorId(Integer id, LinkedList<Tipo> tipos) {
+		return DAOFactory.getAtraccionDAO().buscarPorId(id, tipos);
+	}
 }

@@ -82,7 +82,9 @@ public class Atraccion extends Vendible {
 		return path_img;
 	}
 	
-	
+	public String getDescription() {
+		return description;
+	}
 	
 	public boolean isValid() {
 		validate();

@@ -56,7 +56,7 @@ public class VendibleService {
 			usuarioDAO.update(usuario);	//UPDATE USER
 			atraccionDAO.update(atraccion);		
 		}
-//		itinerarioDAO.llenarItinerario(usuario);
+		itinerarioDAO.llenarItinerario(usuario);
 		return errors;
 	}
 	

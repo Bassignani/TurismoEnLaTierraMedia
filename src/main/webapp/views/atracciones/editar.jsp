@@ -20,7 +20,7 @@
                     
                     <div class="col-md-4">
                       <label for="nombre" class="form-label">Nombre</label>
-                      <input type="text" class="form-control" id="nombre" name="nombre" placeholder="" required>
+                      <input type="text" class="form-control" id="nombre" name="nombre" placeholder="" value="${atraccion.getNombre()}" required>
                       <div class="invalid-feedback">
                         Este campo es requerido.
                       </div>
@@ -40,7 +40,7 @@
 
                     <div class="col-md-4">
                       <label for="costo" class="form-label">Costo</label>
-                      <input type="text" class="form-control" name="costo" id="costo" required>
+                      <input type="text" class="form-control" name="costo" id="costo" value="${atraccion.getCosto()}"  required>
                       <div class="invalid-feedback">
                         Este campo es requerido.
                       </div>
@@ -48,7 +48,7 @@
 
                     <div class="col-md-4">
                         <label for="duracion" class="form-label">Duración</label>
-                        <input type="text" class="form-control" id="duracion" name="duracion" required>
+                        <input type="text" class="form-control" id="duracion" name="duracion" value="${atraccion.getDuracion()}"  required>
                         <div class="invalid-feedback">
                             Este campo es requerido.
                         </div>
@@ -56,24 +56,24 @@
 
                     <div class="col-md-4">
                         <label for="cupo" class="form-label">Cupo</label>
-                        <input type="text" class="form-control" name="cupo" id="cupo" required>
+                        <input type="text" class="form-control" name="cupo" id="cupo"  value="${atraccion.getCupo()}" required>
                         <div class="invalid-feedback">
                           Este campo es requerido.
                         </div>
                     </div>
 					<div class="col-md-4">
                         <label for="path_img" class="form-label">Imagen</label>
-                        <input type="text" class="form-control" name="path_img" id="imagen">
+                        <input type="text" class="form-control" name="path_img" id="imagen" value="${atraccion.getPathImg()}" >
                     </div>
 					<div class="col-md-12">
                         <label for="description" class="form-label">Descripción</label>
-						<textarea name="description" id="description" cols="30" rows="5" class="form-control" required></textarea>
+						<textarea name="description" id="description" cols="30" rows="5" class="form-control" value="${atraccion.getDescription()}"  required></textarea>
                         <div class="invalid-feedback">
                           Este campo es requerido.
                         </div>
                     </div>
                     <div class="col-12">
-                      <button class="btn  btn-miPrincipal" type="submit">Guardar</button>
+                      <button class="btn  btn-miPrincipal" type="submit">Editar</button>
                     </div>
                 </form>
             </div>

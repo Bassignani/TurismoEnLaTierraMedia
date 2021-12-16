@@ -1,6 +1,7 @@
 package controller.atracciones;
 
 import java.io.IOException;
+import java.util.LinkedList;
 
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.Servlet;
@@ -12,22 +13,27 @@ import jakarta.servlet.http.HttpServletResponse;
 import model.Tipo;
 import model.Atraccion;
 import services.AtraccionService;
+import services.TipoService;
 
 @WebServlet("/atraccion/crear.adm")
 public class CrearAtraccionServlet extends HttpServlet implements Servlet {
 
 	private static final long serialVersionUID = 1803785961166384233L;
 	private AtraccionService atraccionService;
+	private TipoService tipoService;
+	LinkedList<Tipo> tipos;
 	
 	@Override
 	public void init() throws ServletException {
 		super.init();
 		this.atraccionService = new AtraccionService();
+		this.tipoService = new TipoService();
+		tipos = tipoService.listar();
 	}
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
+		req.setAttribute("tipos", tipos);
 		RequestDispatcher dispatcher = getServletContext()
 				.getRequestDispatcher("/views/atracciones/registrar.jsp");
 		dispatcher.forward(req, resp);
@@ -40,10 +46,8 @@ public class CrearAtraccionServlet extends HttpServlet implements Servlet {
 		Double duracion = Double.parseDouble(req.getParameter("duracion"));
 		Integer cupo = Integer.parseInt(req.getParameter("cupo"));
 		String description = req.getParameter("description");
-		Tipo tipo = Tipo.valueOf(req.getParameter("tipo").toUpperCase());
+		Tipo tipo = toTipo(Integer.parseInt(req.getParameter("tipo")), tipos);
 		String path_img = req.getParameter("path_img");
-		
-//		System.out.println(nombre);
 		
 		Atraccion tmp_atrac = atraccionService.crear(nombre, costo, duracion, cupo, description, tipo, path_img);
 		
@@ -56,6 +60,18 @@ public class CrearAtraccionServlet extends HttpServlet implements Servlet {
 					.getRequestDispatcher("/TurismoEnLaTierraMedia2021WebApp/atraccion/crear.adm");
 			dispatcher.forward(req, resp);
 		}
+	}
+	
+	
+	private Tipo toTipo(int resultado, LinkedList<Tipo> tipos) {
+		int id = resultado;
+		Tipo tmp_tipo = null;
+		for (Tipo tipo : tipos) {
+			if (tipo.getId() == id) {
+				tmp_tipo = tipo;
+			}
+		}
+		return tmp_tipo;
 	}
 	
 }

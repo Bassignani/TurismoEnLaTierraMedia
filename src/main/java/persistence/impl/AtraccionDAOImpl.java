@@ -40,7 +40,6 @@ public class AtraccionDAOImpl implements AtraccionDAO {
 	
 	
 	
-	
 	public int insert(Atraccion atraccion) {
 		
 		try {

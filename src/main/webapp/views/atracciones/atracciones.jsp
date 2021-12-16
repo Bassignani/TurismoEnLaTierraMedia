@@ -36,7 +36,7 @@
 	                        <td><c:out value="${tmp_atraccion.cupo}"></c:out></td>
 	                        <td><c:out value="${tmp_atraccion.getTipo().getNombre()}"></c:out></td>
 	                        <td>
-	                            <a href="/TurismoEnLaTierraMedia2021WebApp/views/atracciones/registrar.jsp"><img src="/TurismoEnLaTierraMedia2021WebApp/assets/img/Varios/edit-regular.svg" class="edit" alt="" title="Editar"></a>   
+	                            <a href="/TurismoEnLaTierraMedia2021WebApp/atraccion/editar.adm?id=${tmp_atraccion.id}"><img src="/TurismoEnLaTierraMedia2021WebApp/assets/img/Varios/edit-regular.svg" class="edit" alt="" title="Editar"></a>   
 	                            <a href="#" data-bs-toggle="modal" data-bs-target="#eliminar"><img src="/TurismoEnLaTierraMedia2021WebApp/assets/img/Varios/trash-alt-regular.svg" class="delete" alt="" title="Eliminar"></a>
 	                        </td>
 	                    </tr>

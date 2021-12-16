@@ -20,7 +20,7 @@ public class LoggedFilter implements Filter {
 			throws IOException, ServletException {
 
 		Usuario usuario = (Usuario) ((HttpServletRequest) request).getSession().getAttribute("usuario");
-		if (usuario != null) {
+		if (usuario != null && usuario.getActive()) {
 			chain.doFilter(request, response);
 		} else {
 			request.setAttribute("flash", "Por favor, ingresa al sistema");

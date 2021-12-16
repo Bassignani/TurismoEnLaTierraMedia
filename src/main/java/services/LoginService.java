@@ -15,7 +15,7 @@ public class LoginService {
 		UsuarioDAO usuarioDao = DAOFactory.getUsuarioDAO();
 		Usuario usuario = usuarioDao.buscarPorNombre(nombre,vendibles, tipos);
     	
-    	if (usuario.esNull() || !usuario.checkPassword(password)) {
+    	if (usuario.esNull() || !usuario.checkPassword(password) || !usuario.getActive()) {
     		usuario = NullUsuario.build();
     	}
     	return usuario;
