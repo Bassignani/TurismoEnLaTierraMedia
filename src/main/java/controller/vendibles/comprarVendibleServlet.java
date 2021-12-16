@@ -46,18 +46,13 @@ public class comprarVendibleServlet extends HttpServlet {
 		Usuario usuario = (Usuario) req.getSession().getAttribute("usuario");
 		Map<String, String> errors = vendibleService.comprar(usuario, id, esPromo);
 		
-		Usuario usuario2 = DAOFactory.getUsuarioDAO().buscarPorId(usuario.getId(), vendibles, tipos);
-		req.getSession().setAttribute("usuario", usuario2);
-		
-		System.out.println(usuario2);
-		
 		if (errors.isEmpty()) {
 			req.setAttribute("success", "¡Gracias por comprar!");
 		} else {
 			req.setAttribute("errors", errors);
 			req.setAttribute("flash", "No ha podido realizarse la compra");
 		}
-
+		req.setAttribute("id", usuario.getId());
 		RequestDispatcher dispatcher = getServletContext()
 				.getRequestDispatcher("/vendibles/ofertar.do");
 		dispatcher.forward(req, resp);	

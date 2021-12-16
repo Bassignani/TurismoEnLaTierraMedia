@@ -9,6 +9,7 @@ import model.Tipo;
 import model.Usuario;
 import model.Vendible;
 import persistence.AtraccionDAO;
+import persistence.ItinerarioDAO;
 import persistence.UsuarioDAO;
 import persistence.PromocionDAO;
 import persistence.TipoDAO;
@@ -35,14 +36,9 @@ public class VendibleService {
 		AtraccionDAO atraccionDAO = DAOFactory.getAtraccionDAO();
 		PromocionDAO promocionDAO = DAOFactory.getPromocionDAO();
 		TipoDAO tipoDAO = DAOFactory.getTipoDAO();
+		ItinerarioDAO itinerarioDAO = DAOFactory.getItinerarioDAO();
 		LinkedList<Tipo> tipos = tipoDAO.buscarTodos();
-		LinkedList<Atraccion> atracciones = atraccionDAO.buscarTodos(tipos);
-		
-		
-		System.out.println(usuario);
-		System.out.println(vendible_id);
-		System.out.println(esPromo);
-		
+		LinkedList<Atraccion> atracciones = atraccionDAO.buscarTodos(tipos);		
 		
 		Map<String, String> errors = new HashMap<String, String>();
 
@@ -52,9 +48,7 @@ public class VendibleService {
 			usuarioDAO.update(usuario); //UPDATE USER
 			for (Atraccion atraccion : promocion.getAtracciones()) { //UPDATE PROMO 
 				atraccionDAO.update(atraccion);
-			}
-				
-			
+			}		
 			
 		}else {
 			Atraccion atraccion = atraccionDAO.buscarPorId(vendible_id, tipos);
@@ -62,9 +56,8 @@ public class VendibleService {
 			usuarioDAO.update(usuario);	//UPDATE USER
 			atraccionDAO.update(atraccion);		
 		}
-
+//		itinerarioDAO.llenarItinerario(usuario);
 		return errors;
-
 	}
 	
 }

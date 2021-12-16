@@ -88,12 +88,41 @@ public class Usuario {
 
 	
 	public boolean yaLoCompro(Vendible v) {
-		for(Vendible comprado : vendiblesComprados) {
-			if(comprado.esOContiene(v) || v.esOContiene(comprado)) {
-				return true;
-			}
-		}
-		return false;
+//		for(Vendible comprado : vendiblesComprados) {
+//			if(comprado.esOContiene(v) || v.esOContiene(comprado)) {
+//				return true;
+//			}
+//		}
+//		return false;
+	    boolean compro = false;
+        if (v.esPromo()) {
+            for (Vendible vendible : v.getAtracciones() ) {
+                if (vendiblesComprados.contains(vendible)) {
+                    compro = true;
+                    break;
+                }
+                for(Vendible vendibleComp : vendiblesComprados) {
+                    if(vendibleComp.esPromo()) {
+                        if (vendibleComp.getAtracciones().contains(vendible)) {
+                            compro = true;
+                            break;
+                        }
+                    }
+                }
+            }
+        }else {
+            for (Vendible vendible : vendiblesComprados) {
+                if (vendible.esPromo()) {
+                    if (vendible.getAtracciones().contains(v)) {
+                        compro = true;
+                        break;
+                    }
+                }else if (vendible.equals(v) ) {
+                    compro = true;
+                }
+            }
+        }
+        return compro;
 	}
 
 	public LinkedList<Vendible> getVendiblesComprados() {

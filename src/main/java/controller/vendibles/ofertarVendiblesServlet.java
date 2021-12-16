@@ -26,6 +26,7 @@ public class ofertarVendiblesServlet extends HttpServlet {
 	private VendibleService vendibleService;
 	LinkedList<Vendible> vendibles;
 	LinkedList<Vendible> vendiblesAOfertar = new LinkedList<Vendible>();
+	LinkedList<Vendible> vendiblesAFiltrar = new LinkedList<Vendible>();
 	LinkedList<Tipo> tipos;
 	Integer id;
 	
@@ -45,54 +46,37 @@ public class ofertarVendiblesServlet extends HttpServlet {
 		id = Integer.parseInt(req.getParameter("id"));
 		Usuario usuario = usuarioService.busacarPorId(id, vendibles, tipos);
 		LinkedList<Vendible> vendibles = vendibleService.listar();
-		vendibles.sort(new Comparador(usuario.getTipo()) );		
-		for (Vendible v : vendibles) {	   
-			if (usuario.puedeComprar(v) ) { //&& yaLoOferto(v)==false
-				vendiblesAOfertar.add(v);  
-			}	
-		}
+		
+		
+		
+		for (Vendible vendible : vendibles) {
+			if(!usuario.getVendiblesComprados().contains(vendible)) {
+				vendiblesAFiltrar.add(vendible);
+			}
+		}	
+		vendiblesAFiltrar.sort(new Comparador(usuario.getTipo()) );			
+		if (vendiblesAOfertar.isEmpty()) {
+	        for (Vendible v : vendibles) {
+	            if (usuario.puedeComprar(v) ) { 
+	                vendiblesAOfertar.add(v);
+	            }
+	        }
+
+	    } else {
+	        vendiblesAOfertar.clear();
+	        for (Vendible v : vendibles) {
+	            if (usuario.puedeComprar(v) ) { 
+	                vendiblesAOfertar.add(v);
+	            }
+	        }
+
+	    }
 
 		req.setAttribute("vendibles", vendiblesAOfertar);
 		RequestDispatcher dispatcher = getServletContext()
 				.getRequestDispatcher("/views/usuarios/ofertar.jsp");
 		dispatcher.forward(req, resp);
 	}
-	
-	
-	
-//	private boolean yaLoOferto(Vendible v) {
-//	boolean oferto = false;
-//    if (v.esPromo()) {
-//        for (Vendible vendible : v.getAtracciones() ) {
-//            if (vendiblesAOfertar.contains(vendible)) {
-//            	oferto = true;
-//                break;
-//            }
-//            for(Vendible vendibleComp : vendiblesAOfertar) {
-//                if(vendibleComp.esPromo()) {
-//                    if (vendibleComp.getAtracciones().contains(vendible)) {
-//                    	oferto = true;
-//                        break;
-//                    }
-//                }
-//            }
-//        }
-//    }else {
-//        for (Vendible vendible : vendiblesAOfertar) {
-//            if (vendible.esPromo()) {
-//                if (vendible.getAtracciones().contains(v)) {
-//                	oferto = true;
-//                    break;
-//                }
-//            }else if (vendible == v ) {
-//            	oferto = true;
-//            }
-//        }
-//    } 
-//    return oferto;
-//	}
-	
-
-	
+		
 
 }
