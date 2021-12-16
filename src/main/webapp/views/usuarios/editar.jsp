@@ -19,25 +19,25 @@
                 <form class="row g-3 needs-validation" action="/TurismoEnLaTierraMedia2021WebApp/usuario/editar.adm" method="post" novalidate>
                     <div class="col-md-4">
                       <label for="nombre" class="form-label">Nombre</label>
-                      <input type="text" class="form-control" id="nombre" name="nombre" value="<c:out value="${tmp_user.nombre}"></c:out>" required>
+                      <input type="text" class="form-control" id="nombre" name="nombre" value="<c:out value="${tmp_user.getNombre()}"></c:out>" required>
                       <div class="invalid-feedback">
                         Este campo es requerido.
                       </div>
                     </div>
                     <div class="col-md-4">
                       <label for="presupuesto" class="form-label">Dinero</label>
-                      <input type="number" class="form-control" name="presupuesto" id="presupuesto" value="<c:out value="${tmp_user.presupuesto}"></c:out>"  required>
+                      <input type="number" class="form-control" name="presupuesto" id="presupuesto" value="<c:out value="${tmp_user.getPresupuesto()}"></c:out>"  required>
                       <div class="invalid-feedback">
                         Este campo es requerido.
                       </div>
                     </div>                    
                     <div class="col-md-4">
                       <label for="tiempoDisponible" class="form-label">Tiempo</label>                                         
-                       <input type="number" class="form-control" id="tiempoDisponible" name="tiempoDisponible" value="<c:out value="${tmp_user.tiempoDisponible}"></c:out>" aria-describedby="inputGroupPrepend" required>
+                       <input type="number" class="form-control" id="tiempoDisponible" value="<c:out value="${tmp_user.getTiempoDisponible()}"></c:out>" name="tiempoDisponible" aria-describedby="inputGroupPrepend" required>
                         <div class="invalid-feedback">
                             Este campo es requerido.
                           </div>
-                    </div>
+                      </div>
                     <div class="col-md-4">
                       <label for="admin" class="form-label">Permisos</label>                     
                       <select class="form-control" id="admin" name="admin"> 

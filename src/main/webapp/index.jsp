@@ -11,10 +11,6 @@
 	<jsp:include page="partials/nav.jsp"></jsp:include>
 	
 	
-	
-	
-	
-	
 	<div class="flex container mt-5">
 		<main class="home">
 			<article class="container mt-4 text-center">
@@ -25,6 +21,13 @@
 					officia neque perspiciatis et. Iste possimus voluptate commodi?</p>
 			</article>
 
+			<c:if test="${success != null}">
+				<div class="alert alert-success text-center"> 
+					<p>
+						<c:out value="${success}"/>
+					</p>
+				</div>
+			</c:if>
 
 			<section class="mt-5">
 				<ul id="productos" class="lista text-center">

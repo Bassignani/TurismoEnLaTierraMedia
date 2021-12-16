@@ -51,13 +51,13 @@ public class LoginServlet extends HttpServlet {
     	LinkedList<Vendible> vendibles = vendibleService.listar();
     	Usuario usuario = loginService.login(nombre, password,vendibles, tipos);
     	
-    	if (!usuario.esNull()) {
+    	if (!usuario.esNull() && usuario.checkPassword(password)) {
     		req.getSession().setAttribute("usuario", usuario);
     		resp.sendRedirect("/TurismoEnLaTierraMedia2021WebApp/index");    		
        	} else {
     		req.setAttribute("flash", "Nombre de usuario o contraseña incorrectos");
     		RequestDispatcher dispatcher = getServletContext()
-      		      .getRequestDispatcher("/TurismoEnLaTierraMedia2021WebApp/views/usuarios/login.jsp");
+      		      .getRequestDispatcher("/views/usuarios/login.jsp");
       		    dispatcher.forward(req, resp);
     	}
     }

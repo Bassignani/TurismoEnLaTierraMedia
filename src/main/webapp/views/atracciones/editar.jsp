@@ -67,7 +67,7 @@
                     </div>
 					<div class="col-md-12">
                         <label for="description" class="form-label">Descripción</label>
-						<textarea name="description" id="description" cols="30" rows="5" class="form-control" value="${atraccion.getDescription()}"  required></textarea>
+						<textarea name="description" id="description" cols="30" rows="5" class="form-control" required> ${atraccion.getDescription()} </textarea>
                         <div class="invalid-feedback">
                           Este campo es requerido.
                         </div>

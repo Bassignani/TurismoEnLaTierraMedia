@@ -343,7 +343,11 @@ div .atracciones{
 	text-align: left;
 }
 
-
+.alert-success {
+    color: var(--miLetra2);
+    background-color: var(--miColor11);
+    border-color: var(--miColor11);
+}
 
 
 

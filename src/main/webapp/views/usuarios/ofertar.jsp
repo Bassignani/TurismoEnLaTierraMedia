@@ -5,6 +5,12 @@
 <html>
 <head>
 	<jsp:include page="/partials/head.jsp"></jsp:include>
+	<script defer src="/TurismoEnLaTierraMedia2021WebApp/assets/javascript/main.js"></script>
+	<script defer src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+	<script defer src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" ></script> 
+	<script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" ></script> 
+	<script defer src="/TurismoEnLaTierraMedia2021WebApp/assets/carrusel/owl.carousel.min.js"></script> 
+	<script defer src="/TurismoEnLaTierraMedia2021WebApp/assets/carrusel/scipt.js"></script> 
 </head>
 <body class="light-theme">
 	
@@ -31,17 +37,17 @@
 											</div>
 											<h5 class="mb-0 text-center"><b><c:out value="${tmp_vendible.getNombre()}"></c:out></b></h5>
 											<p class=" p-4" style="text-align: justify"><c:out value="${tmp_vendible.getDescription()}"></c:out></p>
-											<div class="iconos">
-												<span>
-													<img alt="Precio" src="/TurismoEnLaTierraMedia2021WebApp/assets/img/Varios/GoldCoinsIcono.png"> 
+											<div class="iconos" style="display: flex !important; justify-content: space-evenly !important; align-items: center !important;">
+												<span style="display: flex !important; justify-content: center !important; align-items: center !important;">
+													<img style="width: 30% !important; height: 30% !important;" alt="Precio" src="/TurismoEnLaTierraMedia2021WebApp/assets/img/Varios/GoldCoinsIcono.png"> 
 													<c:out value="${tmp_vendible.getCosto()}"></c:out>
 												</span> 
-												<span>
-													<img alt="Duracion"src="/TurismoEnLaTierraMedia2021WebApp/assets/img/Varios/RelojDeArenaIcono.png">
+												<span style="display: flex !important; justify-content: center !important; align-items: center !important;">
+													<img style="width: 30% !important; height: 30% !important;" alt="Duracion"src="/TurismoEnLaTierraMedia2021WebApp/assets/img/Varios/RelojDeArenaIcono.png">
 													<c:out value="${tmp_vendible.getDuracion()}"></c:out>
 												</span>
 											</div>
-											<a href="/TurismoEnLaTierraMedia2021WebApp/usuario/comprar.do?id=${tmp_vendible.getId()}&promo=${tmp_vendible.esPromo()}" class="btn btn-miPrincipal m-2">Comprar</a>								
+											<a href="/TurismoEnLaTierraMedia2021WebApp/usuario/comprar.do?id=${tmp_vendible.getId()}&promo=${tmp_vendible.esPromo()}" class="btn btn-miPrincipal m-2" style="margin: 1.5rem!important">Comprar</a>								
 										</div>
 								</c:forEach>
 							</div>
@@ -53,12 +59,7 @@
 	</div>
 	
 	<jsp:include page="/partials/footer.jsp"></jsp:include>
-	<script src="/TurismoEnLaTierraMedia2021WebApp/assets/javascript/main.js"></script>
-	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" ></script> 
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" ></script> 
-	<script src="/TurismoEnLaTierraMedia2021WebApp/assets/carrusel/owl.carousel.min.js"></script> 
-	<script src="/TurismoEnLaTierraMedia2021WebApp/assets/carrusel/scipt.js"></script> 
+	
 	
 </body>
 	
