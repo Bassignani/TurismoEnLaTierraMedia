@@ -33,7 +33,7 @@
                     </div>                    
                     <div class="col-md-4">
                       <label for="tiempoDisponible" class="form-label">Tiempo</label>                                         
-                       <input type="number" class="form-control" id="tiempoDisponible" name="tiempoDisponible" aria-describedby="inputGroupPrepend" required>
+                       <input type="number" class="form-control" id="tiempoDisponible" name="tiempoDisponible" aria-describedby="inputGroupPrepend"  placeholder="Ingrese cantidad de tiempo disponible" required>
                         <div class="invalid-feedback">
                             Este campo es requerido.
                           </div>

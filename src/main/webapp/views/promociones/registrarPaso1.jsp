@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>    
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,11 +16,12 @@
 
 			<div class="lista text-center mt-5">
                 <h3 class="col-12 mb-3 fuente">Crear una Promoción</h3>
-                <form class="row g-3 needs-validation" novalidate>
+                
+                <form class="row g-3 needs-validation" action="/TurismoEnLaTierraMedia2021WebApp/promocion/registrarPaso1.adm" method="post" novalidate>
                     
                     <div class="col-md-4">
                       <label for="nombre" class="form-label">Nombre</label>
-                      <input type="text" class="form-control" id="nombre" placeholder="" required>
+                      <input type="text" class="form-control" id="nombre" placeholder="" name="nombre" required>
                       <div class="invalid-feedback">
                         Este campo es requerido.
                       </div>
@@ -28,9 +30,11 @@
                     <div class="col-md-4">
                       <label for="tipo" class="form-label">Tipo de Atracciones</label>
                       <select name="tipo" class="form-control" id="tipo">
-                        <option value="aventura">Aventura</option>
-                        <option value="degustacion" selected>Degustación</option>
-                        <option value="paisaje">Paisaje</option>
+                     	<c:forEach items="${tipos}" var="tmp_tipo">
+                        	<c:if test="${tmp_tipo.getActive() }"> 
+                        		<option value="${tmp_tipo.getId()}"><c:out value="${tmp_tipo.getNombre()}"></c:out></option>
+                        	</c:if> 
+                        </c:forEach>
                       </select required>
                       <div class="invalid-feedback">
                         Este campo es requerido.
@@ -40,51 +44,17 @@
                     <div class="col-md-4">
                         <label for="tipo_promo" class="form-label">Tipo de Promocion</label>
                         <select name="tipo_promo" class="form-control" id="tipo_promo">
-                            <option value="axb">AxB</option>
-                            <option value="absoluta" selected>Absoluta</option>
-                            <option value="descuento">Descuento</option>
+                            <option value="AxB">AxB</option>
+                            <option value="Absoluta" selected>Absoluta</option>
+                            <option value="Descuento">Descuento</option>
                         </select required>
                         <div class="invalid-feedback">
                             Este campo es requerido.
                         </div>
                     </div>
 
-                    <div class="col-md-4">
-                      <label for="costo" class="form-label">Costo</label>
-                      <input type="text" class="form-control" name="costo" id="costo" required>
-                      <div class="invalid-feedback">
-                        Este campo es requerido.
-                      </div>
-                    </div>
-
-                    <div class="col-md-4">
-                        <label for="duracion" class="form-label">Duración</label>
-                        <input type="text" class="form-control" id="duracion" name="duracion" required>
-                        <div class="invalid-feedback">
-                            Este campo es requerido.
-                        </div>
-                    </div>
-
-                    <div class="col-md-4"></div>
-
-                    <div class="col-md-4">
-                        <div>
-                            <label for="atracciones" class="form-label">Atracciones</label> 
-                        </div>
-                        <div class="atracciones">
-                            <input type="checkbox" id="moria" name="moria atracciones" value="moria">
-                            <label for="moria">Moria</label><br>
-                            <input type="checkbox" id="la-comarca" name="la-comarca atracciones" value="la-comarca">
-                            <label for="la-comarca">La Comarca</label><br>
-                            <input type="checkbox" id="minas-tirith" name="minas-tirith atracciones" value="minas-tirith">
-                            <label for="minas-tirith">Monas Tirith</label><br>
-                            <input type="checkbox" id="mordor" name="mordor atracciones" value="mordor">
-                            <label for="mordor">Mordor</label>
-                        </div>
-                    </div>
-
                     <div class="col-12">
-                      <button class="btn  btn-miPrincipal" type="submit">Guardar</button>
+                      <button class="btn  btn-miPrincipal" type="submit">Siguiente</button>
                     </div>
                 </form>
             </div>

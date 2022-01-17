@@ -31,8 +31,8 @@ public class ListarPromocionesServlet extends HttpServlet {
 		this.tipoService = new TipoService();
 		LinkedList<Tipo> tipos = tipoService.listar();
 		this.promocionService = new PromocionService();
-		this.atraccionService = new AtraccionService();  //INCORPORACION
-		atracciones = atraccionService.listar(tipos); 		//INCORPORACION
+		this.atraccionService = new AtraccionService();  
+		atracciones = atraccionService.listar(tipos); 		
 	}
 
 	@Override

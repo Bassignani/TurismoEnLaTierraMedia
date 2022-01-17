@@ -5,19 +5,67 @@
 <html>
 <head>
 	<jsp:include page="/partials/head.jsp"></jsp:include>
-	<script defer src="/TurismoEnLaTierraMedia2021WebApp/assets/javascript/main.js"></script>
-	<script defer src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+	
+	<!-- <script defer src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 	<script defer src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" ></script> 
 	<script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" ></script> 
 	<script defer src="/TurismoEnLaTierraMedia2021WebApp/assets/carrusel/owl.carousel.min.js"></script> 
-	<script defer src="/TurismoEnLaTierraMedia2021WebApp/assets/carrusel/scipt.js"></script> 
+	<script defer src="/TurismoEnLaTierraMedia2021WebApp/assets/carrusel/scipt.js"></script>  
+	<script defer src="/TurismoEnLaTierraMedia2021WebApp/assets/javascript/main.js"></script> -->
 </head>
 <body class="light-theme">
 	
 	<jsp:include page="/partials/nav.jsp"></jsp:include>
 	
-	
-	<div class="flex container mt-5">
+	<div class="flex container  ">
+		<main class="home">
+			<article class="container mt-4 text-center">
+					<h1 class="display-4 fuente" >Comprar</h1>
+				</article>
+
+
+
+			<section class="mt-5">
+				<ul id="productos" class="lista text-center">
+					
+					<c:forEach items="${vendibles}" var="tmp_vendible">		
+					
+					<li>
+						<div class="card">
+							<img src="<c:out value="${tmp_vendible.getPathImg()}"></c:out>" class="card-img-top"
+								alt="articulo">
+							<div class="card-body">
+								<h5 class="card-title"><c:out value="${tmp_vendible.getNombre()}"></c:out></h5>
+								<p class="card-text" style="text-align: justify"><c:out value="${tmp_vendible.getDescription()}"></c:out></p>
+								<div class="iconos">
+									<span>
+										<img alt="Precio" src="/TurismoEnLaTierraMedia2021WebApp/assets/img/Varios/GoldCoinsIcono.png">
+										<c:out value="${tmp_vendible.getCosto()}"></c:out>
+									</span> 
+									<span>
+										<img alt="Duracion" src="/TurismoEnLaTierraMedia2021WebApp/assets/img/Varios/RelojDeArenaIcono.png">
+										<c:out value="${tmp_vendible.getDuracion()}"></c:out>
+									</span>
+								</div>
+									<c:choose>
+					                      <c:when test="${usuario != null}">             
+					                        <a href="/TurismoEnLaTierraMedia2021WebApp/usuario/comprar.do?id=${tmp_vendible.getId()}&promo=${tmp_vendible.esPromo()}" class="btn btn-miPrincipal mt-1">Comprar</a>
+					                      </c:when>   
+					                      <c:otherwise>
+					                      	<a href="/TurismoEnLaTierraMedia2021WebApp/views/usuarios/login.jsp" class="btn btn-miPrincipal mt-1">Comprar</a>
+					                      </c:otherwise>
+                      				</c:choose>  
+							</div>
+						</div>
+					</li>
+					
+					</c:forEach>
+					
+				</ul>
+			</section>
+		</main>
+	</div>
+<%-- 	<div class="flex container mt-5">
 		<main class="home">
 			<section class="mt-5">
 				<article class="container mt-4 text-center">
@@ -56,7 +104,7 @@
 				</section>
 			</section>
 		</main>
-	</div>
+	</div> --%>
 	
 	<jsp:include page="/partials/footer.jsp"></jsp:include>
 	

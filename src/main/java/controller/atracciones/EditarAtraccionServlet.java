@@ -1,6 +1,7 @@
 package controller.atracciones;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.LinkedList;
 
 import jakarta.servlet.RequestDispatcher;
@@ -22,6 +23,7 @@ public class EditarAtraccionServlet extends HttpServlet {
 	private TipoService tipoService;
 	LinkedList<Tipo> tipos;
 	Integer id;
+	Tipo tipo;
 	
 	@Override
 	public void init() throws ServletException {
@@ -41,4 +43,35 @@ public class EditarAtraccionServlet extends HttpServlet {
 				.getRequestDispatcher("/views/atracciones/editar.jsp");
 		dispatcher.forward(req, resp);
 	}
+	
+	
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		String nombre = req.getParameter("nombre");
+		Double costo = Double.parseDouble(req.getParameter("costo"));
+		Double duracion = Double.parseDouble(req.getParameter("duracion"));
+		Integer cupo = Integer.parseInt(req.getParameter("cupo"));
+		String description = req.getParameter("description");
+		try {
+			tipo = tipoService.toTipo(Integer.parseInt(req.getParameter("tipo")), tipos);
+		} catch (NumberFormatException | SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		String path_img = req.getParameter("path_img");
+		
+		Atraccion tmp_atrac = atraccionService.update(id,nombre, costo, duracion, cupo, description, tipo, path_img,tipos);
+		
+		if (tmp_atrac.isValid()) {
+			resp.sendRedirect("/TurismoEnLaTierraMedia2021WebApp/atracciones/listar.adm");
+		} else {
+			req.setAttribute("tmp_atrac", tmp_atrac);
+
+			RequestDispatcher dispatcher = getServletContext()
+					.getRequestDispatcher("/TurismoEnLaTierraMedia2021WebApp/atraccion/crear.adm");
+			dispatcher.forward(req, resp);
+		}
+	}
+	
+	
 }

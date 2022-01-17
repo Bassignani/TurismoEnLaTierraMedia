@@ -13,7 +13,7 @@ public abstract class Promocion extends Vendible {
 	protected Boolean active;
 	protected String path_img;
 	protected String description;
-
+	
 	public double calcularDescuento() {
 		return 0;
 	}
@@ -38,6 +38,10 @@ public abstract class Promocion extends Vendible {
 	public LinkedList<Atraccion> getAtracciones() {
 		return atracciones;
 	}
+	
+	public Integer getCantidadAtracciones() {
+		return atracciones.size();
+	}
 
 	public double getPorcentajeDescuento() {
 		return porcentajeDescuento;
@@ -46,6 +50,7 @@ public abstract class Promocion extends Vendible {
 	public double getPrecio() {
 		return precio;
 	}
+	
 
 	public String atraccionesAString() {
 		String stringFinal = "";
@@ -139,6 +144,10 @@ public abstract class Promocion extends Vendible {
 	
 	public String getDescription() {
 		return description;
+	}
+	
+	public boolean isValid() {
+		return this.atracciones != null;
 	}
 	
 	

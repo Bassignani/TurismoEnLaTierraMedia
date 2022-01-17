@@ -17,6 +17,7 @@
                 <a class="btn  btn-miPrincipal" href="/TurismoEnLaTierraMedia2021WebApp/usuarios/listar.adm">Usuarios</a>
                 <a class="btn  btn-miPrincipal" href="/TurismoEnLaTierraMedia2021WebApp/promociones/listar.adm">Promociones</a>
                 <a class="btn  btn-miPrincipal" href="/TurismoEnLaTierraMedia2021WebApp/atracciones/listar.adm">Atracciones</a>
+                <a class="btn  btn-miPrincipal" href="/TurismoEnLaTierraMedia2021WebApp/tipos/listar.adm">Tipos de Atracciones</a>
             </div>
         </section> 
     </div>

@@ -24,7 +24,7 @@ public class ofertarVendiblesServlet extends HttpServlet {
 	private TipoService tipoService;
 	private UsuarioService usuarioService;
 	private VendibleService vendibleService;
-	LinkedList<Vendible> vendibles;
+	LinkedList<Vendible> vendibles = new LinkedList<Vendible>();;
 	LinkedList<Vendible> vendiblesAOfertar = new LinkedList<Vendible>();
 	LinkedList<Vendible> vendiblesAFiltrar = new LinkedList<Vendible>();
 	LinkedList<Tipo> tipos;
@@ -36,25 +36,17 @@ public class ofertarVendiblesServlet extends HttpServlet {
 		this.tipoService = new TipoService();
 		this.usuarioService = new UsuarioService();
 		this.vendibleService = new VendibleService();
-		vendibles = vendibleService.listar();
-		tipos = tipoService.listar();
 		}
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		vendibles = vendibleService.listar();
+		tipos = tipoService.listar();
+		Usuario usuario = (Usuario) req.getSession().getAttribute("usuario");
+
+		vendiblesAFiltrar=usuarioService.yaCompro(vendibles,usuario.getVendiblesComprados());
+		vendiblesAFiltrar.sort(new Comparador(usuario.getTipo()) );	
 		
-		id = Integer.parseInt(req.getParameter("id"));
-		Usuario usuario = usuarioService.busacarPorId(id, vendibles, tipos);
-		LinkedList<Vendible> vendibles = vendibleService.listar();
-		
-		
-		
-		for (Vendible vendible : vendibles) {
-			if(!usuario.getVendiblesComprados().contains(vendible)) {
-				vendiblesAFiltrar.add(vendible);
-			}
-		}	
-		vendiblesAFiltrar.sort(new Comparador(usuario.getTipo()) );			
 		if (vendiblesAOfertar.isEmpty()) {
 	        for (Vendible v : vendibles) {
 	            if (usuario.puedeComprar(v) ) { 

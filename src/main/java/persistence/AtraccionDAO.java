@@ -13,6 +13,12 @@ public interface AtraccionDAO {
 	
 	public Atraccion buscarPorId(Integer id,LinkedList<Tipo> tipos);
 	
+	public LinkedList<Atraccion> buscarPorTipoId(Integer id,LinkedList<Tipo> tipos);
+	
 	public int update(Atraccion atraccion);
+	
+	public int deactivate(Atraccion atraccion);
+	
+	public int activate(Atraccion atraccion);
 
 }

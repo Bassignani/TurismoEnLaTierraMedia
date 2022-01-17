@@ -1,6 +1,7 @@
 package controller.atracciones;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.LinkedList;
 
 import jakarta.servlet.RequestDispatcher;
@@ -22,6 +23,7 @@ public class CrearAtraccionServlet extends HttpServlet implements Servlet {
 	private AtraccionService atraccionService;
 	private TipoService tipoService;
 	LinkedList<Tipo> tipos;
+	Tipo tipo;
 	
 	@Override
 	public void init() throws ServletException {
@@ -33,6 +35,7 @@ public class CrearAtraccionServlet extends HttpServlet implements Servlet {
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		tipos = tipoService.listar();
 		req.setAttribute("tipos", tipos);
 		RequestDispatcher dispatcher = getServletContext()
 				.getRequestDispatcher("/views/atracciones/registrar.jsp");
@@ -46,7 +49,12 @@ public class CrearAtraccionServlet extends HttpServlet implements Servlet {
 		Double duracion = Double.parseDouble(req.getParameter("duracion"));
 		Integer cupo = Integer.parseInt(req.getParameter("cupo"));
 		String description = req.getParameter("description");
-		Tipo tipo = toTipo(Integer.parseInt(req.getParameter("tipo")), tipos);
+		try {
+			tipo = tipoService.toTipo(Integer.parseInt(req.getParameter("tipo")), tipos);
+		} catch (NumberFormatException | SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		String path_img = req.getParameter("path_img");
 		
 		Atraccion tmp_atrac = atraccionService.crear(nombre, costo, duracion, cupo, description, tipo, path_img);
@@ -62,16 +70,5 @@ public class CrearAtraccionServlet extends HttpServlet implements Servlet {
 		}
 	}
 	
-	
-	private Tipo toTipo(int resultado, LinkedList<Tipo> tipos) {
-		int id = resultado;
-		Tipo tmp_tipo = null;
-		for (Tipo tipo : tipos) {
-			if (tipo.getId() == id) {
-				tmp_tipo = tipo;
-			}
-		}
-		return tmp_tipo;
-	}
 	
 }

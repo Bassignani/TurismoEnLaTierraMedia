@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%> 
 	<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 	
-<nav class="navbar navbar-expand-lg navbar-dark bg-miPrincipal fixed-top">
+<nav class="navbar navbar-expand-lg navbar-dark bg-miPrincipal">
 		<div class="container-fluid">
 			<a href="/TurismoEnLaTierraMedia2021WebApp/index"><img class="logo1" src="/TurismoEnLaTierraMedia2021WebApp/assets/img/Varios/Unico_Anello.png" alt="Logo"></a> 
 			<a class="navbar-brand fuente" href="/TurismoEnLaTierraMedia2021WebApp/index">Turismo en la Tierra Media</a>
@@ -52,7 +52,7 @@
 							</a>
 							<ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink" style="left: -95%">
 	                            <li><a class="dropdown-item" href="/TurismoEnLaTierraMedia2021WebApp/vendibles/ofertar.do?id=${usuario.getId()}">Comprar</a></li>   <!--Desp se puede sacar-->
-	                            <li><a class="dropdown-item" href="/TurismoEnLaTierraMedia2021WebApp/views/usuarios/itinerario.jsp">Itinerario</a></li>
+	                            <li><a class="dropdown-item" href="/TurismoEnLaTierraMedia2021WebApp/itinerario/listar.do?id=${usuario.getId()}">Itinerario</a></li>
 	                            <li><a class="dropdown-item" ><img src="/TurismoEnLaTierraMedia2021WebApp/assets/img/Varios/RelojDeArena.png" style="width: 20px; margin-right: 6px; margin-left: 5px" alt=""><c:out value="${usuario.getTiempoDisponible()}"></c:out></a></li>
 	                            <li><a class="dropdown-item" ><img src="/TurismoEnLaTierraMedia2021WebApp/assets/img/Varios/GoldCoins.png" style="width: 30px; margin-right: 0px" alt=""><c:out value="${usuario.getPresupuesto()}"></c:out></a></li>
 	                            <c:if test="${usuario.getAdmin()}">

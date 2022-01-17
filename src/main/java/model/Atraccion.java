@@ -25,6 +25,39 @@ public class Atraccion extends Vendible {
 		this.description = description;
 	}
 	
+	
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+	
+	public void setCosto(Double costo) {
+		this.costo = costo;
+	}
+	
+	public void setDuracion(Double duracion) {
+		this.duracion = duracion;
+	}
+	
+	public void setTipo(Tipo tipo) {
+		this.tipo = tipo;
+	}
+	
+	public void setCupo(Integer cupo) {
+		this.cupo = cupo;
+	}
+	
+	public void setActive(Boolean active) {
+		this.active = active;
+	}
+	
+	public void setPathImg(String path_img) {
+		this.path_img = path_img;
+	}
+	
+	public void setDescription(String description) {
+		this.description = description;
+	}
+	
 	public Integer getId() {
 		return id;
 	}

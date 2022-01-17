@@ -31,6 +31,8 @@ public class VendibleService {
 			return vendibles;
 		}
 
+	
+	
 	public Map<String, String> comprar(Usuario usuario, Integer vendible_id, Boolean esPromo) {
 		UsuarioDAO usuarioDAO = DAOFactory.getUsuarioDAO();
 		AtraccionDAO atraccionDAO = DAOFactory.getAtraccionDAO();

@@ -4,16 +4,17 @@ public class Tipo {
 	
 	private Integer id;
 	private String nombre = "";
+	private Boolean active;
 	
-	public Tipo(Integer id, String tipo) {
+	public Tipo(Integer id, String tipo, Boolean active) {
 		this.id = id;
 		this.nombre = tipo;
+		this.active = active;
 	}
 
 	public Integer getId() {
 		return id;
 	}
-
 	public void setId(Integer id) {
 		this.id = id;
 	}
@@ -26,5 +27,14 @@ public class Tipo {
 		this.nombre = tipo;
 	}
 	
+	public void setActive(Boolean active) {
+		this.active = active;
+	}
+	
+	public boolean getActive() {
+		return active;
+	}
+	
+
 
 }

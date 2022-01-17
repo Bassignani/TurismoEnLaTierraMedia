@@ -28,18 +28,38 @@
                     </thead>
                     <tbody>
                     <c:forEach items="${atracciones}" var="tmp_atraccion">
-	                    <tr>
-	                        <td><c:out value="${tmp_atraccion.id}"></c:out></td>
-	                        <td><c:out value="${tmp_atraccion.nombre}"></c:out></td>
-	                        <td><c:out value="${tmp_atraccion.costo}"></c:out></td>
-	                        <td><c:out value="${tmp_atraccion.duracion}"></c:out></td>
-	                        <td><c:out value="${tmp_atraccion.cupo}"></c:out></td>
-	                        <td><c:out value="${tmp_atraccion.getTipo().getNombre()}"></c:out></td>
-	                        <td>
-	                            <a href="/TurismoEnLaTierraMedia2021WebApp/atraccion/editar.adm?id=${tmp_atraccion.id}"><img src="/TurismoEnLaTierraMedia2021WebApp/assets/img/Varios/edit-regular.svg" class="edit" alt="" title="Editar"></a>   
-	                            <a href="#" data-bs-toggle="modal" data-bs-target="#eliminar"><img src="/TurismoEnLaTierraMedia2021WebApp/assets/img/Varios/trash-alt-regular.svg" class="delete" alt="" title="Eliminar"></a>
-	                        </td>
-	                    </tr>
+                    	<c:choose>
+                    		<c:when test="${tmp_atraccion.getActive()}">
+			                    <tr>
+			                        <td><c:out value="${tmp_atraccion.id}"></c:out></td>
+			                        <td><c:out value="${tmp_atraccion.nombre}"></c:out></td>
+			                        <td><c:out value="${tmp_atraccion.costo}"></c:out></td>
+			                        <td><c:out value="${tmp_atraccion.duracion}"></c:out></td>
+			                        <td><c:out value="${tmp_atraccion.cupo}"></c:out></td>
+			                        <td><c:out value="${tmp_atraccion.getTipo().getNombre()}"></c:out></td>
+			                        <td>
+			                            <a href="/TurismoEnLaTierraMedia2021WebApp/atraccion/editar.adm?id=${tmp_atraccion.id}"><img src="/TurismoEnLaTierraMedia2021WebApp/assets/img/Varios/edit-regular.svg" class="edit" alt="" title="Editar"></a>   
+			                            <a href="/TurismoEnLaTierraMedia2021WebApp/atraccion/desactivar.adm?id=${tmp_atraccion.id}"><img src="/TurismoEnLaTierraMedia2021WebApp/assets/img/Varios/trash-alt-regular.svg" class="delete" alt="" title="Desactivar"></a>
+			                       		<!-- data-bs-toggle="modal" data-bs-target="#eliminar" -->
+			                        </td>
+			                    </tr>
+		                    </c:when>
+		                    <c:otherwise>
+		                    	<tr style="opacity: 0.5; background-color: grey">
+			                        <td><c:out value="${tmp_atraccion.id}"></c:out></td>
+			                        <td><c:out value="${tmp_atraccion.nombre}"></c:out></td>
+			                        <td><c:out value="${tmp_atraccion.costo}"></c:out></td>
+			                        <td><c:out value="${tmp_atraccion.duracion}"></c:out></td>
+			                        <td><c:out value="${tmp_atraccion.cupo}"></c:out></td>
+			                        <td><c:out value="${tmp_atraccion.getTipo().getNombre()}"></c:out></td>
+			                        <td>
+			                            <a href="/TurismoEnLaTierraMedia2021WebApp/atraccion/editar.adm?id=${tmp_atraccion.id}"><img src="/TurismoEnLaTierraMedia2021WebApp/assets/img/Varios/edit-regular.svg" class="edit" alt="" title="Editar"></a>   
+			                            <a href="/TurismoEnLaTierraMedia2021WebApp/atraccion/activar.adm?id=${tmp_atraccion.id}" ><img src="/TurismoEnLaTierraMedia2021WebApp/assets/img/Varios/user-check-solid.svg" class="edit" alt="" title="Activar"></a>
+			                        	<!-- data-bs-toggle="modal" data-bs-target="#eliminar" -->
+			                        </td>
+			                    </tr>
+		                    </c:otherwise>
+	                    </c:choose>
                     </c:forEach>
                     </tbody>
                 </table>

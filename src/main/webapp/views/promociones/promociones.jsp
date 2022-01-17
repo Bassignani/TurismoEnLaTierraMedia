@@ -29,28 +29,51 @@
                     </thead>
                     <tbody>
                     <c:forEach items="${promociones}" var="tmp_promocion">
-                    <tr>
-                        <td><c:out value="${tmp_promocion.id}"></c:out></td>
-                        <td><c:out value="${tmp_promocion.getTipo().getNombre()}"></c:out></td>
-                        <td><c:out value="${tmp_promocion.tipoPromocion}"></c:out></td>
-                        <td><c:out value="${tmp_promocion.nombrePack}"></c:out></td>
-                        <td><c:out value="${tmp_promocion.getCosto()}"></c:out></td>
-                        <td><c:out value="${tmp_promocion.getDuracion()}"></c:out></td>
-						<td>
-	                        <c:forEach items="${tmp_promocion.getAtracciones()}" var="tmp_atraccion"> 
-	                            <c:out value="${tmp_atraccion.nombre}"></c:out> <br>
-	                        </c:forEach>
-	                    </td>
-                        <td>
-                            <a href="/TurismoEnLaTierraMedia2021WebApp/views/promociones/registrar.jsp"><img src="/TurismoEnLaTierraMedia2021WebApp/assets/img/Varios/edit-regular.svg" class="edit" alt="" title="Editar"></a>   
-                            <a href="#" data-bs-toggle="modal" data-bs-target="#eliminar"><img src="/TurismoEnLaTierraMedia2021WebApp/assets/img/Varios/trash-alt-regular.svg" class="delete" alt="" title="Eliminar"></a>
-                        </td>
-                    </tr>
+                    	<c:choose>
+                    		<c:when test="${ tmp_promocion.getActive() }">
+			                    <tr>
+			                        <td><c:out value="${tmp_promocion.id}"></c:out></td>
+			                        <td><c:out value="${tmp_promocion.getTipo().getNombre()}"></c:out></td>
+			                        <td><c:out value="${tmp_promocion.tipoPromocion}"></c:out></td>
+			                        <td><c:out value="${tmp_promocion.nombrePack}"></c:out></td>
+			                        <td><c:out value="${tmp_promocion.getCosto()}"></c:out></td>
+			                        <td><c:out value="${tmp_promocion.getDuracion()}"></c:out></td>
+									<td>
+				                        <c:forEach items="${tmp_promocion.getAtracciones()}" var="tmp_atraccion"> 
+				                            <c:out value="${tmp_atraccion.nombre}"></c:out> <br>
+				                        </c:forEach>
+				                    </td>
+			                        <td>
+			                            <!-- <a href="/TurismoEnLaTierraMedia2021WebApp/views/promociones/registrarPaso1.adm"><img src="/TurismoEnLaTierraMedia2021WebApp/assets/img/Varios/edit-regular.svg" class="edit" alt="" title="Editar"></a> -->   
+			                            <a href="/TurismoEnLaTierraMedia2021WebApp/promocion/desactivar.adm?id=${tmp_promocion.id}" ><img src="/TurismoEnLaTierraMedia2021WebApp/assets/img/Varios/trash-alt-regular.svg" class="delete" alt="" title="Desactivar"></a>
+			                        </td>
+			                    </tr>
+		                    </c:when>
+		                    <c:otherwise>
+		                    	<tr style="opacity: 0.5; background-color: grey">
+			                        <td><c:out value="${tmp_promocion.id}"></c:out></td>
+			                        <td><c:out value="${tmp_promocion.getTipo().getNombre()}"></c:out></td>
+			                        <td><c:out value="${tmp_promocion.tipoPromocion}"></c:out></td>
+			                        <td><c:out value="${tmp_promocion.nombrePack}"></c:out></td>
+			                        <td><c:out value="${tmp_promocion.getCosto()}"></c:out></td>
+			                        <td><c:out value="${tmp_promocion.getDuracion()}"></c:out></td>
+									<td>
+				                        <c:forEach items="${tmp_promocion.getAtracciones()}" var="tmp_atraccion"> 
+				                            <c:out value="${tmp_atraccion.nombre}"></c:out> <br>
+				                        </c:forEach>
+				                    </td>
+			                        <td>
+			                            <!-- <a href="/TurismoEnLaTierraMedia2021WebApp/views/promociones/registrarPaso1.adm"><img src="/TurismoEnLaTierraMedia2021WebApp/assets/img/Varios/edit-regular.svg" class="edit" alt="" title="Editar"></a> -->   
+			                             <a href="/TurismoEnLaTierraMedia2021WebApp/promocion/activar.adm?id=${tmp_promocion.id}" ><img src="/TurismoEnLaTierraMedia2021WebApp/assets/img/Varios/user-check-solid.svg" class="edit" alt="" title="Activar"></a>
+			                        </td>
+			                    </tr>
+		                    </c:otherwise>
+		            	</c:choose>   
                     </c:forEach>
                     </tbody>
                 </table>
             </div>
-            <a class="btn  btn-miPrincipal" href="/TurismoEnLaTierraMedia2021WebApp/views/promociones/registrar.jsp">Agregar Promocion</a>
+            <a class="btn  btn-miPrincipal" href="/TurismoEnLaTierraMedia2021WebApp/promocion/registrarPaso1.adm">Agregar Promocion</a>
     </div>
         
       <!-- Modal -->

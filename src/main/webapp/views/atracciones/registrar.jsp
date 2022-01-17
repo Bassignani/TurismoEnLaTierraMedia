@@ -30,7 +30,9 @@
                       <label for="tipo" class="form-label">Tipo de Atracciones</label>
                       <select name="tipo" class="form-control" id="tipo">
                      	<c:forEach items="${tipos}" var="tmp_tipo">
-                        <option value="${tmp_tipo.getId()}"><c:out value="${tmp_tipo.getNombre()}"></c:out></option>
+                        	<c:if test="${tmp_tipo.getActive() }">
+                        		<option value="${tmp_tipo.getId()}"><c:out value="${tmp_tipo.getNombre()}"></c:out></option>
+                        	</c:if>
                         </c:forEach>
                       </select required>
                       <div class="invalid-feedback">

@@ -16,7 +16,7 @@
 			<div class="lista text-center mt-5">
                 <h3 class="col-12 mb-3 fuente">Crear una Atracción</h3>
                 
-                <form class="row g-3 needs-validation" action="/TurismoEnLaTierraMedia2021WebApp/atraccion/crear.adm" method="post"  novalidate>
+                <form class="row g-3 needs-validation" action="/TurismoEnLaTierraMedia2021WebApp/atraccion/editar.adm" method="post"  novalidate>
                     
                     <div class="col-md-4">
                       <label for="nombre" class="form-label">Nombre</label>

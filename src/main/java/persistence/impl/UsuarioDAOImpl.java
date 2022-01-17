@@ -12,13 +12,14 @@ import model.nullobjects.NullUsuario;
 import persistence.UsuarioDAO;
 import persistence.commons.ConnectionProvider;
 import persistence.commons.MissingDataException;
+import services.TipoService;
 import model.Tipo;
 
 
 public class UsuarioDAOImpl implements UsuarioDAO {
 	
-
-	public LinkedList<Usuario> buscarTodos(LinkedList<Vendible> vendibles, LinkedList<Tipo> tipos) {
+	
+	public LinkedList<Usuario> findAll(LinkedList<Vendible> vendibles, LinkedList<Tipo> tipos) {
 		try {
 			String sql = "SELECT u.id, u.nombre, u.tipo_id, u.monedas, u.tiempo_disponible, tda.id , group_concat(i.promocion_id),group_concat(i.atraccion_id) , u.admin, u.active, u.password, u.path_img\n"
 					+ "		FROM usuarios u  INNER JOIN tipo_de_atracciones tda ON u.tipo_id = tda.id LEFT JOIN itinerarios i ON u.id = i.usuario_id	GROUP BY u.id";
@@ -165,11 +166,6 @@ public class UsuarioDAOImpl implements UsuarioDAO {
 	
 	
 	
-	
-	
-	
-	
-	
 	private Usuario toUsuario(ResultSet resultados, LinkedList<Vendible> vendibles, LinkedList<Tipo> tipos) throws SQLException {
 		LinkedList<Vendible> vendiblesComprados = new LinkedList<Vendible>();
 
@@ -195,23 +191,12 @@ public class UsuarioDAOImpl implements UsuarioDAO {
 			}
 
 		}
+		TipoService tipoService = new TipoService();
 		return new Usuario(resultados.getInt(1), resultados.getString(2), resultados.getDouble(4),
-				resultados.getDouble(5), toTipo(resultados.getInt(6), tipos), vendiblesComprados, resultados.getBoolean(9), 
+				resultados.getDouble(5), tipoService.toTipo(resultados.getInt(6), tipos), vendiblesComprados, resultados.getBoolean(9), 
 				resultados.getBoolean(10), resultados.getString(11), resultados.getString(12));
 	}
 
-	
-	
-	private Tipo toTipo(int resultado, LinkedList<Tipo> tipos) throws SQLException{
-		int id = resultado;
-		Tipo tmp_tipo = null;
-		for (Tipo tipo : tipos) {
-			if (tipo.getId() == id) {
-				tmp_tipo = tipo;
-			}
-		}
-		return tmp_tipo;
-	}
 	
 
 	

@@ -62,10 +62,6 @@ public class Usuario {
 		return tiempoTotal;
 	}
 
-//	public Tipo getTipoDeAtraccion() {
-//		return tipoDeAtraccion;
-//	}
-
 	@Override
 	public String toString() {
 		return "Usuario [nombre=" + nombre + ", presupuesto=" + presupuesto + ", tiempoDisponible=" + tiempoDisponible

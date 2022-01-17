@@ -11,7 +11,6 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import model.Usuario;
 import model.Vendible;
-import persistence.commons.DAOFactory;
 import services.LoginService;
 import model.Tipo;
 import services.TipoService;

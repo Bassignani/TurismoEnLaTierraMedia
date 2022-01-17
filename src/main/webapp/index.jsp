@@ -11,14 +11,13 @@
 	<jsp:include page="partials/nav.jsp"></jsp:include>
 	
 	
-	<div class="flex container mt-5">
+	<div class="flex container  ">
 		<main class="home">
-			<article class="container mt-4 text-center">
+			<article class="container   text-center">
 				<h1 class="display-2 fuente titulo" >La Tierra Media</h1>
-				<p class="lead">Lorem ipsum dolor sit amet consectetur
-					adipisicing elit. Aliquid, rem asperiores necessitatibus optio
-					harum quidem eveniet. Illo incidunt totam, animi minus eveniet
-					officia neque perspiciatis et. Iste possimus voluptate commodi?</p>
+				<p class="lead" style="text-align: justify">Turismo en la Tierra media, es la web de un parque de diverciones inspirada en atracciones y personajes de la saga 
+				del Señor de los Anillos. </br>
+				En la cual los usuarios pueden tener el rol de compradores o administradores. Un comprardor puede ver .......</p>
 			</article>
 
 			<c:if test="${success != null}">
@@ -53,7 +52,7 @@
 								</div>
 									<c:choose>
 					                      <c:when test="${usuario != null}">             
-					                        <a href="/TurismoEnLaTierraMedia2021WebApp/vendibles/ofertar.do?id=${usuario.getId()}" class="btn btn-miPrincipal mt-1">Comprar</a>
+					                        <a href="/TurismoEnLaTierraMedia2021WebApp/vendibles/ofertar.do" class="btn btn-miPrincipal mt-1">Comprar</a> <!-- ?id=${usuario.getId()} -->
 					                      </c:when>   
 					                      <c:otherwise>
 					                      	<a href="/TurismoEnLaTierraMedia2021WebApp/views/usuarios/login.jsp" class="btn btn-miPrincipal mt-1">Comprar</a>
